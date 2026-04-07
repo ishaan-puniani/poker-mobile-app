@@ -10,7 +10,7 @@ import 'package:poker_club/route/app_route.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
-      designSize: const Size(874, 402),
+      designSize: const Size(874, 403),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: AppStrings.appname.tr,

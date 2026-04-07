@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 
 class LightTheme {
-  static ThemeData theme = ThemeData(
-    brightness: Brightness.light,
+  static ThemeData get theme {
+    final base = ThemeData.light();
 
-    scaffoldBackgroundColor: ColorPallete.darkRed,
+    return base.copyWith(
+      brightness: Brightness.light,
 
-    appBarTheme: const AppBarTheme(
-      backgroundColor: ColorPallete.darkRed,
-      elevation: 0,
-      centerTitle: true,
-    ),
+      // ⚠️ Better use light background instead of darkRed
+      scaffoldBackgroundColor: ColorPallete.darkRed,
 
-    colorScheme: const ColorScheme.light(
-      primary: ColorPallete.darkRed,
-      secondary: ColorPallete.richRed,
-    ),
-  );
+      // 🔥 Apply Inter font globally
+      textTheme: GoogleFonts.interTextTheme(base.textTheme),
+      primaryTextTheme: GoogleFonts.interTextTheme(base.primaryTextTheme),
+
+      appBarTheme: const AppBarTheme(
+        backgroundColor: ColorPallete.darkRed,
+        elevation: 0,
+        centerTitle: true,
+      ),
+
+      colorScheme: const ColorScheme.light(
+        primary: ColorPallete.darkRed,
+        secondary: ColorPallete.richRed,
+      ),
+    );
+  }
 }
