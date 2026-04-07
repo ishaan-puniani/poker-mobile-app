@@ -6,6 +6,7 @@ import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/resources/strings.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
+import 'package:poker_club/view/custom_components/custom_divider.dart';
 
 class AuthOptions extends StatelessWidget {
   const AuthOptions({super.key});
@@ -57,6 +58,7 @@ class AuthOptions extends StatelessWidget {
             ),
             SizedBox(width: 13.w),
             CustomButton(
+              backgroundGradient: ColorPallete.rightbuttongradient,
               radius: 12.r,
               width: 158.w,
               height: 36.h,
@@ -71,6 +73,23 @@ class AuthOptions extends StatelessWidget {
           ],
         ),
         SizedBox(height: 13.h),
+        CustomDivider(),
+        SizedBox(height: 13.h),
+        CustomButton(
+          height: 36.h,
+          radius: 12.r,
+          borderWidth: 1.w,
+          borderColor: ColorPallete.yellow,
+          backgroundColor: ColorPallete.brown,
+          width: 329.w,
+          onPressed: () {},
+          textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: ColorPallete.lighteryellow,
+            fontWeight: FontWeight.w700,
+            fontSize: 13.sp,
+          ),
+          text: "play_as_guest".tr,
+        ),
       ],
     );
   }

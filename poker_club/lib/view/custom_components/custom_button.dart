@@ -13,9 +13,10 @@ class CustomButton extends StatelessWidget {
   final Widget? suffixIcon;
 
   final Color? backgroundColor;
-  final Color? borderColor;
+  final Gradient? backgroundGradient; // ✅ NEW
 
-  final Gradient? textGradient; // 👈 NEW
+  final Color? borderColor;
+  final Gradient? textGradient;
 
   final double radius;
   final double borderWidth;
@@ -32,8 +33,9 @@ class CustomButton extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.backgroundColor,
+    this.backgroundGradient,
     this.borderColor,
-    this.textGradient, // 👈 NEW
+    this.textGradient,
     this.radius = 12,
     this.borderWidth = 1,
     this.padding,
@@ -43,64 +45,82 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(radius.r);
+
     return SizedBox(
       height: height ?? 50.h,
       width: width ?? double.infinity,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-
-          backgroundColor: backgroundColor ?? ColorPallete.darkRed,
-          padding:
-              padding ?? EdgeInsets.symmetric(vertical: 0.h, horizontal: 2.w),
-
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius.r),
-            side: BorderSide(
+      child: Material(
+        color: Colors.transparent,
+        borderRadius: borderRadius,
+        child: Ink(
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+            color: backgroundGradient == null
+                ? (backgroundColor ?? ColorPallete.darkRed)
+                : null,
+            gradient: backgroundGradient,
+            border: Border.all(
               color: borderColor ?? Colors.transparent,
               width: borderWidth.w,
             ),
           ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (prefixIcon != null) ...[prefixIcon!, SizedBox(width: 8.w)],
+          child: InkWell(
+            onTap: onPressed,
+            borderRadius: borderRadius,
+            child: Container(
+              alignment: Alignment.center,
+              padding:
+                  padding ??
+                  EdgeInsets.symmetric(vertical: 0.h, horizontal: 12.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (prefixIcon != null) ...[
+                    prefixIcon!,
+                    SizedBox(width: 8.w),
+                  ],
 
-            /// 🔥 Gradient / Normal Text
-            Flexible(
-              child: textGradient != null
-                  ? ShaderMask(
-                      shaderCallback: (bounds) =>
-                          textGradient!.createShader(bounds),
-                      child: Text(
-                        text.tr,
-                        overflow: TextOverflow.ellipsis,
-                        style:
-                            textStyle ??
-                            TextStyle(
-                              color: Colors.white, // ⚠️ important
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w600,
+                  /// 🔥 TEXT (Gradient / Normal)
+                  Flexible(
+                    child: textGradient != null
+                        ? ShaderMask(
+                            shaderCallback: (bounds) =>
+                                textGradient!.createShader(bounds),
+                            blendMode: BlendMode.srcIn,
+                            child: Text(
+                              text.tr,
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                                  textStyle ??
+                                  TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                             ),
-                      ),
-                    )
-                  : Text(
-                      text.tr,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          textStyle ??
-                          TextStyle(
-                            color: Colors.white,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
+                          )
+                        : Text(
+                            text.tr,
+                            overflow: TextOverflow.ellipsis,
+                            style:
+                                textStyle ??
+                                TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
-                    ),
-            ),
+                  ),
 
-            if (suffixIcon != null) ...[SizedBox(width: 8.w), suffixIcon!],
-          ],
+                  if (suffixIcon != null) ...[
+                    SizedBox(width: 8.w),
+                    suffixIcon!,
+                  ],
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

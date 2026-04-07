@@ -6,4 +6,6 @@ const Map<String, String> enUS = {
   'shufftling_the_deck': "Shufftling the deck...",
   'sign_up': "SIGN UP",
   'login': "LOG IN",
+  'or': 'OR',
+  "play_as_guest": 'Play as Guest',
 };

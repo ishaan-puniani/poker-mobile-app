@@ -24,7 +24,7 @@ class SplashScreen extends StatelessWidget {
                 image: AssetImage(AppImages.splashbackground),
                 fit: BoxFit.cover,
                 alignment: Alignment.bottomCenter,
-              ), // 👈 your gradient
+              ),
             ),
             child: Center(
               child: Column(

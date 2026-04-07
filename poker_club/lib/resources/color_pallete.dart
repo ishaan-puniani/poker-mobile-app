@@ -20,6 +20,15 @@ class ColorPallete {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
   );
+  static const LinearGradient rightbuttongradient = LinearGradient(
+    colors: [
+      Color.fromRGBO(246, 196, 83, 1),
+      Color.fromRGBO(212, 175, 55, 1),
+      Color.fromRGBO(184, 134, 11, 1),
+    ],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
   static const LinearGradient logintoclaimgradient = LinearGradient(
     colors: [Color(0xFFFFD72D), Color(0xFFED8D29)],
     begin: Alignment.centerLeft,
