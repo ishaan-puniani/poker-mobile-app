@@ -4,6 +4,6 @@ const Map<String, String> enUS = {
   'poker_club': "PREMIUM\nPOKER CLUB",
   'loading': "Loading...",
   'shufftling_the_deck': "Shufftling the deck...",
-  'sign_up': "Sign Up",
-  'login': "LogIn",
+  'sign_up': "SIGN UP",
+  'login': "LOG IN",
 };
