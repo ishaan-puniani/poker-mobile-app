@@ -27,86 +27,90 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
             child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Center(
-                    child: ShaderMask(
-                      shaderCallback: (bounds) =>
-                          ColorPallete.yellowgradient.createShader(bounds),
+              child: Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Center(
+                      child: ShaderMask(
+                        shaderCallback: (bounds) =>
+                            ColorPallete.yellowgradient.createShader(bounds),
 
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        AppStrings.appname.tr,
-                        style: TextStyle(
-                          shadows: [
-                            Shadow(
-                              color: Colors.black.withOpacity(
-                                0.8,
-                              ), // ✅ 80% shadow
-                              blurRadius: 50.r,
-                              offset: Offset(2, 2),
-                            ),
-                          ],
-                          fontSize: 42.sp,
-                          color: Colors.white, // required (will be masked)
-                          fontWeight: FontWeight.w800,
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          AppStrings.appname.tr,
+                          style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                color: Colors.black.withOpacity(
+                                  0.8,
+                                ), // ✅ 80% shadow
+                                blurRadius: 50.r,
+                                offset: Offset(2, 2),
+                              ),
+                            ],
+                            fontSize: 42.sp,
+                            color: Colors.white, // required (will be masked)
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ),
-                  ),
 
-                  //authentication buttons will load when new user enters the app
-                  splashController.showAuthoptionals == true
-                      ? AuthOptions()
-                      : Column(
-                          children: [
-                            SizedBox(height: 32.h),
-                            Text(
-                              "${AppStrings.loading.tr} ${splashController.progress}%",
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: ColorPallete.yellow,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
+                    //authentication buttons will load when new user enters the app
+                    splashController.showAuthoptionals == true
+                        ? AuthOptions()
+                        : Column(
+                            children: [
+                              SizedBox(height: 32.h),
+                              Text(
+                                "${AppStrings.loading.tr} ${splashController.progress}%",
+                                style: Theme.of(context).textTheme.bodyMedium
+                                    ?.copyWith(
+                                      color: ColorPallete.yellow,
+                                      fontSize: 14.sp,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                              ),
+                              SizedBox(height: 12.h),
+                              Container(
+                                width: 300.w,
+                                child: LinearProgressIndicator(
+                                  value:
+                                      splashController.progress /
+                                      100, // 50% progress (optional)
+                                  backgroundColor: Colors.grey.shade300,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.amber,
                                   ),
-                            ),
-                            SizedBox(height: 12.h),
-                            Container(
-                              width: 300.w,
-                              child: LinearProgressIndicator(
-                                value:
-                                    splashController.progress /
-                                    100, // 50% progress (optional)
-                                backgroundColor: Colors.grey.shade300,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Colors.amber,
                                 ),
                               ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 3.w),
-                                  child: Text(
-                                    AppStrings.shufftlingthedeck.tr,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium
-                                        ?.copyWith(
-                                          color: ColorPallete.lightyellow,
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 13.sp,
-                                        ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 3.w,
+                                    ),
+                                    child: Text(
+                                      AppStrings.shufftlingthedeck.tr,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium
+                                          ?.copyWith(
+                                            color: ColorPallete.lightyellow,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 13.sp,
+                                          ),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                ],
+                                ],
+                              ),
+                            ],
+                          ),
+                  ],
+                ),
               ),
             ),
           ),

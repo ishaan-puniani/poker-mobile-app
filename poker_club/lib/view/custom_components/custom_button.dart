@@ -70,9 +70,8 @@ class CustomButton extends StatelessWidget {
             borderRadius: borderRadius,
             child: Container(
               alignment: Alignment.center,
-              padding:
-                  padding ??
-                  EdgeInsets.symmetric(vertical: 0.h, horizontal: 12.w),
+              padding: padding ?? EdgeInsets.all(0),
+              // padding
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
