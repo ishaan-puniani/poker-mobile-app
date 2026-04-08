@@ -13,7 +13,7 @@ class CustomButton extends StatelessWidget {
   final Widget? suffixIcon;
 
   final Color? backgroundColor;
-  final Gradient? backgroundGradient; // ✅ NEW
+  final Gradient? backgroundGradient;
 
   final Color? borderColor;
   final Gradient? textGradient;
@@ -24,6 +24,8 @@ class CustomButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final double? height;
   final double? width;
+
+  final List<BoxShadow>? boxShadow; // ✅ NEW
 
   const CustomButton({
     super.key,
@@ -41,6 +43,7 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.height,
     this.width,
+    this.boxShadow, // ✅ NEW
   });
 
   @override
@@ -64,14 +67,14 @@ class CustomButton extends StatelessWidget {
               color: borderColor ?? Colors.transparent,
               width: borderWidth.w,
             ),
+            boxShadow: boxShadow, // ✅ APPLY HERE
           ),
           child: InkWell(
             onTap: onPressed,
             borderRadius: borderRadius,
             child: Container(
               alignment: Alignment.center,
-              padding: padding ?? EdgeInsets.all(0),
-              // padding
+              padding: padding ?? EdgeInsets.zero,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -80,7 +83,6 @@ class CustomButton extends StatelessWidget {
                     SizedBox(width: 8.w),
                   ],
 
-                  /// 🔥 TEXT (Gradient / Normal)
                   Flexible(
                     child: textGradient != null
                         ? ShaderMask(

@@ -6,15 +6,22 @@ class LightTheme {
   static ThemeData get theme {
     final base = ThemeData.light();
 
+    final textTheme = GoogleFonts.interTextTheme(base.textTheme);
+
     return base.copyWith(
       brightness: Brightness.light,
-
-      // ⚠️ Better use light background instead of darkRed
       scaffoldBackgroundColor: ColorPallete.darkRed,
 
-      // 🔥 Apply Inter font globally
-      textTheme: GoogleFonts.interTextTheme(base.textTheme),
-      primaryTextTheme: GoogleFonts.interTextTheme(base.primaryTextTheme),
+      textTheme: textTheme.copyWith(
+        bodyMedium: GoogleFonts.inter(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+        bodyLarge: GoogleFonts.inter(fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.inter(fontWeight: FontWeight.w700),
+      ),
+
+      primaryTextTheme: textTheme,
 
       appBarTheme: const AppBarTheme(
         backgroundColor: ColorPallete.darkRed,
