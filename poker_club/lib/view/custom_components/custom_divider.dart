@@ -12,19 +12,27 @@ class CustomDivider extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(width: 143.w, color: ColorPallete.yellow, height: 1.h),
+        Container(
+          // color: ColorPallete.yellow,
+          width: 143.w,
+          height: 1.h,
+          decoration: BoxDecoration(gradient: ColorPallete.dividergradient),
+        ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           child: Text(
             AppStrings.or.tr,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: ColorPallete.yellow,
-              fontWeight: FontWeight.w600,
               fontSize: 12.sp,
             ),
           ),
         ),
-        Container(width: 143.w, color: ColorPallete.yellow, height: 1.h),
+        Container(
+          width: 143.w,
+          decoration: BoxDecoration(gradient: ColorPallete.dividergradient),
+          height: 1.h,
+        ),
       ],
     );
   }

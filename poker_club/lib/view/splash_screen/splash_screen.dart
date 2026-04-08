@@ -40,20 +40,20 @@ class SplashScreen extends StatelessWidget {
                         child: Text(
                           textAlign: TextAlign.center,
                           AppStrings.appname.tr,
-                          style: TextStyle(
-                            shadows: [
-                              Shadow(
-                                color: Colors.black.withOpacity(
-                                  0.8,
-                                ), // ✅ 80% shadow
-                                blurRadius: 50.r,
-                                offset: Offset(2, 2),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black.withOpacity(
+                                      0.8,
+                                    ), // ✅ 80% shadow
+                                    blurRadius: 50.r,
+                                    offset: Offset(2, 2),
+                                  ),
+                                ],
+                                fontSize: 42.sp,
+                                color: Colors.white,
                               ),
-                            ],
-                            fontSize: 42.sp,
-                            color: Colors.white, // required (will be masked)
-                            fontWeight: FontWeight.w800,
-                          ),
                         ),
                       ),
                     ),

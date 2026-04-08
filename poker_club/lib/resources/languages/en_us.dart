@@ -8,4 +8,5 @@ const Map<String, String> enUS = {
   'login': "LOG IN",
   'or': 'OR',
   "play_as_guest": 'Play as Guest',
+  "log_in_to_claim": "Log in to claim 100 chips",
 };

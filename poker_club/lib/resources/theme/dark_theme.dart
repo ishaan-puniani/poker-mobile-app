@@ -6,17 +6,23 @@ class DarkTheme {
   static ThemeData get theme {
     final base = ThemeData.dark();
 
+    final textTheme = GoogleFonts.interTextTheme(base.textTheme);
+
     return base.copyWith(
       brightness: Brightness.dark,
-
       scaffoldBackgroundColor: ColorPallete.darkRed,
 
-      // 🔥 Apply Inter globally
-      textTheme: GoogleFonts.interTextTheme(base.textTheme),
-      primaryTextTheme: GoogleFonts.interTextTheme(base.primaryTextTheme),
+      textTheme: textTheme.copyWith(
+        bodyMedium: GoogleFonts.inter(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+        ),
+        bodyLarge: GoogleFonts.inter(fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.inter(fontWeight: FontWeight.w700),
+      ),
 
-      // // Optional but recommended for consistency
-      // fontFamily: GoogleFonts.inter().fontFamily,
+      primaryTextTheme: textTheme,
+
       appBarTheme: const AppBarTheme(
         backgroundColor: ColorPallete.darkRed,
         elevation: 0,
