@@ -42,6 +42,7 @@ class SplashScreen extends StatelessWidget {
                           AppStrings.appname.tr,
                           style: Theme.of(context).textTheme.bodyLarge
                               ?.copyWith(
+                                fontWeight: FontWeight.w800,
                                 shadows: [
                                   Shadow(
                                     color: Colors.black.withOpacity(

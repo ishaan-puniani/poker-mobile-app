@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:poker_club/bindings/home_binding.dart';
 import 'package:poker_club/resources/strings.dart';
 import 'package:poker_club/resources/theme/app_theme.dart';
 import 'package:poker_club/resources/translations.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       designSize: const Size(874, 403),
       child: GetMaterialApp(
+        initialBinding: HomeBinding(),
         debugShowCheckedModeBanner: false,
         title: AppStrings.appname.tr,
         theme: AppTheme.light,

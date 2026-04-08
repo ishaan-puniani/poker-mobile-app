@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/resources/strings.dart';
+import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_divider.dart';
 
@@ -25,8 +27,8 @@ class AuthOptions extends StatelessWidget {
           radius: 20.r,
           borderWidth: 1.w,
 
-          borderColor: ColorPallete.logintoclaim.withValues(alpha: 0.15),
-          backgroundColor: ColorPallete.logintoclaim.withValues(alpha: 0.30),
+          borderColor: ColorPallete.borderyellow.withValues(alpha: 0.15),
+          backgroundColor: ColorPallete.borderyellow.withValues(alpha: 0.30),
           onPressed: () {},
           textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: ColorPallete.yellow,
@@ -48,7 +50,10 @@ class AuthOptions extends StatelessWidget {
               borderColor: ColorPallete.yellow,
               backgroundColor: ColorPallete.brown,
               width: 158.w,
-              onPressed: () {},
+              onPressed: () {
+                //checkmark: go to sign up screen
+                Get.toNamed(AppRoutes.signup);
+              },
               textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ColorPallete.lighteryellow,
                 fontWeight: FontWeight.w700,
