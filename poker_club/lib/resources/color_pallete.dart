@@ -7,6 +7,7 @@ class ColorPallete {
   static const Color richRed = Color(0xFF1A0000);
   static const Color yellow = Color(0xFFF0C330);
   static const Color borderyellow = Color.fromRGBO(212, 175, 55, 1);
+  static const Color textcolor = Color.fromRGBO(255, 255, 255, 0.6);
   static const Color darkTransparent = Color(0xB31A0000);
   static const LinearGradient borderGradient = LinearGradient(
     begin: Alignment.topLeft,

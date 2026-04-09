@@ -12,4 +12,16 @@ const Map<String, String> enUS = {
   "create_account": "Create Account",
   "join_the_premium_poker_club":
       "Join the Premium Poker Club and let the cards\nfall your way",
+
+  'by_creating_an_account': 'By creating an account, you agree to our ',
+  'terms_and_condition': 'Terms & Conditions',
+  'and': ' and ',
+  'private_policy': 'Privacy Policy',
+  'enter_mobile_number': 'Enter mobile number',
+  'create_password': 'Create password',
+  'confirm_password': 'Confirm password',
+  'enter_referral_code': 'Enter refer code',
+  'already_have_an_account': 'Already have an account',
+  'optional': '(Optional)',
+  'continue_with': 'Continue with',
 };

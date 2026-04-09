@@ -39,6 +39,11 @@ class MobilePassRefer extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomTextField(
+                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13.sp,
+                      color: ColorPallete.textcolor,
+                    ),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: SvgPicture.asset(
@@ -51,6 +56,11 @@ class MobilePassRefer extends StatelessWidget {
                     hint: "enter_mobile_number".tr,
                   ),
                   CustomTextField(
+                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13.sp,
+                      color: ColorPallete.textcolor,
+                    ),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: SvgPicture.asset(
@@ -68,6 +78,11 @@ class MobilePassRefer extends StatelessWidget {
                     ),
                   ),
                   CustomTextField(
+                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13.sp,
+                      color: ColorPallete.textcolor,
+                    ),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: SvgPicture.asset(
@@ -95,6 +110,26 @@ class MobilePassRefer extends StatelessWidget {
                     ),
                     backgroundColor: ColorPallete.brown,
                     hint: "enter_referral_code".tr,
+                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 13.sp,
+                      color: ColorPallete.textcolor,
+                    ),
+                    suffixIcon: Container(
+                      width: 80,
+                      child: Center(
+                        child: Text(
+                          "optional".tr,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12.sp,
+                                color: ColorPallete.textcolor,
+                              ),
+                        ),
+                      ),
+                    ),
                   ),
                   Row(
                     children: [
