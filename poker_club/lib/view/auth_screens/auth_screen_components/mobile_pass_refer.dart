@@ -1,9 +1,13 @@
 import 'dart:ui'; // IMPORTANT
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/utils.dart';
 import 'package:poker_club/resources/color_pallete.dart';
+import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
 class MobilePassRefer extends StatelessWidget {
@@ -29,25 +33,139 @@ class MobilePassRefer extends StatelessWidget {
                 alpha: 0.3,
               ), // IMPORTANT for glass effect
             ),
-            child: Column(
-              children: [
-                CustomTextField(
-                  backgroundColor: ColorPallete.brown,
-                  hint: "enter_mobile_number".tr,
-                ),
-                CustomTextField(
-                  backgroundColor: ColorPallete.brown,
-                  hint: "create_password".tr,
-                ),
-                CustomTextField(
-                  backgroundColor: ColorPallete.brown,
-                  hint: "confirm_password".tr,
-                ),
-                CustomTextField(
-                  backgroundColor: ColorPallete.brown,
-                  hint: "enter_referral_code".tr,
-                ),
-              ],
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomTextField(
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: SvgPicture.asset(
+                        AppImages.mobile,
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                    backgroundColor: ColorPallete.brown,
+                    hint: "enter_mobile_number".tr,
+                  ),
+                  CustomTextField(
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: SvgPicture.asset(
+                        AppImages.lock,
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                    backgroundColor: ColorPallete.brown,
+                    hint: "create_password".tr,
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye,
+                      color: ColorPallete.borderyellow,
+                      size: 16,
+                    ),
+                  ),
+                  CustomTextField(
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: SvgPicture.asset(
+                        AppImages.lock,
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                    backgroundColor: ColorPallete.brown,
+                    hint: "confirm_password".tr,
+                    suffixIcon: Icon(
+                      Icons.remove_red_eye,
+                      color: ColorPallete.borderyellow,
+                      size: 16,
+                    ),
+                  ),
+                  CustomTextField(
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: SvgPicture.asset(
+                        AppImages.gift,
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                    backgroundColor: ColorPallete.brown,
+                    hint: "enter_referral_code".tr,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          borderColor: ColorPallete.borderyellow,
+                          backgroundColor: ColorPallete.brown,
+
+                          radius: 12.r,
+                          width: 164,
+                          height: 36,
+                          suffixIcon: SvgPicture.asset(
+                            AppImages.google,
+                            height: 16,
+                            width: 16,
+                          ),
+                          onPressed: () {},
+                          text: "continue_with".tr.toUpperCase(),
+                          textStyle: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13.sp,
+                              ),
+                        ),
+                      ),
+                      SizedBox(width: 10.w),
+                      Expanded(
+                        child: CustomButton(
+                          backgroundGradient: ColorPallete.rightbuttongradient,
+                          textStyle: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                color: ColorPallete.brown,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13.sp,
+                              ),
+                          radius: 12.r,
+                          width: 164,
+                          height: 36,
+
+                          onPressed: () {},
+                          text: "create_account".tr.toUpperCase(),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  RichText(
+                    text: TextSpan(
+                      text: "already_have_an_account".tr + " ",
+                      style: Theme.of(
+                        context,
+                      ).textTheme.bodyMedium?.copyWith(fontSize: 13.sp),
+                      children: [
+                        TextSpan(
+                          text: "login".tr.capitalize,
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(
+                                color: ColorPallete.yellow,
+                                fontSize: 13.sp,
+                              ),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              // Navigate to login screen
+                              print("Login clicked");
+                            },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
