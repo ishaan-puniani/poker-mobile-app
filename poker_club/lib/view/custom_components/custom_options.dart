@@ -13,13 +13,14 @@ class CustomOptions extends StatelessWidget {
   final int? width;
   final double? spacebetweencomponents;
   final String? nextbuttontitle;
-
+  final VoidCallback ontap;
   const CustomOptions({
     super.key,
     this.height,
     this.width,
     this.nextbuttontitle,
     this.spacebetweencomponents,
+    required this.ontap,
   });
 
   @override
@@ -159,7 +160,7 @@ class CustomOptions extends StatelessWidget {
                           width: 164,
                           height: 36,
 
-                          onPressed: () {},
+                          onPressed: ontap,
                           text: (nextbuttontitle ?? "continue").tr
                               .toUpperCase(),
                         ),

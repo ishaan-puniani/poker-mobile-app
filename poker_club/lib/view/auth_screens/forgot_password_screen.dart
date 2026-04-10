@@ -6,6 +6,7 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 import 'package:poker_club/view/custom_components/custom_options.dart';
@@ -48,6 +49,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                         CustomOptions(
                           height: 134,
                           width: 380,
+                          ontap: () {
+                            Get.toNamed(AppRoutes.otpVerificationScreen);
+                          },
+
                           nextbuttontitle: "get_otp".tr,
                         ),
                       ],
