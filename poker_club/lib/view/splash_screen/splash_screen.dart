@@ -74,7 +74,7 @@ class SplashScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
-                              SizedBox(height: 12.h),
+                              SizedBox(height: 12),
                               Container(
                                 width: 300.w,
                                 child: LinearProgressIndicator(

@@ -21,7 +21,7 @@ const Map<String, String> enUS = {
   'create_password': 'Create password',
   'confirm_password': 'Confirm password',
   'enter_referral_code': 'Enter refer code',
-  'already_have_an_account': 'Already have an account',
+  'already_have_an_account': 'Already have an account?',
   'optional': '(Optional)',
   'continue_with': 'Continue with',
   "login_account": "LOGIN ACCOUNT",
@@ -32,4 +32,8 @@ const Map<String, String> enUS = {
   "continue_with_google": "Continue with Google",
   "login_with_otp": "Login with OTP",
   "dont_have_an_account": "Don't have an account? ",
+  "reset_password": "RESET PASSWORD",
+  "no_worries_we_will_get_you_back":
+      "No worries — we'll get you back to the table.",
+  "get_otp": "Get OTP",
 };
