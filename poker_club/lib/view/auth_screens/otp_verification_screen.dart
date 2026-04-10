@@ -10,8 +10,8 @@ import 'package:poker_club/view/auth_screens/auth_screen_components/create_accou
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 import 'package:poker_club/view/custom_components/custom_options.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class OtpVerificationScreen extends StatelessWidget {
+  const OtpVerificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +38,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                       children: [
                         //create account
                         CreateAccount(
-                          title: "reset_password".tr.toUpperCase(),
-                          subtitle: "no_worries_we_will_get_you_back".tr,
+                          title: "verify_with_otp".tr.toUpperCase(),
+                          subtitle: "enter_one_time_password".tr,
                           islogInPage: false,
                         ),
                         SizedBox(width: 48.w),
