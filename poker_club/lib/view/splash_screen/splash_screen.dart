@@ -115,20 +115,6 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
           ),
-          // bottomNavigationBar: Container(
-          //   color: Colors.transparent,
-          //   child: SafeArea(
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text(
-          //           AppStrings.shufftlingthedeck.tr,
-          //           style: TextStyle(color: ColorPallete.lightyellow),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
         );
       },
     );

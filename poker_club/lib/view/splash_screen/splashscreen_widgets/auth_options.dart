@@ -52,7 +52,7 @@ class AuthOptions extends StatelessWidget {
               width: 158.w,
               onPressed: () {
                 //checkmark: go to sign up screen
-                Get.toNamed(AppRoutes.signup);
+                Get.toNamed(AppRoutes.login);
               },
               textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: ColorPallete.lighteryellow,
@@ -73,7 +73,9 @@ class AuthOptions extends StatelessWidget {
                 fontWeight: FontWeight.w700,
                 fontSize: 13.sp,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.toNamed(AppRoutes.login);
+              },
               text: "login".tr,
             ),
           ],

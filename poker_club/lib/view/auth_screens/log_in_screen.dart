@@ -10,8 +10,8 @@ import 'package:poker_club/view/auth_screens/auth_screen_components/create_accou
 import 'package:poker_club/view/auth_screens/auth_screen_components/mobile_pass_refer.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class LogInScreen extends StatelessWidget {
+  const LogInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +37,10 @@ class SignUpScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         //create account
-                        CreateAccount(islogInPage: false),
+                        CreateAccount(islogInPage: true),
                         SizedBox(width: 48.w),
                         // login details
-                        MobilePassRefer(islogInPage: false),
+                        MobilePassRefer(islogInPage: true),
                       ],
                     ),
                   ),

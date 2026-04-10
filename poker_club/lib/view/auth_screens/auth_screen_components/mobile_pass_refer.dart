@@ -11,7 +11,8 @@ import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
 class MobilePassRefer extends StatelessWidget {
-  const MobilePassRefer({super.key});
+  final bool islogInPage;
+  const MobilePassRefer({super.key, required this.islogInPage});
 
   @override
   Widget build(BuildContext context) {
@@ -55,82 +56,112 @@ class MobilePassRefer extends StatelessWidget {
                     backgroundColor: ColorPallete.brown,
                     hint: "enter_mobile_number".tr,
                   ),
-                  CustomTextField(
-                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13.sp,
-                      color: ColorPallete.textcolor,
-                    ),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: SvgPicture.asset(
-                        AppImages.lock,
-                        height: 20,
-                        width: 20,
+                  if (islogInPage == true)
+                    CustomTextField(
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(8.w),
+                        child: SvgPicture.asset(
+                          AppImages.lock,
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      backgroundColor: ColorPallete.brown,
+                      hint: "enter_the_password".tr,
+                      hintStyle: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.sp,
+                            color: ColorPallete.textcolor,
+                          ),
+                      suffixIcon: Icon(
+                        Icons.remove_red_eye,
+                        color: ColorPallete.borderyellow,
+                        size: 16,
                       ),
                     ),
-                    backgroundColor: ColorPallete.brown,
-                    hint: "create_password".tr,
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                      color: ColorPallete.borderyellow,
-                      size: 16,
-                    ),
-                  ),
-                  CustomTextField(
-                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13.sp,
-                      color: ColorPallete.textcolor,
-                    ),
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: SvgPicture.asset(
-                        AppImages.lock,
-                        height: 20,
-                        width: 20,
+                  if (islogInPage == false)
+                    CustomTextField(
+                      hintStyle: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.sp,
+                            color: ColorPallete.textcolor,
+                          ),
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(8.w),
+                        child: SvgPicture.asset(
+                          AppImages.lock,
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      backgroundColor: ColorPallete.brown,
+                      hint: "create_password".tr,
+                      suffixIcon: Icon(
+                        Icons.remove_red_eye,
+                        color: ColorPallete.borderyellow,
+                        size: 16,
                       ),
                     ),
-                    backgroundColor: ColorPallete.brown,
-                    hint: "confirm_password".tr,
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                      color: ColorPallete.borderyellow,
-                      size: 16,
-                    ),
-                  ),
-                  CustomTextField(
-                    prefixIcon: Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: SvgPicture.asset(
-                        AppImages.gift,
-                        height: 20,
-                        width: 20,
+                  if (islogInPage == false)
+                    CustomTextField(
+                      hintStyle: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.sp,
+                            color: ColorPallete.textcolor,
+                          ),
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(8.w),
+                        child: SvgPicture.asset(
+                          AppImages.lock,
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      backgroundColor: ColorPallete.brown,
+                      hint: "confirm_password".tr,
+                      suffixIcon: Icon(
+                        Icons.remove_red_eye,
+                        color: ColorPallete.borderyellow,
+                        size: 16,
                       ),
                     ),
-                    backgroundColor: ColorPallete.brown,
-                    hint: "enter_referral_code".tr,
-                    hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13.sp,
-                      color: ColorPallete.textcolor,
-                    ),
-                    suffixIcon: Container(
-                      width: 80,
-                      child: Center(
-                        child: Text(
-                          "optional".tr,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 12.sp,
-                                color: ColorPallete.textcolor,
-                              ),
+                  if (islogInPage == false)
+                    CustomTextField(
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(8.w),
+                        child: SvgPicture.asset(
+                          AppImages.gift,
+                          height: 20,
+                          width: 20,
+                        ),
+                      ),
+                      backgroundColor: ColorPallete.brown,
+                      hint: "enter_referral_code".tr,
+                      hintStyle: Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 13.sp,
+                            color: ColorPallete.textcolor,
+                          ),
+                      suffixIcon: Container(
+                        width: 80,
+                        child: Center(
+                          child: Text(
+                            "optional".tr,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12.sp,
+                                  color: ColorPallete.textcolor,
+                                ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   Row(
                     children: [
                       Expanded(

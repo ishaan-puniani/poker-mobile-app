@@ -4,7 +4,8 @@ import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 
 class CreateAccount extends StatelessWidget {
-  const CreateAccount({super.key});
+  final bool islogInPage;
+  const CreateAccount({super.key, required this.islogInPage});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,9 @@ class CreateAccount extends StatelessWidget {
               ColorPallete.yellowgradient.createShader(bounds),
 
           child: Text(
-            "create_account".tr,
+            islogInPage
+                ? "login_account".tr.toUpperCase()
+                : "create_account".tr.toUpperCase(),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.w800,
               shadows: [
@@ -33,7 +36,9 @@ class CreateAccount extends StatelessWidget {
           ),
         ),
         Text(
-          "join_the_premium_poker_club".tr,
+          islogInPage
+              ? "welcome_back_to_the_table".tr
+              : "join_the_premium_poker_club".tr,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             shadows: [
               Shadow(
