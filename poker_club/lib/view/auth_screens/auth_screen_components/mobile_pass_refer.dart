@@ -226,7 +226,7 @@ class MobilePassRefer extends StatelessWidget {
                           height: 36,
 
                           onPressed: () {},
-                          text: "login_with_otp".tr.toUpperCase(),
+                          text: "login_with_otp".tr,
                           textStyle: Theme.of(context).textTheme.titleMedium
                               ?.copyWith(
                                 fontWeight: FontWeight.w600,

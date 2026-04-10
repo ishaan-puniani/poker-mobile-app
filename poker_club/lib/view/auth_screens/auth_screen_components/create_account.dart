@@ -8,7 +8,14 @@ import 'package:poker_club/view/custom_components/custom_button.dart';
 
 class CreateAccount extends StatelessWidget {
   final bool islogInPage;
-  const CreateAccount({super.key, required this.islogInPage});
+  final String? title;
+  final String? subtitle;
+  const CreateAccount({
+    super.key,
+    required this.islogInPage,
+    this.subtitle,
+    this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +28,10 @@ class CreateAccount extends StatelessWidget {
               ColorPallete.yellowgradient.createShader(bounds),
 
           child: Text(
-            islogInPage
-                ? "login_account".tr.toUpperCase()
-                : "create_account".tr.toUpperCase(),
+            title ??
+                (islogInPage
+                    ? "login_account".tr.toUpperCase()
+                    : "create_account".tr.toUpperCase()),
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontWeight: FontWeight.w800,
               shadows: [
@@ -39,9 +47,10 @@ class CreateAccount extends StatelessWidget {
           ),
         ),
         Text(
-          islogInPage
-              ? "welcome_back_to_the_table".tr
-              : "join_the_premium_poker_club".tr,
+          subtitle ??
+              (islogInPage
+                  ? "welcome_back_to_the_table".tr
+                  : "join_the_premium_poker_club".tr),
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             shadows: [
               Shadow(

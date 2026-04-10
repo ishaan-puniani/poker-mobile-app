@@ -24,4 +24,12 @@ const Map<String, String> enUS = {
   'already_have_an_account': 'Already have an account',
   'optional': '(Optional)',
   'continue_with': 'Continue with',
+  "login_account": "LOGIN ACCOUNT",
+  "welcome_back_to_the_table": "Welcome back to the table.",
+  "claim_chips": "Log in to claim 100 chips",
+  "enter_the_password": "Enter the password",
+  "forgot_password": "Forgot Password?",
+  "continue_with_google": "Continue with Google",
+  "login_with_otp": "Login with OTP",
+  "dont_have_an_account": "Don't have an account? ",
 };
