@@ -45,61 +45,61 @@ class LogInScreen extends StatelessWidget {
                     ),
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 12.5, right: 37.5.w),
-                        child: RichText(
-                          text: TextSpan(
-                            text: "by_creating_an_account".tr,
-                            style: Theme.of(context).textTheme.bodyMedium
-                                ?.copyWith(
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                            children: [
-                              TextSpan(
-                                text: "terms_and_condition".tr,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
-                                      color: ColorPallete.yellow,
-                                      fontSize: 12.sp,
-                                    ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    print("Terms clicked");
-                                    // Navigate to Terms screen
-                                  },
-                              ),
-                              TextSpan(
-                                text: "and".tr,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
-                                      fontSize: 12.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: "private_policy".tr,
-                                style: Theme.of(context).textTheme.bodyMedium
-                                    ?.copyWith(
-                                      color: ColorPallete.yellow,
-                                      fontSize: 12.sp,
-                                    ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    print("Privacy clicked");
-                                    // Navigate to Privacy screen
-                                  },
-                              ),
-                              TextSpan(text: "."),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.end,
+                  //   children: [
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 12.5, right: 37.5.w),
+                  //       child: RichText(
+                  //         text: TextSpan(
+                  //           text: "by_creating_an_account".tr,
+                  //           style: Theme.of(context).textTheme.bodyMedium
+                  //               ?.copyWith(
+                  //                 fontSize: 12.sp,
+                  //                 fontWeight: FontWeight.w400,
+                  //               ),
+                  //           children: [
+                  //             TextSpan(
+                  //               text: "terms_and_condition".tr,
+                  //               style: Theme.of(context).textTheme.bodyMedium
+                  //                   ?.copyWith(
+                  //                     color: ColorPallete.yellow,
+                  //                     fontSize: 12.sp,
+                  //                   ),
+                  //               recognizer: TapGestureRecognizer()
+                  //                 ..onTap = () {
+                  //                   print("Terms clicked");
+                  //                   // Navigate to Terms screen
+                  //                 },
+                  //             ),
+                  //             TextSpan(
+                  //               text: "and".tr,
+                  //               style: Theme.of(context).textTheme.bodyMedium
+                  //                   ?.copyWith(
+                  //                     fontSize: 12.sp,
+                  //                     fontWeight: FontWeight.w400,
+                  //                   ),
+                  //             ),
+                  //             TextSpan(
+                  //               text: "private_policy".tr,
+                  //               style: Theme.of(context).textTheme.bodyMedium
+                  //                   ?.copyWith(
+                  //                     color: ColorPallete.yellow,
+                  //                     fontSize: 12.sp,
+                  //                   ),
+                  //               recognizer: TapGestureRecognizer()
+                  //                 ..onTap = () {
+                  //                   print("Privacy clicked");
+                  //                   // Navigate to Privacy screen
+                  //                 },
+                  //             ),
+                  //             TextSpan(text: "."),
+                  //           ],
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
             ),

@@ -27,8 +27,8 @@ class AuthOptions extends StatelessWidget {
           radius: 20.r,
           borderWidth: 1.w,
 
-          borderColor: ColorPallete.borderyellow.withValues(alpha: 0.15),
-          backgroundColor: ColorPallete.borderyellow.withValues(alpha: 0.30),
+          borderColor: ColorPallete.borderyellow.withValues(alpha: 0.30),
+          backgroundColor: ColorPallete.borderyellow.withValues(alpha: 0.15),
           onPressed: () {},
           textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: ColorPallete.yellow,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:poker_club/resources/color_pallete.dart';
+import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/view/custom_components/custom_button.dart';
 
 class CreateAccount extends StatelessWidget {
   final bool islogInPage;
@@ -51,6 +54,37 @@ class CreateAccount extends StatelessWidget {
             color: ColorPallete.goldLight,
           ),
         ),
+        islogInPage == true
+            ? Column(
+                children: [
+                  SizedBox(height: 8.h),
+                  CustomButton(
+                    width: 202.w,
+
+                    height: 26,
+                    prefixIcon: SvgPicture.asset(AppImages.logintoclaim),
+                    radius: 20.r,
+                    borderWidth: 1.w,
+
+                    borderColor: ColorPallete.borderyellow.withValues(
+                      alpha: 0.3,
+                    ),
+                    backgroundColor: ColorPallete.borderyellow.withValues(
+                      alpha: 0.15,
+                    ),
+                    onPressed: () {},
+                    textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: ColorPallete.yellow,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13.sp,
+                    ),
+
+                    textGradient: ColorPallete.logintoclaimgradient,
+                    text: "log_in_to_claim".tr,
+                  ),
+                ],
+              )
+            : SizedBox(),
       ],
     );
   }

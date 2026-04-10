@@ -21,12 +21,12 @@ class MobilePassRefer extends StatelessWidget {
         borderRadius: BorderRadius.circular(20.r),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 10, // horizontal blur
-            sigmaY: 10, // vertical blur
+            sigmaX: 110, // horizontal blur
+            sigmaY: 110, // vertical blur
           ),
           child: Container(
             width: 380,
-            height: 323,
+            height: islogInPage ? 286 : 323,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(color: ColorPallete.borderyellow),
@@ -79,6 +79,11 @@ class MobilePassRefer extends StatelessWidget {
                         color: ColorPallete.borderyellow,
                         size: 16,
                       ),
+                    ),
+                  if (islogInPage == true)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [Text("forgot_password".tr)],
                     ),
                   if (islogInPage == false)
                     CustomTextField(
@@ -201,7 +206,33 @@ class MobilePassRefer extends StatelessWidget {
                           height: 36,
 
                           onPressed: () {},
-                          text: "create_account".tr.toUpperCase(),
+                          text: (islogInPage == true)
+                              ? 'login'.tr
+                              : "create_account".tr.toUpperCase(),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomButton(
+                          borderColor: ColorPallete.borderyellow,
+                          backgroundColor: ColorPallete.transparent,
+
+                          radius: 12.r,
+                          width: 164,
+                          height: 36,
+
+                          onPressed: () {},
+                          text: "login_with_otp".tr.toUpperCase(),
+                          textStyle: Theme.of(context).textTheme.titleMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13.sp,
+                                color: ColorPallete.playasguest,
+                              ),
                         ),
                       ),
                     ],
@@ -209,13 +240,17 @@ class MobilePassRefer extends StatelessWidget {
 
                   RichText(
                     text: TextSpan(
-                      text: "already_have_an_account".tr + " ",
+                      text: (islogInPage == true)
+                          ? 'dont_have_an_account'.tr
+                          : "already_have_an_account".tr + " ",
                       style: Theme.of(
                         context,
                       ).textTheme.bodyMedium?.copyWith(fontSize: 13.sp),
                       children: [
                         TextSpan(
-                          text: "login".tr.capitalize,
+                          text: (islogInPage == true)
+                              ? 'sign_up'.tr.capitalize
+                              : "login".tr.capitalize,
                           style: Theme.of(context).textTheme.bodyMedium
                               ?.copyWith(
                                 color: ColorPallete.yellow,
