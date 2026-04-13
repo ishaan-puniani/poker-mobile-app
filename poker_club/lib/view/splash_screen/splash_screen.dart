@@ -74,7 +74,7 @@ class SplashScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
-                              SizedBox(height: 12.h),
+                              SizedBox(height: 12),
                               Container(
                                 width: 300.w,
                                 child: LinearProgressIndicator(
@@ -115,20 +115,6 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
           ),
-          // bottomNavigationBar: Container(
-          //   color: Colors.transparent,
-          //   child: SafeArea(
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text(
-          //           AppStrings.shufftlingthedeck.tr,
-          //           style: TextStyle(color: ColorPallete.lightyellow),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
         );
       },
     );
