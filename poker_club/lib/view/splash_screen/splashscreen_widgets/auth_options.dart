@@ -9,6 +9,7 @@ import 'package:poker_club/resources/strings.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_divider.dart';
+import 'package:poker_club/view/custom_components/custom_snackbar.dart';
 
 class AuthOptions extends StatelessWidget {
   const AuthOptions({super.key});
@@ -90,7 +91,14 @@ class AuthOptions extends StatelessWidget {
           borderColor: ColorPallete.playasguest,
           backgroundColor: ColorPallete.transparent,
           width: 329.w,
-          onPressed: () {},
+          onPressed: () {
+            print("object");
+            CustomSnackbar.show(
+              "Something went wrong. Please try again.",
+              context,
+              type: SnackbarType.error,
+            );
+          },
           textStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
             color: ColorPallete.playasguest,
             fontSize: 13.sp,

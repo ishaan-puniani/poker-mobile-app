@@ -25,11 +25,17 @@ class ColorPallete {
   static const Color brown = Color.fromRGBO(43, 26, 16, 0.8);
   static const Color transparent = Colors.transparent;
   static const Color buttonyellow = Color(0xFFD4AF374D);
+  static const Color redsnackbar = Color.fromRGBO(255, 103, 56, 0.15);
   static const Color lightyellow = Color(0xFFFFF8D6);
   static const Color lighteryellow = Color(0xFFFFF3B0);
   static const Color playasguest = Color.fromRGBO(191, 151, 109, 1);
   static const LinearGradient primarybgcolor = LinearGradient(
     colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+  static const LinearGradient redwarningtextgradient = LinearGradient(
+    colors: [Color.fromRGBO(190, 58, 48, 1), Color.fromRGBO(224, 74, 62, 1)],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
