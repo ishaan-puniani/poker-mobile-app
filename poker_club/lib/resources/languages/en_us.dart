@@ -36,4 +36,10 @@ const Map<String, String> enUS = {
   "no_worries_we_will_get_you_back":
       "No worries — we'll get you back to the table.",
   "get_otp": "Get OTP",
+  'verify_with_otp': 'Verify with otp',
+  'enter_your_one_time_pass':
+      'Enter one-time password (OTP) Sent to your mobile number',
+  'didnt_receive_otp': 'Didn’t receive OTP? ',
+  'resend': 'Resend',
+  'verify': 'Verify',
 };

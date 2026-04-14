@@ -69,8 +69,8 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: spacebetweencomponents ?? 12),
 
+                  SizedBox(height: spacebetweencomponents ?? 12),
                   Row(
                     children: [
                       Expanded(
@@ -96,9 +96,10 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 12.5, right: 37.5.w),
+                        padding: EdgeInsets.only(top: 12.5),
                         child: RichText(
                           text: TextSpan(
                             text: "didnt_receive_otp".tr,
