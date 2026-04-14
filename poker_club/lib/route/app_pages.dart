@@ -3,6 +3,7 @@ import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/auth_screens/forgot_password_screen.dart';
 import 'package:poker_club/view/auth_screens/log_in_screen.dart';
 import 'package:poker_club/view/auth_screens/otp_verification_screen.dart';
+import 'package:poker_club/view/auth_screens/reset_password_screen.dart';
 import 'package:poker_club/view/auth_screens/sign_up_screen.dart';
 import 'package:poker_club/view/home_screen/homescreen.dart';
 import 'package:poker_club/view/splash_screen/splash_screen.dart';
@@ -42,6 +43,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.otpVerificationScreen,
       page: () => OtpVerificationScreen(),
+      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoutes.resetpassword,
+      page: () => ResetPasswordScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
     ),
