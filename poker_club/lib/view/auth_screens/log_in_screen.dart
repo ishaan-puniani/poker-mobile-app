@@ -1,8 +1,5 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
@@ -27,25 +24,23 @@ class LogInScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        //create account
-                        CreateAccount(islogInPage: true),
-                        SizedBox(width: 48.w),
-                        // login details
-                        MobilePassRefer(islogInPage: true),
-                      ],
-                    ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      //create account
+                      CreateAccount(islogInPage: true),
+                      SizedBox(width: 48.w),
+                      // login details
+                      MobilePassRefer(islogInPage: true),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Positioned(

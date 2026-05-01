@@ -191,7 +191,7 @@ class MobilePassRefer extends StatelessWidget {
                                 fontSize: 13.sp,
                                 color: ColorPallete.textcolor,
                               ),
-                          suffixIcon: Container(
+                          suffixIcon: SizedBox(
                             width: 80,
                             child: Center(
                               child: Text(
@@ -248,7 +248,9 @@ class MobilePassRefer extends StatelessWidget {
                           width: 164,
                           height: 36,
 
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.offNamed(AppRoutes.home);
+                          },
                           text: (islogInPage == true)
                               ? 'login'.tr
                               : "create_account".tr.toUpperCase(),
@@ -309,8 +311,11 @@ class MobilePassRefer extends StatelessWidget {
                               ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              // Navigate to login screen
-                              print("Login clicked");
+                              if (islogInPage == true) {
+                                Get.offNamed(AppRoutes.signup);
+                              } else {
+                                Get.offNamed(AppRoutes.login);
+                              }
                             },
                         ),
                       ],

@@ -2,13 +2,10 @@ import 'dart:ui';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/utils.dart';
 import 'package:pinput/pinput.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
-import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
 class VerifyWithOtpAuthComponent extends StatelessWidget {
   final int? height;
@@ -118,7 +115,6 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
                                     ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    print("Terms clicked");
                                     // Navigate to Terms screen
                                   },
                               ),

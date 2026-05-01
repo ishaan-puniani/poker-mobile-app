@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class ColorPallete {
@@ -24,7 +22,7 @@ class ColorPallete {
   static const Color goldLight = Color(0xFFEAD08D);
   static const Color brown = Color.fromRGBO(43, 26, 16, 0.8);
   static const Color transparent = Colors.transparent;
-  static const Color buttonyellow = Color(0xFFD4AF374D);
+  static const Color buttonyellow = Color(0xd4af374d);
   static const Color redsnackbar = Color.fromRGBO(255, 103, 56, 0.15);
   static const Color lightyellow = Color(0xFFFFF8D6);
   static const Color lighteryellow = Color(0xFFFFF3B0);

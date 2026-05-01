@@ -54,6 +54,7 @@ class CustomSnackbar {
         );
 
       case SnackbarType.info:
+      // ignore: unreachable_switch_default
       default:
         return _SnackbarConfig(
           icon: Icons.info,
