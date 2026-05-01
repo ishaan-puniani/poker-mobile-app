@@ -50,7 +50,7 @@ class OtpVerificationScreen extends StatelessWidget {
                         nextbuttontitle: "verify".tr,
                         ontap: () {
                           //reset password
-                          Get.toNamed(AppRoutes.resetpassword);
+                          Get.offNamed(AppRoutes.resetpassword);
                         },
                       ),
                     ],

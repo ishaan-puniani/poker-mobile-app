@@ -35,6 +35,12 @@ class AppPages {
       transition: Transition.rightToLeftWithFade,
     ),
     GetPage(
+      name: AppRoutes.loginOtp,
+      page: () => LogInScreen(isOtpLogin: true),
+      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
       name: AppRoutes.forgotpassword,
       page: () => ForgotPasswordScreen(),
       transitionDuration: const Duration(milliseconds: 200),

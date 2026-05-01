@@ -4,6 +4,7 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
 import 'package:poker_club/view/auth_screens/auth_screen_components/reset_password_component.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
@@ -49,6 +50,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         nextbuttontitle: "save".tr,
                         ontap: () {
                           //reset password
+                          Get.offNamed(AppRoutes.home);
                         },
                       ),
                     ],

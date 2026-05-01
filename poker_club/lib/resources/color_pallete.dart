@@ -32,6 +32,11 @@ class ColorPallete {
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
+  static const LinearGradient gameCardBg = LinearGradient(
+    colors: [Color(0XFF3A1A1A), Color(0xFF1A0A0A)],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
   static const LinearGradient redwarningtextgradient = LinearGradient(
     colors: [Color.fromRGBO(190, 58, 48, 1), Color.fromRGBO(224, 74, 62, 1)],
     begin: Alignment.centerLeft,

@@ -19,7 +19,7 @@ class SplashController extends GetxController {
   }
 
   Future<void> hitApi() async {
-    timer = Timer.periodic(const Duration(milliseconds: 100), (t) {
+    timer = Timer.periodic(const Duration(milliseconds: 20), (t) {
       if (progress < 90) {
         progress += 2; // speed control
         update();

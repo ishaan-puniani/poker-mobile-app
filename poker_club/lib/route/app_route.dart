@@ -3,6 +3,7 @@ class AppRoutes {
   static const home = '/home';
   static const signup = '/signup';
   static const login = '/login';
+  static const loginOtp = '/login-otp';
   static const forgotpassword = '/forgotpassword';
   static const otpVerificationScreen = '/otpVerificationScreen';
   static const resetpassword = '/resetpassword';
