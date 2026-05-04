@@ -3,12 +3,12 @@ import 'dart:ui'; // IMPORTANT
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/utils.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/route/app_route.dart';
+import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
@@ -57,11 +57,7 @@ class MobilePassRefer extends StatelessWidget {
                   ),
                   prefixIcon: Padding(
                     padding: EdgeInsets.all(8.w),
-                    child: SvgPicture.asset(
-                      AppImages.mobile,
-                      height: 20,
-                      width: 20,
-                    ),
+                    child: AppIcon(AppIcons.mobile, size: 20),
                   ),
                   backgroundColor: ColorPallete.brown,
                   hint: "enter_mobile_number".tr,
@@ -74,11 +70,7 @@ class MobilePassRefer extends StatelessWidget {
                       CustomTextField(
                         prefixIcon: Padding(
                           padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            AppImages.lock,
-                            height: 20,
-                            width: 20,
-                          ),
+                          child: AppIcon(AppIcons.lock, size: 20),
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "enter_the_password".tr,
@@ -126,11 +118,7 @@ class MobilePassRefer extends StatelessWidget {
                             ),
                         prefixIcon: Padding(
                           padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            AppImages.lock,
-                            height: 20,
-                            width: 20,
-                          ),
+                          child: AppIcon(AppIcons.lock, size: 20),
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "create_password".tr,
@@ -155,11 +143,7 @@ class MobilePassRefer extends StatelessWidget {
                             ),
                         prefixIcon: Padding(
                           padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            AppImages.lock,
-                            height: 20,
-                            width: 20,
-                          ),
+                          child: AppIcon(AppIcons.lock, size: 20),
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "confirm_password".tr,
@@ -178,11 +162,7 @@ class MobilePassRefer extends StatelessWidget {
                       CustomTextField(
                         prefixIcon: Padding(
                           padding: EdgeInsets.all(8.w),
-                          child: SvgPicture.asset(
-                            AppImages.gift,
-                            height: 20,
-                            width: 20,
-                          ),
+                          child: AppIcon(AppIcons.giftBox, size: 20),
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "enter_referral_code".tr,
@@ -221,11 +201,7 @@ class MobilePassRefer extends StatelessWidget {
                         radius: 12.r,
                         width: 164,
                         height: 36,
-                        suffixIcon: SvgPicture.asset(
-                          AppImages.google,
-                          height: 16,
-                          width: 16,
-                        ),
+                        suffixIcon: AppIcon(AppIcons.google, size: 16),
                         onPressed: () {},
                         text: "continue_with".tr.toUpperCase(),
                         textStyle: Theme.of(context).textTheme.titleMedium

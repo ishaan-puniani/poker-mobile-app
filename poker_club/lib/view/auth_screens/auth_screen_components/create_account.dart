@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/resources/icons.dart';
+import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 
 class CreateAccount extends StatelessWidget {
@@ -71,7 +71,7 @@ class CreateAccount extends StatelessWidget {
                     width: 202.w,
 
                     height: 26,
-                    prefixIcon: SvgPicture.asset(AppImages.logintoclaim),
+                    prefixIcon: AppIcon(AppIcons.loginToClaim, size: 20),
                     radius: 20.r,
                     borderWidth: 1.w,
 
