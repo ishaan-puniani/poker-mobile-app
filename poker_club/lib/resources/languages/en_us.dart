@@ -31,6 +31,7 @@ const Map<String, String> enUS = {
   "forgot_password": "Forgot Password?",
   "continue_with_google": "Continue with Google",
   "login_with_otp": "Login with OTP",
+  "login_with_password": "Login with Password",
   "dont_have_an_account": "Don't have an account? ",
   "reset_password": "RESET PASSWORD",
   "no_worries_we_will_get_you_back":

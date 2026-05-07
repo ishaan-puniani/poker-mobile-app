@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
-      designSize: const Size(874, 403),
+      designSize: const Size(900, 420),
       child: GetMaterialApp(
         initialBinding: HomeBinding(),
         debugShowCheckedModeBanner: false,

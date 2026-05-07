@@ -92,7 +92,6 @@ class AuthOptions extends StatelessWidget {
           backgroundColor: ColorPallete.transparent,
           width: 329.w,
           onPressed: () {
-            print("object");
             CustomSnackbar.show(
               "Something went wrong. Please try again.",
               context,
