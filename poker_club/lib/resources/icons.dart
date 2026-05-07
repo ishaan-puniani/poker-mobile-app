@@ -13,4 +13,5 @@ class AppIcons {
   static const String dices = "assets/icons/ic_dices.svg";
   static const String giftBox = "assets/icons/ic_gift_box.svg";
   static const String mail = "assets/icons/ic_mail.svg";
+  static const String person = "assets/icons/ic_person.svg";
 }

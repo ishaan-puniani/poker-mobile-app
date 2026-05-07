@@ -14,4 +14,7 @@ class AppImages {
   static const String gameCardTournamentThumbnail =
       "assets/home/card_tournament_thumbnail.jpg";
   static const String gameCardPrivateTableThumbnail = homebackground;
+  static const String tableScreenBackground = "assets/home/bg_table_screen.jpg";
+  static const String characterCasinoDealer =
+      "assets/home/character_casino_dealer.png";
 }

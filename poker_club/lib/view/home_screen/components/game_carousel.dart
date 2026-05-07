@@ -5,21 +5,25 @@ import 'game_card.dart';
 
 class GameCarousel extends StatelessWidget {
   final List<PokerGame> games;
+  final void Function(int)? onGameSelected;
 
-  const GameCarousel({super.key, required this.games});
+  const GameCarousel({super.key, required this.games, this.onGameSelected});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200.w,
-      child: GridView.count(
+      height: 240.w,
+      child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.h),
-        crossAxisCount: 5,
-        mainAxisExtent: 200.w,
-        children: List.generate(games.length, (index) {
-          return GameCard(game: games[index]);
-        }),
+        scrollDirection: Axis.horizontal,
+        itemCount: games.length,
+        itemBuilder: (context, index) {
+          return GameCard(
+            game: games[index],
+            onTap: () => onGameSelected?.call(index),
+          );
+        },
       ),
     );
   }

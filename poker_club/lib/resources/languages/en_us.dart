@@ -43,4 +43,11 @@ const Map<String, String> enUS = {
   'didnt_receive_otp': 'Didn’t receive OTP? ',
   'resend': 'Resend',
   'verify': 'Verify',
+  'create_new_password': 'Create new password',
+  'change_password': 'CHANGE PASSWORD',
+  'create_a_new_password_for_your_account':
+      'Create a new password for your account',
+  'save': 'Save',
+  "enter_your_name": "Enter your name",
+  "continue": "Continue",
 };

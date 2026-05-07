@@ -7,4 +7,5 @@ class AppRoutes {
   static const forgotpassword = '/forgotpassword';
   static const otpVerificationScreen = '/otpVerificationScreen';
   static const resetpassword = '/resetpassword';
+  static const tableScreen = '/table-screen';
 }

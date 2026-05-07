@@ -8,7 +8,8 @@ import '../../custom_components/custom_button.dart';
 
 class HomeHeader extends StatelessWidget {
   final UserProfile user;
-  const HomeHeader({super.key, required this.user});
+  final bool showBuyButton;
+  const HomeHeader({super.key, required this.user, this.showBuyButton = false});
 
   String formatCoins(double coins) {
     return coins
@@ -24,6 +25,7 @@ class HomeHeader extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 4.h),
       decoration: BoxDecoration(
+        color: ColorPallete.darkTransparent,
         border: Border(
           bottom: BorderSide(
             color: ColorPallete.borderyellow.withValues(alpha: 0.5),
@@ -98,7 +100,14 @@ class HomeHeader extends StatelessWidget {
             ),
             child: Row(
               children: [
-                AppIcon(AppIcons.gameCoin, size: 16.sp),
+                Material(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(100.r),
+                  child: Transform.scale(
+                    scale: 1.1.r,
+                    child: AppIcon(AppIcons.gameCoin, size: 16.r),
+                  ),
+                ),
                 SizedBox(width: 8.w),
                 Text(
                   '\$${formatCoins(user.coins)}',
@@ -115,19 +124,20 @@ class HomeHeader extends StatelessWidget {
           SizedBox(width: 16.w),
 
           // BUY Button
-          CustomButton(
-            onPressed: () {},
-            text: 'BUY',
-            width: 80.w,
-            height: 20.h,
-            radius: 16.r,
-            textStyle: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 14.sp,
+          if (showBuyButton)
+            CustomButton(
+              onPressed: () {},
+              text: 'BUY',
+              width: 80.w,
+              height: 20.h,
+              radius: 16.r,
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 14.sp,
+              ),
+              backgroundGradient: ColorPallete.rightbuttongradient,
             ),
-            backgroundGradient: ColorPallete.rightbuttongradient,
-          ),
 
           Spacer(),
 

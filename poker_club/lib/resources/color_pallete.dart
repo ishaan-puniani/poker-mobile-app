@@ -32,6 +32,12 @@ class ColorPallete {
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
+  static const LinearGradient primarybgcolorVertical = LinearGradient(
+    colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    stops: [0.6, 1.0],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
   static const LinearGradient gameCardBg = LinearGradient(
     colors: [Color(0XFF3A1A1A), Color(0xFF1A0A0A)],
     begin: Alignment.centerLeft,
