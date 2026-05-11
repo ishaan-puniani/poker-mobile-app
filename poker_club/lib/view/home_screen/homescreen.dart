@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
+import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/utils/show_player_name_input_dialog.dart';
@@ -19,6 +20,15 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   final HomeController homeController = Get.put(HomeController());
+  final List<NavigationItem> navigationItems = [
+    NavigationItem(AppIcons.club, 'RANKS'),
+    NavigationItem(AppIcons.calender, 'MISSION'),
+    NavigationItem(AppIcons.dices, 'LUCKY SPIN'),
+    NavigationItem(AppIcons.giftBox, 'REWARDS'),
+    NavigationItem(AppIcons.mail, 'UPDATES'),
+  ];
+  NavigationItem get selectedNavigationItem =>
+      navigationItems[homeController.selectedTabIndex.value];
 
   @override
   initState() {
@@ -40,7 +50,7 @@ class _HomescreenState extends State<Homescreen> {
               fit: BoxFit.cover,
               alignment: Alignment.center,
               colorFilter: ColorFilter.mode(
-                Colors.black.withValues(alpha: 0.5),
+                Colors.black.withValues(alpha: 0.7),
                 BlendMode.darken,
               ),
             ),
@@ -57,6 +67,8 @@ class _HomescreenState extends State<Homescreen> {
                       () => HomeHeader(
                         user: controller.userProfile.value,
                         showBuyButton: true,
+                        showHelpButton: true,
+                        showSettingsButton: true,
                       ),
                     ),
                   ),
@@ -77,7 +89,15 @@ class _HomescreenState extends State<Homescreen> {
                     child: Obx(
                       () => BottomNavBar(
                         selectedIndex: controller.selectedTabIndex.value,
-                        onItemSelected: controller.changeTab,
+                        onItemSelected: (index) {
+                          if (index == 0) {
+                            Get.toNamed(AppRoutes.leaderboardScreen);
+                            return;
+                          }
+
+                          controller.changeTab(index);
+                        },
+                        navigationItems: navigationItems,
                       ),
                     ),
                   ),

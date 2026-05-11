@@ -14,4 +14,6 @@ class AppIcons {
   static const String giftBox = "assets/icons/ic_gift_box.svg";
   static const String mail = "assets/icons/ic_mail.svg";
   static const String person = "assets/icons/ic_person.svg";
+  static const String close = "assets/icons/ic_close.svg";
+  static const String chevronDown = "assets/icons/ic_chevron_down.svg";
 }

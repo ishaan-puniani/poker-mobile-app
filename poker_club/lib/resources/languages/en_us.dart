@@ -50,4 +50,11 @@ const Map<String, String> enUS = {
   'save': 'Save',
   "enter_your_name": "Enter your name",
   "continue": "Continue",
+  "leaderboard": "Leaderboard",
+  "tournament_champions": "Tournament Champions",
+  "high_roller_showdown": "High Roller Showdown",
+  "points": "Points",
+  "ultra_high_winner": "Ultra High Winner",
+  "amount_won": "Amount Won",
+  "the_main_event_winner": "The Main Event Winner",
 };

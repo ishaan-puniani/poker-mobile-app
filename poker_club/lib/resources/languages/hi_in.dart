@@ -49,4 +49,11 @@ const Map<String, String> hiIN = {
   'save': 'सहेजें',
   "enter_your_name": "अपना नाम दर्ज करें",
   "continue": "जारी रखें",
+  "leaderboard": "लीडरबोर्ड",
+  "tournament_champions": "टूर्नामेंट चैंपियन्स",
+  "high_roller_showdown": "हाई रोलर शोडाउन",
+  "points": "अंक",
+  "ultra_high_winner": "अल्ट्रा हाई विनर",
+  "amount_won": "राशि जीती गई",
+  "the_main_event_winner": "द मेन इवेंट विनर",
 };

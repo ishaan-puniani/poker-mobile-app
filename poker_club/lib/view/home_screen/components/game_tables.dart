@@ -20,7 +20,7 @@ class GameTables extends StatelessWidget {
     return SizedBox(
       height: 260.w,
       child: ListView.builder(
-        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+        padding: EdgeInsets.fromLTRB(16.w, 10.h, 16.w, 10.h),
         itemCount: tables.length,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),

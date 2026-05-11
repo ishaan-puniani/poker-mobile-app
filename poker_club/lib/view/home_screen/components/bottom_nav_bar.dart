@@ -2,15 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 
+class NavigationItem {
+  final String icon;
+  final String label;
+
+  NavigationItem(this.icon, this.label);
+}
+
 class BottomNavBar extends StatelessWidget {
+  final List<NavigationItem> navigationItems;
   final int selectedIndex;
   final Function(int) onItemSelected;
 
   const BottomNavBar({
     super.key,
+    required this.navigationItems,
     required this.selectedIndex,
     required this.onItemSelected,
   });
@@ -27,13 +35,10 @@ class BottomNavBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             spacing: 28.r,
-            children: [
-              _buildNavItem(0, AppIcons.club, 'RANKS'),
-              _buildNavItem(1, AppIcons.calender, 'MISSION'),
-              _buildNavItem(2, AppIcons.dices, 'LUCKY SPIN'),
-              _buildNavItem(3, AppIcons.giftBox, 'REWARDS'),
-              _buildNavItem(4, AppIcons.mail, 'UPDATES'),
-            ],
+            children: List.generate(navigationItems.length, (index) {
+              final item = navigationItems[index];
+              return _buildNavItem(index, item.icon, item.label);
+            }),
           ),
         ],
       ),
