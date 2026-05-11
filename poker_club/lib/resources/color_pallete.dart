@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorPallete {
+  static const Color red = Color(0xFFE53935);
   static const Color darkRed = Color(0xFF5A0B0B);
   static const Color richRed = Color(0xFF1A0000);
   static const Color yellow = Color(0xFFF0C330);
@@ -32,6 +33,12 @@ class ColorPallete {
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
+  static const LinearGradient primarybgcolorVertical = LinearGradient(
+    colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    stops: [0.6, 1.0],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
   static const LinearGradient gameCardBg = LinearGradient(
     colors: [Color(0XFF3A1A1A), Color(0xFF1A0A0A)],
     begin: Alignment.centerLeft,
@@ -46,6 +53,12 @@ class ColorPallete {
     colors: [Color(0xFFFFF8D6), Color(0xFFF0C330), Color(0xFFB8860B)],
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
+  );
+  static const LinearGradient yellowgradient2 = LinearGradient(
+    colors: [Color(0xFFF9E596), Color(0xFFD4AF37), Color(0xFF997A15)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    stops: [0.0, 0.4, 1.0],
   );
   static const LinearGradient rightbuttongradient = LinearGradient(
     colors: [
@@ -69,5 +82,14 @@ class ColorPallete {
     ],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
+  );
+  static const RadialGradient redCardGradient = RadialGradient(
+    colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    radius: 1.8,
+  );
+  static const LinearGradient homeHeaderBgGradient = LinearGradient(
+    colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
   );
 }

@@ -4,7 +4,9 @@ class AppRoutes {
   static const signup = '/signup';
   static const login = '/login';
   static const loginOtp = '/login-otp';
-  static const forgotpassword = '/forgotpassword';
-  static const otpVerificationScreen = '/otpVerificationScreen';
-  static const resetpassword = '/resetpassword';
+  static const forgotpassword = '/forgot-password';
+  static const otpVerificationScreen = '/otp-verification-screen';
+  static const resetpassword = '/reset-password';
+  static const tableScreen = '/table-screen';
+  static const leaderboardScreen = '/leaderboard-screen';
 }

@@ -10,7 +10,7 @@ class AppIcon extends StatelessWidget {
   const AppIcon(
     this.assetPath, {
     super.key,
-    this.size = 48,
+    this.size = 24,
     this.width,
     this.height,
     this.color,

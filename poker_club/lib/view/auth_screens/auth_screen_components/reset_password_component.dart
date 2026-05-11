@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/utils.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/resources/icons.dart';
+import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
@@ -51,11 +51,7 @@ class ResetPasswordComponent extends StatelessWidget {
                   CustomTextField(
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
-                      child: SvgPicture.asset(
-                        AppImages.lock,
-                        height: 20,
-                        width: 20,
-                      ),
+                      child: AppIcon(AppIcons.lock, size: 20),
                     ),
                     backgroundColor: ColorPallete.brown,
                     hint: "create_new_password".tr,
@@ -75,11 +71,7 @@ class ResetPasswordComponent extends StatelessWidget {
                   CustomTextField(
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
-                      child: SvgPicture.asset(
-                        AppImages.lock,
-                        height: 20,
-                        width: 20,
-                      ),
+                      child: AppIcon(AppIcons.lock, size: 20),
                     ),
                     backgroundColor: ColorPallete.brown,
                     hint: "confirm_password".tr,

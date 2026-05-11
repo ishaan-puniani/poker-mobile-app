@@ -6,13 +6,14 @@ import '../../custom_components/custom_button.dart';
 
 class GameCard extends StatelessWidget {
   final PokerGame game;
+  final VoidCallback? onTap;
 
-  const GameCard({super.key, required this.game});
+  const GameCard({super.key, required this.game, this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 140.w,
+      width: 160.w,
       margin: EdgeInsets.symmetric(horizontal: 6.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -73,7 +74,7 @@ class GameCard extends StatelessWidget {
                       ),
                       SizedBox(height: 8.w),
                       CustomButton(
-                        onPressed: game.isEnabled ? () {} : null,
+                        onPressed: game.isEnabled ? onTap : null,
                         text: game.buttonText,
                         height: 20.h,
                         radius: 40.r,
