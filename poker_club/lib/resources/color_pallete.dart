@@ -39,6 +39,12 @@ class ColorPallete {
     begin: Alignment.bottomCenter,
     end: Alignment.topCenter,
   );
+  static const LinearGradient primarybgcolorVertical2 = LinearGradient(
+    colors: [Color(0xFF1A0000), Color(0xFF5A0B0B), Color(0xFF1A0000)],
+    // stops: [0.2, 0.9, 1],
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+  );
   static const LinearGradient gameCardBg = LinearGradient(
     colors: [Color(0XFF3A1A1A), Color(0xFF1A0A0A)],
     begin: Alignment.centerLeft,
@@ -85,7 +91,7 @@ class ColorPallete {
   );
   static const RadialGradient redCardGradient = RadialGradient(
     colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],
-    radius: 1.8,
+    radius: 1,
   );
   static const LinearGradient homeHeaderBgGradient = LinearGradient(
     colors: [Color(0xFF5A0B0B), Color(0xFF1A0000)],

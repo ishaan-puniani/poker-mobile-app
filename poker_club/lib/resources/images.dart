@@ -17,4 +17,14 @@ class AppImages {
   static const String tableScreenBackground = "assets/home/bg_table_screen.jpg";
   static const String characterCasinoDealer =
       "assets/home/character_casino_dealer.png";
+
+  // Mission screen
+  static const String missionbackground =
+      "assets/mission/mission_screen_background.png";
+  static const String casinoCardsCoins =
+      "assets/mission/img_casino_cards_coins.png";
+  static const String crownWinGame = "assets/mission/img_crown_wingame.png";
+  static const String goldCoins = "assets/mission/img_gold_coins.png";
+  static const String jackpotGalore = "assets/mission/img_jackpot_galore.png";
+  static const String weeklyCalender = "assets/mission/img_weekly_calender.png";
 }

@@ -56,4 +56,6 @@ const Map<String, String> hiIN = {
   "ultra_high_winner": "अल्ट्रा हाई विनर",
   "amount_won": "राशि जीती गई",
   "the_main_event_winner": "द मेन इवेंट विनर",
+  "missions": "मिशन",
+  "get": "प्राप्त करें",
 };

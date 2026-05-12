@@ -39,69 +39,80 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 6.h),
-      decoration: BoxDecoration(
-        color: ColorPallete.darkTransparent.withValues(alpha: 0.4),
-        border: Border(
-          bottom: BorderSide(
-            color: ColorPallete.borderyellow.withValues(alpha: 0.5),
-            width: 1,
+      decoration: BoxDecoration(color: Color(0XFF2B0303)),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 6.h),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Colors.black.withValues(alpha: 0.8),
+              Colors.black.withValues(alpha: 0.2),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          border: Border(
+            bottom: BorderSide(
+              color: ColorPallete.borderyellow.withValues(alpha: 0.5),
+              width: 1,
+            ),
           ),
         ),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        spacing: 12.w,
-        children: [
-          // User Info Section
-          if (showProfileInfo) _buildProfileInfoSection(),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          spacing: 12.w,
+          children: [
+            // User Info Section
+            if (showProfileInfo) _buildProfileInfoSection(),
 
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Chips Balance
-              _buildChipsBalanceSection(),
-              SizedBox(width: 8.w),
-              // BUY Button
-              if (showBuyButton)
-                CustomButton(
-                  onPressed: () {},
-                  text: 'BUY',
-                  width: 80.w,
-                  height: 20.h,
-                  radius: 16.r,
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14.sp,
-                  ),
-                  backgroundGradient: ColorPallete.rightbuttongradient,
-                ),
-            ],
-          ),
-
-          if (title != null)
-            Text(
-              title!,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-          if (showHelpButton || showSettingsButton || showCloseButton)
             Row(
-              spacing: 12.w,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                if (showHelpButton) _buildActionIcon(AppIcons.questionCircle),
-                if (showSettingsButton) _buildActionIcon(AppIcons.settings),
-                if (showCloseButton)
-                  _buildActionIcon(AppIcons.close, onTap: onClose),
+                // Chips Balance
+                _buildChipsBalanceSection(),
+                SizedBox(width: 8.w),
+                // BUY Button
+                if (showBuyButton)
+                  CustomButton(
+                    onPressed: () {},
+                    text: 'BUY',
+                    width: 80.w,
+                    height: 20.h,
+                    radius: 16.r,
+                    textStyle: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.sp,
+                    ),
+                    backgroundGradient: ColorPallete.rightbuttongradient,
+                  ),
               ],
             ),
-        ],
+
+            if (title != null)
+              Text(
+                title!,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+
+            if (showHelpButton || showSettingsButton || showCloseButton)
+              Row(
+                spacing: 12.w,
+                children: [
+                  if (showHelpButton) _buildActionIcon(AppIcons.questionCircle),
+                  if (showSettingsButton) _buildActionIcon(AppIcons.settings),
+                  if (showCloseButton)
+                    _buildActionIcon(AppIcons.close, onTap: onClose),
+                ],
+              ),
+          ],
+        ),
       ),
     );
   }

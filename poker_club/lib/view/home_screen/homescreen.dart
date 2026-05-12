@@ -94,7 +94,10 @@ class _HomescreenState extends State<Homescreen> {
                             Get.toNamed(AppRoutes.leaderboardScreen);
                             return;
                           }
-
+                          if (index == 1) {
+                            Get.toNamed(AppRoutes.missionScreen);
+                            return;
+                          }
                           controller.changeTab(index);
                         },
                         navigationItems: navigationItems,

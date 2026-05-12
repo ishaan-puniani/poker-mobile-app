@@ -57,4 +57,6 @@ const Map<String, String> enUS = {
   "ultra_high_winner": "Ultra High Winner",
   "amount_won": "Amount Won",
   "the_main_event_winner": "The Main Event Winner",
+  "missions": "Missions",
+  "get": "Get",
 };
