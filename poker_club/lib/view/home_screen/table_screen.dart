@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:poker_club/model/poker_game.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/home_screen/components/game_tables.dart';
 import '../../viewmodel/home_controller.dart';
@@ -86,7 +87,16 @@ class _TableScreenState extends State<TableScreen> {
                     child: Padding(
                       padding: EdgeInsets.only(bottom: 16.r),
                       child: CustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(
+                            AppRoutes.gameScreen,
+                            arguments: {
+                              'game': selectedGame,
+                              'table': homeController
+                                  .tables[controller.selectedTableIndex.value],
+                            },
+                          );
+                        },
                         text: "PLAY NOW",
                         width: 135.w,
                         height: 20.h,

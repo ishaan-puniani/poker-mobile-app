@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
+import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
+import 'package:poker_club/view/custom_components/custom_icon_button.dart';
 import '../../../model/user_profile.dart';
 import '../../custom_components/custom_button.dart';
 
@@ -26,15 +28,6 @@ class HomeHeader extends StatelessWidget {
     this.onClose,
     this.title,
   });
-
-  String formatCoins(double coins) {
-    return coins
-        .toStringAsFixed(0)
-        .replaceAllMapped(
-          RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-          (Match m) => '${m[1]},',
-        );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,10 +98,12 @@ class HomeHeader extends StatelessWidget {
               Row(
                 spacing: 12.w,
                 children: [
-                  if (showHelpButton) _buildActionIcon(AppIcons.questionCircle),
-                  if (showSettingsButton) _buildActionIcon(AppIcons.settings),
+                  if (showHelpButton)
+                    CustomIconButton(icon: AppIcons.questionCircle),
+                  if (showSettingsButton)
+                    CustomIconButton(icon: AppIcons.settings),
                   if (showCloseButton)
-                    _buildActionIcon(AppIcons.close, onTap: onClose),
+                    CustomIconButton(icon: AppIcons.close, onTap: onClose),
                 ],
               ),
           ],
@@ -198,27 +193,6 @@ class HomeHeader extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildActionIcon(String icon, {void Function()? onTap}) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 36.r,
-        height: 36.r,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: ColorPallete.richRed,
-          border: Border.all(
-            color: ColorPallete.borderyellow.withValues(alpha: 0.8),
-            width: 1.5,
-          ),
-        ),
-        child: Center(
-          child: AppIcon(icon, color: ColorPallete.borderyellow, size: 18.sp),
-        ),
       ),
     );
   }

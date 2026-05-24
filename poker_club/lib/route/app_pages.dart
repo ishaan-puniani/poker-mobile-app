@@ -10,6 +10,7 @@ import 'package:poker_club/view/home_screen/leaderboard_screen.dart';
 import 'package:poker_club/view/home_screen/mission_screen.dart';
 import 'package:poker_club/view/home_screen/table_screen.dart';
 import 'package:poker_club/view/splash_screen/splash_screen.dart';
+import 'package:poker_club/view/game_screen/game_screen.dart';
 
 class AppPages {
   static final pages = [
@@ -64,6 +65,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.tableScreen,
       page: () => TableScreen(),
+      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.rightToLeftWithFade,
+    ),
+    GetPage(
+      name: AppRoutes.gameScreen,
+      page: () => GameScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
     ),

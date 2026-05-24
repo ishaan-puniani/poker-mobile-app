@@ -18,7 +18,7 @@ class GameTables extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260.w,
+      height: 250.w,
       child: ListView.builder(
         padding: EdgeInsets.fromLTRB(16.w, 10.h, 16.w, 10.h),
         itemCount: tables.length,
@@ -112,7 +112,7 @@ class GameTables extends StatelessWidget {
           top: BorderSide(color: Colors.yellow.shade700, width: 0.3),
         ),
       ),
-      padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 16.r),
+      padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 14.r),
       child: Row(
         children: [
           Text(
