@@ -55,7 +55,7 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: keyboardType,
         style: const TextStyle(color: Colors.white),
-
+        textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           filled: true,
           fillColor: backgroundColor,
@@ -66,10 +66,7 @@ class CustomTextField extends StatelessWidget {
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
 
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 14,
-          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),

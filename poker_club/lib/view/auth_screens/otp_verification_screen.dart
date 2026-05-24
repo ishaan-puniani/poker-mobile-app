@@ -26,37 +26,35 @@ class OtpVerificationScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //create account
-                      CreateAccount(
-                        title: "verify_with_otp".tr.toUpperCase(),
-                        subtitle: "enter_your_one_time_pass".tr,
-                        islogInPage: false,
-                      ),
-                      SizedBox(width: 48.w),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //create account
+                    CreateAccount(
+                      title: "verify_with_otp".tr.toUpperCase(),
+                      subtitle: "enter_your_one_time_pass".tr,
+                      islogInPage: false,
+                    ),
+                    SizedBox(width: 48.w),
 
-                      // login details
-                      VerifyWithOtpAuthComponent(
-                        spacebetweencomponents: 12,
-                        height: 134,
-                        width: 380,
-                        nextbuttontitle: "verify".tr,
-                        ontap: () {
-                          //reset password
-                          Get.offNamed(AppRoutes.resetpassword);
-                        },
-                      ),
-                    ],
-                  ),
+                    // login details
+                    VerifyWithOtpAuthComponent(
+                      spacebetweencomponents: 12,
+                      height: 134,
+                      width: 380,
+                      nextbuttontitle: "verify".tr,
+                      ontap: () {
+                        //reset password
+                        Get.offNamed(AppRoutes.resetpassword);
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(

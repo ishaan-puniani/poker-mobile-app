@@ -11,12 +11,14 @@ import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
+import 'package:poker_club/view/custom_components/custom_passwordfield.dart';
 
 class MobilePassRefer extends StatelessWidget {
   final bool islogInPage;
   final bool isOtpLogin;
 
   final double? spacebetweencomponents;
+
   const MobilePassRefer({
     super.key,
     required this.islogInPage,
@@ -67,7 +69,7 @@ class MobilePassRefer extends StatelessWidget {
                 if (islogInPage == true && isOtpLogin == false)
                   Column(
                     children: [
-                      CustomTextField(
+                      CustomPasswordField(
                         prefixIcon: Padding(
                           padding: EdgeInsets.all(8.w),
                           child: AppIcon(AppIcons.lock, size: 20),
@@ -80,11 +82,6 @@ class MobilePassRefer extends StatelessWidget {
                               fontSize: 13.sp,
                               color: ColorPallete.textcolor,
                             ),
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: ColorPallete.borderyellow,
-                          size: 16,
-                        ),
                       ),
                     ],
                   ),
@@ -109,7 +106,7 @@ class MobilePassRefer extends StatelessWidget {
                 if (islogInPage == false)
                   Column(
                     children: [
-                      CustomTextField(
+                      CustomPasswordField(
                         hintStyle: Theme.of(context).textTheme.bodyMedium
                             ?.copyWith(
                               fontWeight: FontWeight.w700,
@@ -122,11 +119,6 @@ class MobilePassRefer extends StatelessWidget {
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "create_password".tr,
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: ColorPallete.borderyellow,
-                          size: 16,
-                        ),
                       ),
                       SizedBox(height: spacebetweencomponents ?? 12),
                     ],
@@ -134,7 +126,7 @@ class MobilePassRefer extends StatelessWidget {
                 if (islogInPage == false)
                   Column(
                     children: [
-                      CustomTextField(
+                      CustomPasswordField(
                         hintStyle: Theme.of(context).textTheme.bodyMedium
                             ?.copyWith(
                               fontWeight: FontWeight.w700,
@@ -147,11 +139,6 @@ class MobilePassRefer extends StatelessWidget {
                         ),
                         backgroundColor: ColorPallete.brown,
                         hint: "confirm_password".tr,
-                        suffixIcon: Icon(
-                          Icons.remove_red_eye,
-                          color: ColorPallete.borderyellow,
-                          size: 16,
-                        ),
                       ),
                       SizedBox(height: spacebetweencomponents ?? 12),
                     ],

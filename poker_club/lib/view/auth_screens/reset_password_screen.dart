@@ -26,37 +26,35 @@ class ResetPasswordScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //create account
-                      CreateAccount(
-                        title: "change_password".tr.toUpperCase(),
-                        subtitle: "create_a_new_password_for_your_account".tr,
-                        islogInPage: false,
-                      ),
-                      SizedBox(width: 48.w),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //create account
+                    CreateAccount(
+                      title: "change_password".tr.toUpperCase(),
+                      subtitle: "create_a_new_password_for_your_account".tr,
+                      islogInPage: false,
+                    ),
+                    SizedBox(width: 48.w),
 
-                      // login details
-                      ResetPasswordComponent(
-                        spacebetweencomponents: 12,
-                        height: 134,
-                        width: 380,
-                        nextbuttontitle: "save".tr,
-                        ontap: () {
-                          //reset password
-                          Get.offNamed(AppRoutes.home);
-                        },
-                      ),
-                    ],
-                  ),
+                    // login details
+                    ResetPasswordComponent(
+                      spacebetweencomponents: 12,
+                      height: 134,
+                      width: 380,
+                      nextbuttontitle: "save".tr,
+                      ontap: () {
+                        //reset password
+                        Get.offNamed(AppRoutes.home);
+                      },
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(

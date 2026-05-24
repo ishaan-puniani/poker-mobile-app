@@ -6,7 +6,7 @@ import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
-import 'package:poker_club/view/custom_components/custom_textfield.dart';
+import 'package:poker_club/view/custom_components/custom_passwordfield.dart';
 
 class ResetPasswordComponent extends StatelessWidget {
   final int? height;
@@ -48,7 +48,7 @@ class ResetPasswordComponent extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomTextField(
+                  CustomPasswordField(
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: AppIcon(AppIcons.lock, size: 20),
@@ -60,15 +60,10 @@ class ResetPasswordComponent extends StatelessWidget {
                       fontSize: 13.sp,
                       color: ColorPallete.textcolor,
                     ),
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                      color: ColorPallete.borderyellow,
-                      size: 16,
-                    ),
                   ),
 
                   SizedBox(height: spacebetweencomponents ?? 12),
-                  CustomTextField(
+                  CustomPasswordField(
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(8.w),
                       child: AppIcon(AppIcons.lock, size: 20),
@@ -79,11 +74,6 @@ class ResetPasswordComponent extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontSize: 13.sp,
                       color: ColorPallete.textcolor,
-                    ),
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye,
-                      color: ColorPallete.borderyellow,
-                      size: 16,
                     ),
                   ),
 

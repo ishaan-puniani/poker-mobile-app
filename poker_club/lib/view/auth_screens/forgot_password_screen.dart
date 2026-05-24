@@ -26,36 +26,34 @@ class ForgotPasswordScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //create account
-                      CreateAccount(
-                        title: "reset_password".tr.toUpperCase(),
-                        subtitle: "no_worries_we_will_get_you_back".tr,
-                        islogInPage: false,
-                      ),
-                      SizedBox(width: 48.w),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //create account
+                    CreateAccount(
+                      title: "reset_password".tr.toUpperCase(),
+                      subtitle: "no_worries_we_will_get_you_back".tr,
+                      islogInPage: false,
+                    ),
+                    SizedBox(width: 48.w),
 
-                      // login details
-                      CustomOptions(
-                        height: 134,
-                        width: 380,
-                        ontap: () {
-                          Get.toNamed(AppRoutes.otpVerificationScreen);
-                        },
+                    // login details
+                    CustomOptions(
+                      height: 134,
+                      width: 380,
+                      ontap: () {
+                        Get.toNamed(AppRoutes.otpVerificationScreen);
+                      },
 
-                        nextbuttontitle: "get_otp".tr,
-                      ),
-                    ],
-                  ),
+                      nextbuttontitle: "get_otp".tr,
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(

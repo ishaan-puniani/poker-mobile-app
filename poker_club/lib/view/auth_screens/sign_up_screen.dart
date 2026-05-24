@@ -26,77 +26,79 @@ class SignUpScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //create account
-                      CreateAccount(islogInPage: false),
-                      SizedBox(width: 48.w),
-                      // login details
-                      MobilePassRefer(islogInPage: false),
-                    ],
-                  ),
-                ),
-            
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 12.5, right: 37.5.w),
-                      child: RichText(
-                        text: TextSpan(
-                          text: "by_creating_an_account".tr,
-                          style: Theme.of(context).textTheme.bodyMedium
-                              ?.copyWith(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w400,
-                              ),
-                          children: [
-                            TextSpan(
-                              text: "terms_and_condition".tr,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: ColorPallete.yellow,
-                                    fontSize: 12.sp,
-                                  ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  // Navigate to Terms screen
-                                },
-                            ),
-                            TextSpan(
-                              text: "and".tr,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        //create account
+                        CreateAccount(islogInPage: false),
+                        SizedBox(width: 48.w),
+                        // login details
+                        MobilePassRefer(islogInPage: false),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(top: 12.5, right: 37.5.w),
+                          child: RichText(
+                            text: TextSpan(
+                              text: "by_creating_an_account".tr,
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                   ),
+                              children: [
+                                TextSpan(
+                                  text: "terms_and_condition".tr,
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(
+                                        color: ColorPallete.yellow,
+                                        fontSize: 12.sp,
+                                      ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Navigate to Terms screen
+                                    },
+                                ),
+                                TextSpan(
+                                  text: "and".tr,
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                ),
+                                TextSpan(
+                                  text: "private_policy".tr,
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(
+                                        color: ColorPallete.yellow,
+                                        fontSize: 12.sp,
+                                      ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Navigate to Privacy screen
+                                    },
+                                ),
+                                TextSpan(text: "."),
+                              ],
                             ),
-                            TextSpan(
-                              text: "private_policy".tr,
-                              style: Theme.of(context).textTheme.bodyMedium
-                                  ?.copyWith(
-                                    color: ColorPallete.yellow,
-                                    fontSize: 12.sp,
-                                  ),
-                              recognizer: TapGestureRecognizer()
-                                ..onTap = () {
-                                  // Navigate to Privacy screen
-                                },
-                            ),
-                            TextSpan(text: "."),
-                          ],
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(

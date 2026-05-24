@@ -25,26 +25,21 @@ class LogInScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      //create account
-                      CreateAccount(islogInPage: true),
-                      SizedBox(width: 48.w),
-                      // login details
-                      MobilePassRefer(
-                        islogInPage: true,
-                        isOtpLogin: isOtpLogin,
-                      ),
-                    ],
-                  ),
+            child: Center(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(vertical: 20.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //create account
+                    CreateAccount(islogInPage: true),
+                    SizedBox(width: 48.w),
+                    // login details
+                    MobilePassRefer(islogInPage: true, isOtpLogin: isOtpLogin),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
           Positioned(
