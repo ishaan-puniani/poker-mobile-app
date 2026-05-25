@@ -73,14 +73,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.9"
-  dotted_border:
-    dependency: "direct main"
-    description:
-      name: dotted_border
-      sha256: "99b091ec6891ba0c5331fdc2b502993c7c108f898995739a73c6845d71dad70c"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -387,22 +379,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.6"
-  playing_cards_lib:
-    dependency: transitive
-    description:
-      name: playing_cards_lib
-      sha256: e1072bd1968a01caaad80ce8f0b36d1f8419ee5e01db679196eb0dec8537840a
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.3+1"
-  playing_cards_ui:
-    dependency: "direct main"
-    description:
-      name: playing_cards_ui
-      sha256: fb378d0dd43c51de21264fc8df9bd27fde438a7b36a2e73304b647cc92703f17
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.5.3+13"
   plugin_platform_interface:
     dependency: transitive
     description:

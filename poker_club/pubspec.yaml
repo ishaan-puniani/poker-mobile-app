@@ -19,8 +19,6 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.10
-  playing_cards_ui: ^0.5.3+13
-  dotted_border: ^3.1.0
 
 dev_dependencies:
   flutter_test:

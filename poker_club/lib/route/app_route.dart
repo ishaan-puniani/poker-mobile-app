@@ -8,7 +8,6 @@ class AppRoutes {
   static const otpVerificationScreen = '/otp-verification-screen';
   static const resetpassword = '/reset-password';
   static const tableScreen = '/table-screen';
-  static const gameScreen = '/game-screen';
   static const leaderboardScreen = '/leaderboard-screen';
   static const missionScreen = '/mission-screen';
 }
