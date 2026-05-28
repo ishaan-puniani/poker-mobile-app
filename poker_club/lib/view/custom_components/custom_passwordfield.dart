@@ -21,6 +21,7 @@ class CustomPasswordField extends StatefulWidget {
 
   final bool obscureText;
   final TextInputType keyboardType;
+  final TextInputAction? textInputAction;
 
   const CustomPasswordField({
     super.key,
@@ -37,6 +38,7 @@ class CustomPasswordField extends StatefulWidget {
     this.validator,
     this.obscureText = true,
     this.keyboardType = TextInputType.text,
+    this.textInputAction,
   });
 
   @override
@@ -62,16 +64,18 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width ?? double.infinity,
-      height: widget.height ?? 40.w,
+      // height: widget.height ?? 40.w,
       child: TextFormField(
         controller: widget.controller,
         validator: widget.validator,
         obscureText: _obscureText,
         keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
         style: const TextStyle(color: Colors.white),
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           filled: true,
+          isDense: true,
           fillColor: widget.backgroundColor,
           hintText: widget.hint,
           hintStyle: widget.hintStyle ?? const TextStyle(color: Colors.grey),

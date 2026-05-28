@@ -70,15 +70,12 @@ class _MissionScreenState extends State<MissionScreen> {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: Obx(
-                      () => HomeHeader(
-                        user: controller.userProfile.value,
-                        showProfileInfo: false,
-                        showCloseButton: true,
-                        showHelpButton: true,
-                        title: "MISSIONS",
-                        onClose: () => Get.back(),
-                      ),
+                    child: HomeHeader(
+                      showProfileInfo: false,
+                      showCloseButton: true,
+                      showHelpButton: true,
+                      title: "MISSIONS",
+                      onClose: () => Get.back(),
                     ),
                   ),
                   Column(
@@ -151,10 +148,17 @@ class _MissionScreenState extends State<MissionScreen> {
                                         textAlign: TextAlign.center,
                                       ),
                                       SizedBox(height: 2.h),
-                                      Divider(
-                                        color: ColorPallete.borderyellow
-                                            .withValues(alpha: 0.2),
-                                        thickness: 1.h,
+                                      Container(
+                                        // color: ColorPallete.yellow,
+                                        width: 143.w,
+                                        height: 1.h,
+                                        margin: EdgeInsets.symmetric(
+                                          vertical: 4.h,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          gradient:
+                                              ColorPallete.dividergradient,
+                                        ),
                                       ),
                                       if (endsIn != null)
                                         Text(

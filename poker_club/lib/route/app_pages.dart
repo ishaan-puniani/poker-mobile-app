@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:poker_club/route/app_route.dart';
+import 'package:poker_club/middleware/auth_middleware.dart';
 import 'package:poker_club/view/auth_screens/forgot_password_screen.dart';
 import 'package:poker_club/view/auth_screens/log_in_screen.dart';
 import 'package:poker_club/view/auth_screens/otp_verification_screen.dart';
@@ -24,6 +25,7 @@ class AppPages {
       page: () => Homescreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: AppRoutes.signup,
@@ -66,18 +68,21 @@ class AppPages {
       page: () => TableScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: AppRoutes.leaderboardScreen,
       page: () => LeaderboardScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
+      middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: AppRoutes.missionScreen,
       page: () => MissionScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
+      middlewares: [AuthMiddleware()],
     ),
   ];
 }

@@ -46,13 +46,10 @@ class _TableScreenState extends State<TableScreen> {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: Obx(
-                      () => HomeHeader(
-                        user: controller.userProfile.value,
-                        showHelpButton: true,
-                        showCloseButton: true,
-                        onClose: () => Get.back(),
-                      ),
+                    child: HomeHeader(
+                      showHelpButton: true,
+                      showCloseButton: true,
+                      onClose: () => Get.back(),
                     ),
                   ),
                   Positioned(

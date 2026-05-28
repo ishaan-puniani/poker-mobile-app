@@ -58,4 +58,8 @@ const Map<String, String> hiIN = {
   "the_main_event_winner": "द मेन इवेंट विनर",
   "missions": "मिशन",
   "get": "प्राप्त करें",
+  "mobile_number_required": "मोबाइल नंबर आवश्यक है",
+  "enter_valid_mobile_number": "कृपया एक वैध 10-अंकीय मोबाइल नंबर दर्ज करें",
+  "password_required": "पासवर्ड आवश्यक है",
+  "password_too_short": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
 };

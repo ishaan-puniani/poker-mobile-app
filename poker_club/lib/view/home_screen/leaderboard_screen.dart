@@ -49,14 +49,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: Obx(
-                      () => HomeHeader(
-                        user: controller.userProfile.value,
-                        showProfileInfo: false,
-                        showCloseButton: true,
-                        showHelpButton: true,
-                        onClose: () => Get.back(),
-                      ),
+                    child: HomeHeader(
+                      showProfileInfo: false,
+                      showCloseButton: true,
+                      showHelpButton: true,
+                      onClose: () => Get.back(),
                     ),
                   ),
                   Container(

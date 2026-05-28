@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:poker_club/viewmodel/auth_controller.dart';
 
 class SplashController extends GetxController {
   int progress = 0; // 👈 now 0 to 100
@@ -7,7 +8,7 @@ class SplashController extends GetxController {
 
   bool showAuthoptionals = false;
 
-  void showauthoption() {
+  void showAuthOptions() {
     showAuthoptionals = true;
     update();
   }
@@ -26,17 +27,23 @@ class SplashController extends GetxController {
       }
     });
 
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(
+      const Duration(milliseconds: 2500),
+    ); // Simulate API call delay
 
     timer?.cancel();
 
     progress = 100; // 👈 final
     update();
 
-    await Future.delayed(const Duration(milliseconds: 300));
-
-    // Get.offAllNamed("/home");
-    showauthoption();
+    if (Get.isRegistered<AuthController>()) {
+      final authController = Get.find<AuthController>();
+      if (authController.isAuthenticated.value) {
+        Get.offAllNamed('/home');
+        return;
+      }
+    }
+    showAuthOptions();
   }
 
   @override

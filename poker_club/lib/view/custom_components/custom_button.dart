@@ -25,7 +25,9 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final double? width;
 
-  final List<BoxShadow>? boxShadow; // ✅ NEW
+  final List<BoxShadow>? boxShadow;
+
+  final bool isLoading;
 
   const CustomButton({
     super.key,
@@ -43,7 +45,8 @@ class CustomButton extends StatelessWidget {
     this.padding,
     this.height,
     this.width,
-    this.boxShadow, // ✅ NEW
+    this.boxShadow,
+    this.isLoading = false,
   });
 
   @override
@@ -67,10 +70,10 @@ class CustomButton extends StatelessWidget {
               color: borderColor ?? Colors.transparent,
               width: borderWidth.w,
             ),
-            boxShadow: boxShadow, // ✅ APPLY HERE
+            boxShadow: boxShadow,
           ),
           child: InkWell(
-            onTap: onPressed,
+            onTap: isLoading ? null : onPressed,
             borderRadius: borderRadius,
             child: Container(
               alignment: Alignment.center,
@@ -78,8 +81,22 @@ class CustomButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (prefixIcon != null) ...[
+                  if (prefixIcon != null && !isLoading) ...[
                     prefixIcon!,
+                    SizedBox(width: 8.w),
+                  ],
+
+                  if (isLoading) ...[
+                    SizedBox(
+                      width: 11.w,
+                      height: 11.w,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.w,
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          textStyle?.color ?? Colors.white,
+                        ),
+                      ),
+                    ),
                     SizedBox(width: 8.w),
                   ],
 

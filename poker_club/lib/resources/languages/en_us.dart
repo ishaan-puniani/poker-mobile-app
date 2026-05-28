@@ -59,4 +59,8 @@ const Map<String, String> enUS = {
   "the_main_event_winner": "The Main Event Winner",
   "missions": "Missions",
   "get": "Get",
+  "mobile_number_required": "Mobile number is required",
+  "enter_valid_mobile_number": "Please enter a valid 10-digit mobile number",
+  "password_required": "Password is required",
+  "password_too_short": "Password must be at least 6 characters",
 };

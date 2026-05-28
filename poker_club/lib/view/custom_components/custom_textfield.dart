@@ -20,6 +20,7 @@ class CustomTextField extends StatelessWidget {
 
   final bool obscureText;
   final TextInputType keyboardType;
+  final TextInputAction? textInputAction;
 
   const CustomTextField({
     super.key,
@@ -42,22 +43,26 @@ class CustomTextField extends StatelessWidget {
 
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+    this.textInputAction,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? double.infinity,
-      height: height ?? 40,
+      // height: height ?? 40,
       child: TextFormField(
         controller: controller,
         validator: validator,
         obscureText: obscureText,
         keyboardType: keyboardType,
+        cursorColor: Colors.white,
+        textInputAction: textInputAction,
         style: const TextStyle(color: Colors.white),
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           filled: true,
+          isDense: true,
           fillColor: backgroundColor,
 
           hintText: hint,
@@ -65,7 +70,6 @@ class CustomTextField extends StatelessWidget {
 
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),
 
           enabledBorder: OutlineInputBorder(

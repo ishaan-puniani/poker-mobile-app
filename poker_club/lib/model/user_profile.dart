@@ -1,13 +1,66 @@
+enum UserStatus { active, inactive }
+
 class UserProfile {
+  final String id;
+  final String playerId;
+  final String mobile;
+  final String email;
   final String username;
+  final String firstName;
+  final String lastName;
+  final String language;
   final String tier;
+  final String currency;
   final double coins;
-  final String avatarUrl;
+  final String avatar;
+  final UserStatus status;
+  final String referralCode;
+  final String referredBy;
+  final DateTime createdAt;
 
   UserProfile({
+    required this.id,
+    required this.playerId,
+    required this.mobile,
+    required this.email,
     required this.username,
+    required this.firstName,
+    required this.lastName,
+    required this.language,
     required this.tier,
+    required this.currency,
     required this.coins,
-    required this.avatarUrl,
+    required this.avatar,
+    required this.status,
+    required this.referralCode,
+    required this.referredBy,
+    required this.createdAt,
   });
+
+  String get fullName => '$firstName $lastName'.trim();
+
+  factory UserProfile.fromJson(Map<String, dynamic> json) {
+    return UserProfile(
+      id: json['id'] ?? '',
+      playerId: json['playerId'] ?? '',
+      mobile: json['mobile'] ?? '',
+      email: json['email'] ?? '',
+      username: json['username'] ?? json['userName'] ?? '',
+      firstName: json['firstName'] ?? '',
+      lastName: json['lastName'] ?? '',
+      language: json['language'] ?? '',
+      tier: json['tier'] ?? '', // TODO: check it
+      currency: json['currency'] ?? '',
+      coins: (json['coins'] ?? 0).toDouble(), // TODO: check it
+      avatar: json['avatar'] ?? '', // TODO: check it
+      status: json['status'] == 'active'
+          ? UserStatus.active
+          : UserStatus.inactive,
+      referralCode: json['referralCode'] ?? '',
+      referredBy: json['referredBy'] ?? '',
+      createdAt: DateTime.parse(
+        json['createdAt'] ?? DateTime.now().toIso8601String(),
+      ),
+    );
+  }
 }

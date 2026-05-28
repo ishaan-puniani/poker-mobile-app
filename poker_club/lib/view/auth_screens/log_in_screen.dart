@@ -4,7 +4,8 @@ import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/mobile_pass_refer.dart';
+import 'package:poker_club/view/auth_screens/auth_screen_components/form_container.dart';
+import 'package:poker_club/view/auth_screens/form/login_form.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class LogInScreen extends StatelessWidget {
                     CreateAccount(islogInPage: true),
                     SizedBox(width: 48.w),
                     // login details
-                    MobilePassRefer(islogInPage: true, isOtpLogin: isOtpLogin),
+                    FormContainer(child: LoginForm(isOtpLogin: isOtpLogin)),
                   ],
                 ),
               ),

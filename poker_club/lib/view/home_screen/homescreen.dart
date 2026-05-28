@@ -63,13 +63,10 @@ class _HomescreenState extends State<Homescreen> {
                 children: [
                   Align(
                     alignment: Alignment.topCenter,
-                    child: Obx(
-                      () => HomeHeader(
-                        user: controller.userProfile.value,
-                        showBuyButton: true,
-                        showHelpButton: true,
-                        showSettingsButton: true,
-                      ),
+                    child: HomeHeader(
+                      showBuyButton: true,
+                      showHelpButton: true,
+                      showSettingsButton: true,
                     ),
                   ),
                   Positioned(

@@ -1,17 +1,9 @@
 import 'package:get/get.dart';
 import 'package:poker_club/model/game_table.dart';
 import 'package:poker_club/resources/images.dart';
-import '../model/user_profile.dart';
 import '../model/poker_game.dart';
 
 class HomeController extends GetxController {
-  final userProfile = UserProfile(
-    username: 'HIGH_ROLLER_99',
-    tier: 'Pro League',
-    coins: 202461668,
-    avatarUrl: 'https://i.pravatar.cc/150?img=47', // Test avatar
-  ).obs;
-
   final pokerGames = <PokerGame>[
     PokerGame(
       title: 'OMAHA 5',
