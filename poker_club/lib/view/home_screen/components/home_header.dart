@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
+import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_icon_button.dart';
@@ -112,7 +113,12 @@ class _HomeHeaderState extends State<HomeHeader> {
                     if (widget.showHelpButton)
                       CustomIconButton(icon: AppIcons.questionCircle),
                     if (widget.showSettingsButton)
-                      CustomIconButton(icon: AppIcons.settings),
+                      CustomIconButton(
+                        icon: AppIcons.settings,
+                        onTap: () {
+                          AuthService.signOut();
+                        },
+                      ),
                     if (widget.showCloseButton)
                       CustomIconButton(
                         icon: AppIcons.close,
@@ -191,15 +197,14 @@ class _HomeHeaderState extends State<HomeHeader> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (user?.username != null)
-                Text(
-                  user?.username ?? '',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Text(
+                user?.username ?? user?.mobile ?? '',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold,
                 ),
+              ),
               if (user?.tier != null)
                 Text(
                   user?.tier ?? '',

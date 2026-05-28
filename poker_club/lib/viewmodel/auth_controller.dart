@@ -27,6 +27,10 @@ class AuthController extends GetxController {
 
   Future<void> fetchUserProfile() async {
     final userJson = await AuthService.me();
+    if (userJson['success'] == false) {
+      await AuthService.signOut();
+      return;
+    }
     user.value = UserProfile.fromJson(userJson);
   }
 
@@ -38,6 +42,8 @@ class AuthController extends GetxController {
       await Pref.remove(_tokenKey);
       return;
     }
+
+    await fetchUserProfile();
 
     await Pref.write(_tokenKey, value);
   }

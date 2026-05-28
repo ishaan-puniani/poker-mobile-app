@@ -37,11 +37,15 @@ class AuthService {
   }
 
   static Future<dynamic> me() async {
-    final user = await ApiService.sendPmsRequest<dynamic>(
-      ApiService.meEndpoint,
-      method: 'GET',
-    );
+    try {
+      final user = await ApiService.sendPmsRequest<dynamic>(
+        ApiService.meEndpoint,
+        method: 'GET',
+      );
 
-    return user;
+      return user;
+    } catch (e) {
+      return {'success': false};
+    }
   }
 }
