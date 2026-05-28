@@ -6,11 +6,13 @@ import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/route/app_route.dart';
+import 'package:poker_club/services/api_service.dart';
 import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/view/auth_screens/auth_screen_components/form_buttons_section.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_passwordfield.dart';
+import 'package:poker_club/view/custom_components/custom_snackbar.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
 class LoginForm extends StatefulWidget {
@@ -32,18 +34,29 @@ class _LoginFormState extends State<LoginForm> {
     if (formKey.currentState?.validate() ?? false) {
       setState(() {
         _isLoading = true;
+        errorMessage = '';
       });
       try {
-        await AuthService.signInWithPassword(
-          _mobileController.text.trim(),
-          _passwordController.text.trim(),
-        );
+        if (widget.isOtpLogin) {
+          final msg = await AuthService.signInWithOtp(
+            _mobileController.text.trim(),
+          );
+          // ignore: use_build_context_synchronously
+          CustomSnackbar.show(msg, context, type: SnackbarType.success);
+          Get.toNamed(
+            AppRoutes.otpVerificationScreen,
+            arguments: {'mobile': _mobileController.text.trim()},
+          );
+        } else {
+          await AuthService.signInWithPassword(
+            _mobileController.text.trim(),
+            _passwordController.text.trim(),
+          );
+        }
       } catch (e) {
-        final error = e is String ? e : null;
-        // ignore: avoid_print
-        print('Login error: $e');
+        final msg = ApiService.getErrorMessage(e);
         setState(() {
-          errorMessage = error ?? 'Login Failed';
+          errorMessage = msg ?? 'Login Failed';
         });
       } finally {
         setState(() {
@@ -70,8 +83,8 @@ class _LoginFormState extends State<LoginForm> {
           CustomTextField(
             controller: _mobileController,
             textInputAction: widget.isOtpLogin
-                ? TextInputAction.next
-                : TextInputAction.done,
+                ? TextInputAction.done
+                : TextInputAction.next,
             hintStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: FontWeight.w700,
               fontSize: 13.sp,
@@ -93,6 +106,11 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
             keyboardType: TextInputType.phone,
+            onFieldSubmitted: (value) {
+              if (widget.isOtpLogin) {
+                onSubmit();
+              }
+            },
           ),
           if (!widget.isOtpLogin) ...[
             Gap(8.h),
@@ -119,6 +137,9 @@ class _LoginFormState extends State<LoginForm> {
                 }
                 return null;
               },
+              onFieldSubmitted: (value) {
+                onSubmit();
+              },
             ),
             Gap(2.h),
             Row(
@@ -126,7 +147,10 @@ class _LoginFormState extends State<LoginForm> {
               children: [
                 InkWell(
                   onTap: () {
-                    Get.toNamed(AppRoutes.forgotpassword);
+                    Get.toNamed(
+                      AppRoutes.forgotpassword,
+                      arguments: {'mobile': _mobileController.text.trim()},
+                    );
                   },
                   child: Text("forgot_password".tr),
                 ),

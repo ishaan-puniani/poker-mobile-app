@@ -62,5 +62,10 @@ const Map<String, String> enUS = {
   "mobile_number_required": "Mobile number is required",
   "enter_valid_mobile_number": "Please enter a valid 10-digit mobile number",
   "password_required": "Password is required",
+  "create_password_required": "Create password is required",
+  "confirm_password_required": "Confirm password is required",
   "password_too_short": "Password must be at least 6 characters",
+  "passwords_do_not_match": "Passwords do not match",
+  "name_cant_be_empty": "Name can't be empty",
+  "create_new_password_required": "Create new password is required",
 };

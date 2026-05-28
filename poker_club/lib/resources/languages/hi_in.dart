@@ -61,5 +61,10 @@ const Map<String, String> hiIN = {
   "mobile_number_required": "मोबाइल नंबर आवश्यक है",
   "enter_valid_mobile_number": "कृपया एक वैध 10-अंकीय मोबाइल नंबर दर्ज करें",
   "password_required": "पासवर्ड आवश्यक है",
+  "create_password_required": "पासवर्ड बनाएं आवश्यक है",
+  "confirm_password_required": "पासवर्ड की पुष्टि करें आवश्यक है",
   "password_too_short": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
+  "passwords_do_not_match": "पासवर्ड मेल नहीं खाते",
+  "name_cant_be_empty": "नाम खाली नहीं हो सकता",
+  "create_new_password_required": "नया पासवर्ड बनाएं आवश्यक है",
 };

@@ -26,22 +26,23 @@ class FormButtonsSection extends StatelessWidget {
     return Row(
       spacing: 10.w,
       children: [
-        Expanded(
-          child: CustomButton(
-            borderColor: ColorPallete.borderyellow,
-            backgroundColor: ColorPallete.brown,
-            radius: 12.r,
-            width: 164,
-            height: 36,
-            suffixIcon: AppIcon(AppIcons.google, size: 16),
-            onPressed: onGoogleLogin,
-            text: "continue_with".tr.toUpperCase(),
-            textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.w700,
-              fontSize: 13.sp,
+        if (isGoogleLogin == true)
+          Expanded(
+            child: CustomButton(
+              borderColor: ColorPallete.borderyellow,
+              backgroundColor: ColorPallete.brown,
+              radius: 12.r,
+              width: 164,
+              height: 36,
+              suffixIcon: AppIcon(AppIcons.google, size: 16),
+              onPressed: onGoogleLogin,
+              text: "continue_with".tr.toUpperCase(),
+              textStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: 13.sp,
+              ),
             ),
           ),
-        ),
         Expanded(
           child: CustomButton(
             backgroundGradient: ColorPallete.rightbuttongradient,

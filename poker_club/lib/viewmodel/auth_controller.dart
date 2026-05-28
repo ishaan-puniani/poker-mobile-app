@@ -42,10 +42,8 @@ class AuthController extends GetxController {
       await Pref.remove(_tokenKey);
       return;
     }
-
-    await fetchUserProfile();
-
     await Pref.write(_tokenKey, value);
+    await fetchUserProfile();
   }
 
   Future<void> logout() async {

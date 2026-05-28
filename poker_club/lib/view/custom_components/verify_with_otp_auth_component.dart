@@ -12,14 +12,18 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
   final int? width;
   final double? spacebetweencomponents;
   final String? nextbuttontitle;
-  final VoidCallback ontap;
+  final TextEditingController? controller;
+  final bool isLoading;
+  final VoidCallback onTap;
   const VerifyWithOtpAuthComponent({
     super.key,
     this.height,
     this.width,
     this.nextbuttontitle,
     this.spacebetweencomponents,
-    required this.ontap,
+    this.controller,
+    required this.onTap,
+    this.isLoading = false,
   });
 
   @override
@@ -48,6 +52,7 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Pinput(
+                    controller: controller,
                     length: 6,
                     hapticFeedbackType: HapticFeedbackType.lightImpact,
 
@@ -82,8 +87,8 @@ class VerifyWithOtpAuthComponent extends StatelessWidget {
                           radius: 12.r,
                           width: 164,
                           height: 36,
-
-                          onPressed: ontap,
+                          isLoading: isLoading,
+                          onPressed: onTap,
                           text: (nextbuttontitle ?? "continue").tr
                               .toUpperCase(),
                         ),

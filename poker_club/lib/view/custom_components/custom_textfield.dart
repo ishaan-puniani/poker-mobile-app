@@ -21,6 +21,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final TextInputType keyboardType;
   final TextInputAction? textInputAction;
+  final void Function(String?)? onFieldSubmitted;
 
   const CustomTextField({
     super.key,
@@ -44,6 +45,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -60,6 +62,7 @@ class CustomTextField extends StatelessWidget {
         textInputAction: textInputAction,
         style: const TextStyle(color: Colors.white),
         textAlignVertical: TextAlignVertical.center,
+        onFieldSubmitted: onFieldSubmitted,
         decoration: InputDecoration(
           filled: true,
           isDense: true,

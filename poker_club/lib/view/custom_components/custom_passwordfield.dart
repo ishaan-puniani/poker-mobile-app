@@ -22,6 +22,7 @@ class CustomPasswordField extends StatefulWidget {
   final bool obscureText;
   final TextInputType keyboardType;
   final TextInputAction? textInputAction;
+  final void Function(String?)? onFieldSubmitted;
 
   const CustomPasswordField({
     super.key,
@@ -39,6 +40,7 @@ class CustomPasswordField extends StatefulWidget {
     this.obscureText = true,
     this.keyboardType = TextInputType.text,
     this.textInputAction,
+    this.onFieldSubmitted,
   });
 
   @override
@@ -73,6 +75,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         textInputAction: widget.textInputAction,
         style: const TextStyle(color: Colors.white),
         textAlignVertical: TextAlignVertical.center,
+        onFieldSubmitted: widget.onFieldSubmitted,
         decoration: InputDecoration(
           filled: true,
           isDense: true,

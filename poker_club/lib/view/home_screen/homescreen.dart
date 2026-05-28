@@ -6,6 +6,7 @@ import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/utils/show_player_name_input_dialog.dart';
+import 'package:poker_club/viewmodel/auth_controller.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';
 import 'components/game_carousel.dart';
@@ -34,7 +35,10 @@ class _HomescreenState extends State<Homescreen> {
   initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      showInputNameDialog(context, (name) {});
+      final user = Get.find<AuthController>().user.value;
+      if (user?.firstName == null || user!.firstName.isEmpty) {
+        showInputNameDialog((name) {});
+      }
     });
   }
 

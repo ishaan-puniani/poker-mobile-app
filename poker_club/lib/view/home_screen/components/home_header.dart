@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
@@ -37,6 +38,13 @@ class HomeHeader extends StatefulWidget {
 class _HomeHeaderState extends State<HomeHeader> {
   final AuthController authController = Get.find<AuthController>();
   UserProfile? get user => authController.user.value;
+
+  String getAvatarAsset() {
+    if (user?.avatar != null) {
+      return 'assets/avatar/avtr_${user!.avatar}.svg';
+    }
+    return 'assets/avatar/avtr_1.svg';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,14 +190,15 @@ class _HomeHeaderState extends State<HomeHeader> {
         children: [
           if (user?.avatar != null)
             Container(
-              padding: EdgeInsets.all(2.r),
+              padding: EdgeInsets.all(1.5.r),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: ColorPallete.rightbuttongradient,
               ),
-              child: CircleAvatar(
-                radius: 20.r,
-                backgroundImage: NetworkImage(user?.avatar ?? ''),
+              child: SvgPicture.asset(
+                getAvatarAsset(),
+                width: 32.r,
+                height: 32.r,
               ),
             ),
           SizedBox(width: 12.w),
@@ -198,7 +207,7 @@ class _HomeHeaderState extends State<HomeHeader> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                user?.username ?? user?.mobile ?? '',
+                user?.fullName ?? user?.mobile ?? '',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 12.sp,
