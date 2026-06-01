@@ -91,8 +91,8 @@ class _LoginFormState extends State<LoginForm> {
               color: ColorPallete.textcolor,
             ),
             prefixIcon: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: AppIcon(AppIcons.mobile, size: 20),
+              padding: EdgeInsets.all(10.w),
+              child: AppIcon(AppIcons.mobile),
             ),
             backgroundColor: ColorPallete.brown,
             hint: "enter_mobile_number".tr,
@@ -118,8 +118,8 @@ class _LoginFormState extends State<LoginForm> {
               controller: _passwordController,
               textInputAction: TextInputAction.done,
               prefixIcon: Padding(
-                padding: EdgeInsets.all(8.w),
-                child: AppIcon(AppIcons.lock, size: 20),
+                padding: EdgeInsets.all(10.w),
+                child: AppIcon(AppIcons.lock),
               ),
               backgroundColor: ColorPallete.brown,
               hint: "enter_the_password".tr,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppIcon extends StatelessWidget {
@@ -20,8 +21,8 @@ class AppIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return SvgPicture.asset(
       assetPath,
-      width: width ?? size,
-      height: height ?? size,
+      width: width?.r ?? size?.r,
+      height: height?.r ?? size?.r,
       colorFilter: color != null
           ? ColorFilter.mode(color!, BlendMode.srcIn)
           : null,

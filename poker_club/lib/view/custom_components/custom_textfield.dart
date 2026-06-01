@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   final double? width;
@@ -73,7 +74,7 @@ class CustomTextField extends StatelessWidget {
 
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16).r,
 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),

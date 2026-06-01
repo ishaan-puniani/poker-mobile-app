@@ -93,7 +93,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
               size: 20.r,
             ),
           ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 16).r,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.radius),
             borderSide: BorderSide(color: widget.borderColor, width: 1.2),

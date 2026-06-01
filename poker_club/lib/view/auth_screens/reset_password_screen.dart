@@ -91,8 +91,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               controller: _passwordController,
                               textInputAction: TextInputAction.next,
                               prefixIcon: Padding(
-                                padding: EdgeInsets.all(8.w),
-                                child: AppIcon(AppIcons.lock, size: 20),
+                                padding: EdgeInsets.all(10.w),
+                                child: AppIcon(AppIcons.lock),
                               ),
                               backgroundColor: ColorPallete.brown,
                               hint: "enter_the_password".tr,
@@ -117,8 +117,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                               controller: _confirmPasswordController,
                               textInputAction: TextInputAction.next,
                               prefixIcon: Padding(
-                                padding: EdgeInsets.all(8.w),
-                                child: AppIcon(AppIcons.lock, size: 20),
+                                padding: EdgeInsets.all(10.w),
+                                child: AppIcon(AppIcons.lock),
                               ),
                               backgroundColor: ColorPallete.brown,
                               hint: "confirm_password".tr,

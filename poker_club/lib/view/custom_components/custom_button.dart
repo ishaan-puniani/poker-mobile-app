@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundGradient,
     this.borderColor,
     this.textGradient,
-    this.radius = 12,
+    this.radius = 48,
     this.borderWidth = 1,
     this.padding,
     this.height,

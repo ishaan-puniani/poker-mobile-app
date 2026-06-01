@@ -100,8 +100,8 @@ class _PlayerNameInputDialogState extends State<PlayerNameInputDialog> {
                             color: ColorPallete.textcolor,
                           ),
                       prefixIcon: Padding(
-                        padding: EdgeInsets.all(8.w),
-                        child: AppIcon(AppIcons.person, size: 20.r),
+                        padding: EdgeInsets.all(10.w),
+                        child: AppIcon(AppIcons.person),
                       ),
                       backgroundColor: ColorPallete.brown,
                       hint: "enter_your_name".tr,

@@ -77,8 +77,8 @@ class _RegisterFormState extends State<RegisterForm> {
               color: ColorPallete.textcolor,
             ),
             prefixIcon: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: AppIcon(AppIcons.mobile, size: 20),
+              padding: EdgeInsets.all(10.w),
+              child: AppIcon(AppIcons.mobile),
             ),
             backgroundColor: ColorPallete.brown,
             hint: "enter_mobile_number".tr,
@@ -98,8 +98,8 @@ class _RegisterFormState extends State<RegisterForm> {
             controller: _createPasswordController,
             textInputAction: TextInputAction.next,
             prefixIcon: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: AppIcon(AppIcons.lock, size: 20),
+              padding: EdgeInsets.all(10.w),
+              child: AppIcon(AppIcons.lock),
             ),
             backgroundColor: ColorPallete.brown,
             hint: "create_password".tr,
@@ -123,8 +123,8 @@ class _RegisterFormState extends State<RegisterForm> {
             controller: _confirmPasswordController,
             textInputAction: TextInputAction.next,
             prefixIcon: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: AppIcon(AppIcons.lock, size: 20),
+              padding: EdgeInsets.all(10.w),
+              child: AppIcon(AppIcons.lock),
             ),
             backgroundColor: ColorPallete.brown,
             hint: "confirm_password".tr,
@@ -148,8 +148,8 @@ class _RegisterFormState extends State<RegisterForm> {
             controller: _referredByController,
             textInputAction: TextInputAction.done,
             prefixIcon: Padding(
-              padding: EdgeInsets.all(8.w),
-              child: AppIcon(AppIcons.giftBox, size: 20),
+              padding: EdgeInsets.all(10.w),
+              child: AppIcon(AppIcons.giftBox),
             ),
             suffixIcon: SizedBox(
               width: 80,

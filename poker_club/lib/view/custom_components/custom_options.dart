@@ -55,8 +55,8 @@ class CustomOptions extends StatelessWidget {
                       color: ColorPallete.textcolor,
                     ),
                     prefixIcon: Padding(
-                      padding: EdgeInsets.all(8.w),
-                      child: AppIcon(AppIcons.mobile, size: 20),
+                      padding: EdgeInsets.all(10.w),
+                      child: AppIcon(AppIcons.mobile),
                     ),
                     backgroundColor: ColorPallete.brown,
                     hint: "enter_mobile_number".tr,
