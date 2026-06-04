@@ -11,19 +11,22 @@ class GameCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 240.w,
-      child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.h),
-        scrollDirection: Axis.horizontal,
-        itemCount: games.length,
-        itemBuilder: (context, index) {
-          return GameCard(
-            game: games[index],
-            onTap: () => onGameSelected?.call(index),
-          );
-        },
+    return Center(
+      child: SizedBox(
+        height: 240.w,
+        child: ListView.builder(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.h),
+          scrollDirection: Axis.horizontal,
+          itemCount: games.length,
+          itemBuilder: (context, index) {
+            return GameCard(
+              game: games[index],
+              onTap: () => onGameSelected?.call(index),
+            );
+          },
+        ),
       ),
     );
   }

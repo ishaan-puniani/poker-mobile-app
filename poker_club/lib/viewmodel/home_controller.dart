@@ -6,22 +6,6 @@ import '../model/poker_game.dart';
 class HomeController extends GetxController {
   final pokerGames = <PokerGame>[
     PokerGame(
-      title: 'OMAHA 5',
-      stakesText: 'Stakes: 100K / 200K',
-      imagePath: AppImages.gameCardOmaha5Thumbnail,
-      buttonText: 'JOIN TABLE',
-      badgeType: BadgeType.comingSoon,
-      badgeText: 'Coming Soon',
-    ),
-    PokerGame(
-      title: 'HIGH STAKES',
-      stakesText: 'Min Buy-in: 10M',
-      imagePath: AppImages.gameCardHighStakesThumbnail,
-      buttonText: 'GO NOW',
-      badgeType: BadgeType.vipOnly,
-      badgeText: 'VIP ONLY',
-    ),
-    PokerGame(
       title: 'TEXAS HOLD\'EM',
       stakesText: 'Stakes: 50K / 100K',
       imagePath: AppImages.gameCardTexasHoldemThumbnail,
@@ -40,6 +24,14 @@ class HomeController extends GetxController {
       stakesText: 'Prize Pool: 5B Chips',
       imagePath: AppImages.gameCardPrivateTableThumbnail,
       buttonText: 'JOIN TABLE',
+    ),
+    PokerGame(
+      title: 'HIGH STAKES',
+      stakesText: 'Min Buy-in: 10M',
+      imagePath: AppImages.gameCardHighStakesThumbnail,
+      buttonText: 'GO NOW',
+      badgeType: BadgeType.vipOnly,
+      badgeText: 'VIP ONLY',
     ),
   ].obs;
 
