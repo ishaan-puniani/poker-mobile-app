@@ -1,8 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/services/pref.dart';
 
 class ApiService {
   const ApiService._();
+
+  /// Guards against firing multiple logouts when several authenticated
+  /// requests fail with an expired token at the same time.
+  static bool _handlingExpiredToken = false;
 
   // Basic
   static const tenantId = '64b0bc14-6e24-4d10-9bf3-6afb7cac3ff9';
@@ -59,14 +64,30 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
+        // Some endpoints return 200 with a success:false / errorCode body.
+        if (useAuthToken) _checkExpiredToken(response.data);
         return response.data as T;
       } else {
         throw Exception('Failed to load data');
       }
     } catch (e) {
+      if (useAuthToken && e is DioException) {
+        _checkExpiredToken(e.response?.data);
+      }
       // ignore: avoid_print
       print('[$endpoint] API request error: $e');
       rethrow;
+    }
+  }
+
+  /// Logs the user out when an authenticated request reports an expired/invalid
+  /// session token (errorCode `EXPIRED_TOKEN`).
+  static void _checkExpiredToken(dynamic data) {
+    if (data is! Map) return;
+    final errorCode = data['errorCode'];
+    if (errorCode == 'EXPIRED_TOKEN' && !_handlingExpiredToken) {
+      _handlingExpiredToken = true;
+      AuthService.signOut().whenComplete(() => _handlingExpiredToken = false);
     }
   }
 
