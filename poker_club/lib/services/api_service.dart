@@ -31,6 +31,10 @@ class ApiService {
   // Player
   static const String playerUpdateNameEndpoint =
       '$pmsApiUrl/tenant/$tenantId/players/update-name';
+  static const String playerUpdateUsernameEndpoint =
+      '$pmsApiUrl/tenant/$tenantId/players/update-userName';
+  static const String playerAddAvatarEndpoint =
+      '$pmsApiUrl/tenant/$tenantId/players/add-avatar';
 
   static Future<T> sendPmsRequest<T>(
     String endpoint, {

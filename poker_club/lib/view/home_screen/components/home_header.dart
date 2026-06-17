@@ -8,6 +8,7 @@ import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_icon_button.dart';
+import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import '../../../model/user_profile.dart';
 import '../../custom_components/custom_button.dart';
@@ -38,13 +39,6 @@ class HomeHeader extends StatefulWidget {
 class _HomeHeaderState extends State<HomeHeader> {
   final AuthController authController = Get.find<AuthController>();
   UserProfile? get user => authController.user.value;
-
-  String getAvatarAsset() {
-    if (user?.avatar != null) {
-      return 'assets/avatar/avtr_${user!.avatar}.svg';
-    }
-    return 'assets/avatar/avtr_1.svg';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,19 +182,21 @@ class _HomeHeaderState extends State<HomeHeader> {
       padding: EdgeInsets.only(right: 16.w),
       child: Row(
         children: [
-          if (user?.avatar != null)
-            Container(
+          GestureDetector(
+            onTap: () => showMainMenuDialog(),
+            child: Container(
               padding: EdgeInsets.all(1.5.r),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: ColorPallete.rightbuttongradient,
               ),
               child: SvgPicture.asset(
-                getAvatarAsset(),
+                UserProfile.getAvatarAsset(user?.avatar),
                 width: 32.r,
                 height: 32.r,
               ),
             ),
+          ),
           SizedBox(width: 12.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

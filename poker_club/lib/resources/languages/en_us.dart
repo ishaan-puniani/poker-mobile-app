@@ -68,4 +68,9 @@ const Map<String, String> enUS = {
   "passwords_do_not_match": "Passwords do not match",
   "name_cant_be_empty": "Name can't be empty",
   "create_new_password_required": "Create new password is required",
+  "mobile_number": "Mobile Number",
+  "username": "Username",
+  "enter_username": "Enter username",
+  "username_required": "Username is required",
+  "update": "Update",
 };

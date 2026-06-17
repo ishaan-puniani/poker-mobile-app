@@ -63,4 +63,11 @@ class UserProfile {
       ),
     );
   }
+
+  static String getAvatarAsset(String? avatar) {
+    if (avatar != null && avatar.isNotEmpty) {
+      return 'assets/avatar/avtr_$avatar.svg';
+    }
+    return 'assets/avatar/avtr_1.svg';
+  }
 }

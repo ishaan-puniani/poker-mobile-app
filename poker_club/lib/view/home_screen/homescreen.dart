@@ -5,7 +5,7 @@ import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
-import 'package:poker_club/utils/show_player_name_input_dialog.dart';
+import 'package:poker_club/view/custom_components/player_name_input_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';

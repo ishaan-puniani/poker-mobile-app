@@ -16,6 +16,8 @@ class AppIcons {
   static const String person = "assets/icons/ic_person.svg";
   static const String close = "assets/icons/ic_close.svg";
   static const String chevronDown = "assets/icons/ic_chevron_down.svg";
+  static const String chevronLeft = "assets/icons/ic_chevron_left.svg";
+  static const String chevronRight = "assets/icons/ic_chevron_right.svg";
   static const String doubleChevronUp = "assets/icons/ic_double_chevron_up.svg";
   static const String check = "assets/icons/ic_check.svg";
   static const String fullscreen = "assets/icons/ic_fullscreen.svg";
@@ -23,4 +25,5 @@ class AppIcons {
   static const String messageBox = "assets/icons/ic_message_box.svg";
   static const String plus = "assets/icons/ic_plus.svg";
   static const String minus = "assets/icons/ic_minus.svg";
+  static const String editUnderline = "assets/icons/ic_edit_underline.svg";
 }

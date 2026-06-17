@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:poker_club/resources/color_pallete.dart';
 
 class CustomTextField extends StatelessWidget {
   final double? width;
   final double? height;
   final double radius;
+  final EdgeInsetsGeometry? padding;
+  final String? label;
+  final bool readOnly;
 
   final Color backgroundColor;
   final Color borderColor;
@@ -29,6 +32,8 @@ class CustomTextField extends StatelessWidget {
     this.width,
     this.height,
     this.radius = 12,
+    this.padding,
+    this.readOnly = false,
 
     required this.backgroundColor,
     this.borderColor = Colors.amber,
@@ -39,6 +44,7 @@ class CustomTextField extends StatelessWidget {
 
     required this.hint,
     this.hintStyle,
+    this.label,
 
     this.controller,
     this.validator,
@@ -55,6 +61,7 @@ class CustomTextField extends StatelessWidget {
       width: width ?? double.infinity,
       // height: height ?? 40,
       child: TextFormField(
+        readOnly: readOnly,
         controller: controller,
         validator: validator,
         obscureText: obscureText,
@@ -68,13 +75,18 @@ class CustomTextField extends StatelessWidget {
           filled: true,
           isDense: true,
           fillColor: backgroundColor,
+          labelText: label,
+          labelStyle: TextStyle(color: ColorPallete.yellow),
+          floatingLabelBehavior: label != null
+              ? FloatingLabelBehavior.always
+              : FloatingLabelBehavior.never,
 
           hintText: hint,
           hintStyle: hintStyle ?? const TextStyle(color: Colors.grey),
 
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16).r,
+          contentPadding: padding ?? const EdgeInsets.symmetric(horizontal: 16),
 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(radius),

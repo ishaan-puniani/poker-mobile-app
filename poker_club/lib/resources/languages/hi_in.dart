@@ -67,4 +67,9 @@ const Map<String, String> hiIN = {
   "passwords_do_not_match": "पासवर्ड मेल नहीं खाते",
   "name_cant_be_empty": "नाम खाली नहीं हो सकता",
   "create_new_password_required": "नया पासवर्ड बनाएं आवश्यक है",
+  "mobile_number": "मोबाइल नंबर",
+  "username": "उपयोगकर्ता नाम",
+  "enter_username": "उपयोगकर्ता नाम दर्ज करें",
+  "username_required": "उपयोगकर्ता नाम आवश्यक है",
+  "update": "अपडेट करें",
 };

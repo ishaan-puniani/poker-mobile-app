@@ -12,6 +12,15 @@ import 'package:poker_club/view/custom_components/custom_snackbar.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 
+void showInputNameDialog(Function(String? name) onNameSubmitted) {
+  Get.dialog(
+    Dialog.fullscreen(
+      backgroundColor: Colors.transparent,
+      child: PlayerNameInputDialog(),
+    ),
+  );
+}
+
 class PlayerNameInputDialog extends StatefulWidget {
   const PlayerNameInputDialog({super.key});
 
