@@ -37,4 +37,10 @@ class AppImages {
   static const String buyButton = "assets/ui/buy_button.svg";
   static const String headerInfoIcon = "assets/ui/header_info_icon.svg";
   static const String headerSettingIcon = "assets/ui/footer_setting_icon.svg";
+
+  // Home footer UI
+  static const String footerBackFrame = "assets/ui/footer_back_frame.svg";
+  static const String footerSpinIcon = "assets/ui/footer_spin_icon.svg";
+  static const String footerRewardsIcon = "assets/ui/footer_rewards_icon.svg";
+  static const String footerUpdatesIcon = "assets/ui/footer_updates_icon.svg";
 }

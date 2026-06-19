@@ -25,9 +25,22 @@ class _HomescreenState extends State<Homescreen> {
   final List<NavigationItem> navigationItems = [
     NavigationItem(AppIcons.club, 'RANKS'),
     NavigationItem(AppIcons.calender, 'MISSION'),
-    NavigationItem(AppIcons.dices, 'LUCKY SPIN'),
-    NavigationItem(AppIcons.giftBox, 'REWARDS'),
-    NavigationItem(AppIcons.mail, 'UPDATES'),
+    NavigationItem(
+      AppIcons.dices,
+      'LUCKY SPIN',
+      imageAsset: AppImages.footerSpinIcon,
+      isCenter: true,
+    ),
+    NavigationItem(
+      AppIcons.giftBox,
+      'REWARDS',
+      imageAsset: AppImages.footerRewardsIcon,
+    ),
+    NavigationItem(
+      AppIcons.mail,
+      'UPDATES',
+      imageAsset: AppImages.footerUpdatesIcon,
+    ),
   ];
   NavigationItem get selectedNavigationItem =>
       navigationItems[homeController.selectedTabIndex.value];
