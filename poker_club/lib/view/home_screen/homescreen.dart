@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
@@ -46,70 +47,66 @@ class _HomescreenState extends State<Homescreen> {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: ColorPallete.primarybgcolor,
-            image: DecorationImage(
-              image: AssetImage(AppImages.homebackground),
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withValues(alpha: 0.7),
-                BlendMode.darken,
-              ),
+        return Stack(
+          children: [
+            SvgPicture.asset(
+              AppImages.homebackground,
+              fit: BoxFit.fill,
+              width: double.infinity,
+              height: double.infinity,
             ),
-          ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SafeArea(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: HomeHeader(
-                      showBuyButton: true,
-                      showHelpButton: true,
-                      showSettingsButton: true,
-                    ),
-                  ),
-                  Positioned(
-                    top: 40.h,
-                    left: 0,
-                    right: 0,
-                    child: GameCarousel(
-                      games: controller.pokerGames,
-                      onGameSelected: (index) {
-                        controller.selectGame(index);
-                        Get.toNamed(AppRoutes.tableScreen);
-                      },
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Obx(
-                      () => BottomNavBar(
-                        selectedIndex: controller.selectedTabIndex.value,
-                        onItemSelected: (index) {
-                          if (index == 0) {
-                            Get.toNamed(AppRoutes.leaderboardScreen);
-                            return;
-                          }
-                          if (index == 1) {
-                            Get.toNamed(AppRoutes.missionScreen);
-                            return;
-                          }
-                          controller.changeTab(index);
-                        },
-                        navigationItems: navigationItems,
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              body: SafeArea(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: HomeHeader(
+                        showBuyButton: true,
+                        showHelpButton: true,
+                        showSettingsButton: true,
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 40.h,
+                      left: 0,
+                      right: 0,
+                      child: GameCarousel(
+                        games: controller.pokerGames,
+                        onGameSelected: (index) {
+                          controller.selectGame(index);
+                          Get.toNamed(AppRoutes.tableScreen);
+                        },
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Obx(
+                        () => BottomNavBar(
+                          selectedIndex: controller.selectedTabIndex.value,
+                          onItemSelected: (index) {
+                            if (index == 0) {
+                              Get.toNamed(AppRoutes.leaderboardScreen);
+                              return;
+                            }
+                            if (index == 1) {
+                              Get.toNamed(AppRoutes.missionScreen);
+                              return;
+                            }
+                            controller.changeTab(index);
+                          },
+                          navigationItems: navigationItems,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
+              extendBody: true,
             ),
-            extendBody: true,
-          ),
+          ],
         );
       },
     );

@@ -2,8 +2,7 @@ class AppImages {
   static const String logo = "assets/logo.png";
   static const String splashbackground =
       "assets/images/img_loading_screen_background.png";
-  static const String homebackground =
-      "assets/images/img_home_screen_background.jpg";
+  static const String homebackground = "assets/ui/main_background.svg";
 
   // Game Cards Thumbnails
   static const String gameCardOmaha5Thumbnail =
@@ -29,4 +28,13 @@ class AppImages {
   static const String goldCoins = "assets/images/img_gold_coins.png";
   static const String jackpotGalore = "assets/images/img_jackpot_galore.png";
   static const String weeklyCalender = "assets/images/img_weekly_calender.png";
+
+  // Home header UI
+  static const String headerFrame = "assets/ui/header_frame.svg";
+  static const String profileFrame = "assets/ui/profile_frame.svg";
+  static const String proLeagueButton = "assets/ui/proleague_button.svg";
+  static const String scoreButton = "assets/ui/score_button.svg";
+  static const String buyButton = "assets/ui/buy_button.svg";
+  static const String headerInfoIcon = "assets/ui/header_info_icon.svg";
+  static const String headerSettingIcon = "assets/ui/footer_setting_icon.svg";
 }
