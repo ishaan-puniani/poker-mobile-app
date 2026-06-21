@@ -9,12 +9,14 @@ class HomeController extends GetxController {
       title: 'TEXAS HOLD\'EM',
       stakesText: 'Stakes: 50K / 100K',
       imagePath: AppImages.gameCardTexasHoldemThumbnail,
+      cardArt: AppImages.cardTexasHoldem,
       buttonText: 'SELECT TABLE',
     ),
     PokerGame(
       title: 'TOURNAMENT',
       stakesText: 'Buy-in: 10K',
       imagePath: AppImages.gameCardTournamentThumbnail,
+      cardArt: AppImages.cardTournament,
       buttonText: 'REGISTER NOW',
       badgeType: BadgeType.timer,
       badgeText: 'STARTS IN: 30M',
@@ -23,15 +25,17 @@ class HomeController extends GetxController {
       title: 'PRIVATE TABLE',
       stakesText: 'Prize Pool: 5B Chips',
       imagePath: AppImages.gameCardPrivateTableThumbnail,
+      cardArt: AppImages.cardPrivateTable,
       buttonText: 'JOIN TABLE',
     ),
     PokerGame(
       title: 'HIGH STAKES',
       stakesText: 'Min Buy-in: 10M',
       imagePath: AppImages.gameCardHighStakesThumbnail,
+      cardArt: AppImages.cardHighStakes,
       buttonText: 'GO NOW',
       badgeType: BadgeType.vipOnly,
-      badgeText: 'VIP ONLY',
+      // badgeText: 'VIP ONLY',
     ),
   ].obs;
 

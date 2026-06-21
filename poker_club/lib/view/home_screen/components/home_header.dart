@@ -55,17 +55,13 @@ class _HomeHeaderState extends State<HomeHeader> {
             ),
             // Foreground content
             Padding(
-              padding: EdgeInsets.fromLTRB(36.w, 2.h, 36.w, 6.h),
+              padding: EdgeInsets.fromLTRB(40.w, 2.h, 40.w, 6.h),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Left: profile info
-                  if (widget.showProfileInfo)
-                    _buildProfileInfoSection()
-                  else
-                    const SizedBox.shrink(),
-
+                  if (widget.showProfileInfo) _buildProfileInfoSection(),
                   // Center: chips balance + BUY
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -216,7 +212,20 @@ class _HomeHeaderState extends State<HomeHeader> {
                 ),
               ),
               SizedBox(height: 2.h),
-              SvgPicture.asset(AppImages.proLeagueButton, height: 14.h),
+              Row(
+                spacing: 4.w,
+                children: [
+                  SvgPicture.asset(AppImages.proLeagueButton, height: 10.h),
+                  Text(
+                    'Pro League',
+                    style: TextStyle(
+                      color: ColorPallete.lightyellow,
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ],

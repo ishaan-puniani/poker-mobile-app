@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
@@ -61,63 +60,44 @@ class _HomescreenState extends State<Homescreen> {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return Stack(
+          fit: StackFit.expand,
           children: [
-            SvgPicture.asset(
-              AppImages.homebackground,
-              fit: BoxFit.fill,
-              width: double.infinity,
-              height: double.infinity,
-            ),
+            SvgPicture.asset(AppImages.homebackground),
             Scaffold(
               backgroundColor: Colors.transparent,
-              body: SafeArea(
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: HomeHeader(
-                        showBuyButton: true,
-                        showHelpButton: true,
-                        showSettingsButton: true,
-                      ),
-                    ),
-                    Positioned(
-                      top: 40.h,
-                      left: 0,
-                      right: 0,
-                      child: GameCarousel(
-                        games: controller.pokerGames,
-                        onGameSelected: (index) {
-                          controller.selectGame(index);
-                          Get.toNamed(AppRoutes.tableScreen);
-                        },
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Obx(
-                        () => BottomNavBar(
-                          selectedIndex: controller.selectedTabIndex.value,
-                          onItemSelected: (index) {
-                            if (index == 0) {
-                              Get.toNamed(AppRoutes.leaderboardScreen);
-                              return;
-                            }
-                            if (index == 1) {
-                              Get.toNamed(AppRoutes.missionScreen);
-                              return;
-                            }
-                            controller.changeTab(index);
-                          },
-                          navigationItems: navigationItems,
-                        ),
-                      ),
-                    ),
-                  ],
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(50.h),
+                child: HomeHeader(
+                  showBuyButton: true,
+                  showHelpButton: true,
+                  showSettingsButton: true,
                 ),
               ),
-              extendBody: true,
+              body: GameCarousel(
+                games: controller.pokerGames,
+                onGameSelected: (index) {
+                  controller.selectGame(index);
+                  Get.toNamed(AppRoutes.tableScreen);
+                },
+              ),
+              // extendBody: true,
+              bottomNavigationBar: Obx(
+                () => BottomNavBar(
+                  selectedIndex: controller.selectedTabIndex.value,
+                  onItemSelected: (index) {
+                    if (index == 0) {
+                      Get.toNamed(AppRoutes.leaderboardScreen);
+                      return;
+                    }
+                    if (index == 1) {
+                      Get.toNamed(AppRoutes.missionScreen);
+                      return;
+                    }
+                    controller.changeTab(index);
+                  },
+                  navigationItems: navigationItems,
+                ),
+              ),
             ),
           ],
         );

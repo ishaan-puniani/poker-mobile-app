@@ -38,6 +38,15 @@ class AppImages {
   static const String headerInfoIcon = "assets/ui/header_info_icon.svg";
   static const String headerSettingIcon = "assets/ui/footer_setting_icon.svg";
 
+  // Game cards
+  static const String cardTexasHoldem = "assets/ui/card_texas_holdem.svg";
+  static const String cardTournament = "assets/ui/card_tournament.svg";
+  static const String cardPrivateTable = "assets/ui/card_private_table.svg";
+  static const String cardHighStakes = "assets/ui/card_high_stakes.svg";
+  static const String gameCardButton = "assets/ui/game_card_button.svg";
+  static const String cardTitleRibbon = "assets/ui/card_title_ribbon.svg";
+  static const String timerFrame = "assets/ui/timer_frame.svg";
+
   // Home footer UI
   static const String footerBackFrame = "assets/ui/footer_back_frame.svg";
   static const String footerSpinIcon = "assets/ui/footer_spin_icon.svg";

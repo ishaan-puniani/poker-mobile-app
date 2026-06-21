@@ -12,20 +12,23 @@ class GameCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SizedBox(
-        height: 240.w,
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 12.h),
-          scrollDirection: Axis.horizontal,
-          itemCount: games.length,
-          itemBuilder: (context, index) {
-            return GameCard(
-              game: games[index],
-              onTap: () => onGameSelected?.call(index),
-            );
-          },
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: 200.h),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(8.w, 8.h, 8.w, 18.h),
+          child: ListView.separated(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: games.length,
+            separatorBuilder: (context, index) => SizedBox(width: 16.w),
+            itemBuilder: (context, index) {
+              final game = games[index];
+              return GameCard(
+                game: game,
+                onTap: () => onGameSelected?.call(index),
+              );
+            },
+          ),
         ),
       ),
     );
