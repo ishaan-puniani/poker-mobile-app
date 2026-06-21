@@ -41,6 +41,10 @@ class ApiService {
   static const String playerAddAvatarEndpoint =
       '$pmsApiUrl/tenant/$tenantId/players/add-avatar';
 
+  // Wallet
+  static const String walletBalanceEndpoint =
+      '$pmsApiUrl/tenant/$tenantId/wapas/balance/get-detailed-transaction-profile';
+
   static Future<T> sendPmsRequest<T>(
     String endpoint, {
     String method = 'GET',

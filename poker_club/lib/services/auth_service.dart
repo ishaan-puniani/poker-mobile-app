@@ -14,7 +14,12 @@ class AuthService {
     final res = await ApiService.sendPmsRequest<Map<String, dynamic>>(
       ApiService.registerEndpoint,
       method: 'POST',
-      body: {'mobile': mobile, 'password': password, 'referredBy': referredBy},
+      body: {
+        'mobile': mobile,
+        'password': password,
+        'referredBy': referredBy,
+        'enabledGames': ['poker'],
+      },
       useAuthToken: false,
     );
     if (res['otpNeeded'] == true || res['success'] != false) {

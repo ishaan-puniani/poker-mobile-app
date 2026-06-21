@@ -8,6 +8,7 @@ import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
+import 'package:poker_club/viewmodel/wallet_controller.dart';
 import '../../../model/user_profile.dart';
 
 class HomeHeader extends StatefulWidget {
@@ -35,6 +36,7 @@ class HomeHeader extends StatefulWidget {
 
 class _HomeHeaderState extends State<HomeHeader> {
   final AuthController authController = Get.find<AuthController>();
+  final WalletController walletController = Get.find<WalletController>();
   UserProfile? get user => authController.user.value;
 
   @override
@@ -151,9 +153,11 @@ class _HomeHeaderState extends State<HomeHeader> {
           ),
           Padding(
             // leave room for the coin medallion on the left of the asset
-            padding: EdgeInsets.only(left: 34.w, right: 18.w),
+            padding: EdgeInsets.only(left: 44.w, right: 18.w),
             child: Text(
-              user != null ? '\$${formatCoins(user!.coins)}' : '\$0',
+              walletController.isLoading.value
+                  ? '...'
+                  : '\$${formatCoins(walletController.balance.value)}',
               style: TextStyle(
                 color: ColorPallete.lightyellow,
                 fontSize: 15.sp,
