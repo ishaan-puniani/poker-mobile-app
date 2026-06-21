@@ -72,6 +72,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         validator: widget.validator,
         obscureText: _obscureText,
         keyboardType: widget.keyboardType,
+        cursorColor: Colors.white,
         textInputAction: widget.textInputAction,
         style: const TextStyle(color: Colors.white),
         textAlignVertical: TextAlignVertical.center,

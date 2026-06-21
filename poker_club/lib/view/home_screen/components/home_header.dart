@@ -136,7 +136,7 @@ class _HomeHeaderState extends State<HomeHeader> {
   Widget _buildBuyButton() {
     return GestureDetector(
       onTap: () {},
-      child: SvgPicture.asset(AppImages.buyButton, height: 24.h),
+      child: SvgPicture.asset(AppImages.buyButton, height: 22.h),
     );
   }
 
@@ -146,10 +146,13 @@ class _HomeHeaderState extends State<HomeHeader> {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          SvgPicture.asset(
-            AppImages.scoreButton,
-            // height: 24.h,
-            fit: BoxFit.fitWidth,
+          Padding(
+            padding: EdgeInsets.only(top: 3.h),
+            child: SvgPicture.asset(
+              AppImages.scoreButton,
+              // height: 24.h,
+              fit: BoxFit.fitWidth,
+            ),
           ),
           Padding(
             // leave room for the coin medallion on the left of the asset

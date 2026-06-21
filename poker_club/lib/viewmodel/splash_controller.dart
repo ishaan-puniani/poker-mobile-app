@@ -20,6 +20,7 @@ class SplashController extends GetxController {
   }
 
   Future<void> hitApi() async {
+    // Animate the progress bar up to 90% while the real work happens.
     timer = Timer.periodic(const Duration(milliseconds: 20), (t) {
       if (progress < 90) {
         progress += 2; // speed control
@@ -27,9 +28,11 @@ class SplashController extends GetxController {
       }
     });
 
-    await Future.delayed(
-      const Duration(milliseconds: 2500),
-    ); // Simulate API call delay
+    // Wait for the persisted session and user profile to actually load.
+    if (Get.isRegistered<AuthController>()) {
+      final authController = Get.find<AuthController>();
+      await authController.ready;
+    }
 
     timer?.cancel();
 

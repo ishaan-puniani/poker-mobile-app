@@ -10,10 +10,14 @@ class AuthController extends GetxController {
   final token = ''.obs;
   final user = Rxn<UserProfile>();
 
+  /// Completes once the persisted session (and user profile, if logged in)
+  /// has been loaded. The splash screen awaits this before navigating.
+  late final Future<void> ready;
+
   @override
   void onInit() {
     super.onInit();
-    loadAuthState();
+    ready = loadAuthState();
   }
 
   Future<void> loadAuthState() async {
@@ -21,7 +25,7 @@ class AuthController extends GetxController {
     token.value = savedToken;
     isAuthenticated.value = savedToken.isNotEmpty;
     if (isAuthenticated.value) {
-      fetchUserProfile();
+      await fetchUserProfile();
     }
   }
 
