@@ -11,7 +11,7 @@ dependencies:
     sdk: flutter
   get: ^4.6.6
   flutter_screenutil: ^5.9.3
-  google_fonts: ^6.1.0
+  google_fonts: ^8.1.0
   gradient_borders: ^1.0.2
   pinput: ^6.0.2
 

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/services/auth_service.dart';
+import 'package:poker_club/utils/custom_extensions.dart' show StringExtension;
 import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
@@ -137,36 +139,31 @@ class _HomeHeaderState extends State<HomeHeader> {
   }
 
   Widget _buildChipsBalanceSection() {
-    return Material(
-      color: Colors.red,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Material(
-            child: SvgPicture.asset(
-              AppImages.scoreButton,
-              fit: BoxFit.fitHeight,
-              height: 20.h,
-            ),
-          ),
-          Positioned(
-            left: 36.w,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 1.5.h),
-              child: Text(
-                walletController.isLoading.value
-                    ? '...'
-                    : '\$${formatCoins(walletController.balance.value)}',
-                style: TextStyle(
-                  color: ColorPallete.lightyellow,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.bold,
-                ),
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        SvgPicture.asset(
+          AppImages.scoreButton,
+          fit: BoxFit.fitHeight,
+          height: 20.h,
+        ),
+        Positioned(
+          left: 40.w,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 1.5.h),
+            child: Text(
+              walletController.isLoading.value
+                  ? '...'
+                  : '\$${formatCoins(walletController.balance.value)}',
+              style: GoogleFonts.montserrat(
+                color: ColorPallete.lightyellow,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -208,11 +205,11 @@ class _HomeHeaderState extends State<HomeHeader> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                user?.fullName ?? user?.mobile ?? '',
-                style: TextStyle(
+                user?.fullName.toTitleCase() ?? user?.mobile ?? '',
+                style: GoogleFonts.montserrat(
                   color: Colors.white,
                   fontSize: 12.sp,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: 2.h),
@@ -222,10 +219,9 @@ class _HomeHeaderState extends State<HomeHeader> {
                   SvgPicture.asset(AppImages.proLeagueButton, height: 10.h),
                   Text(
                     'Pro League',
-                    style: TextStyle(
+                    style: GoogleFonts.montserrat(
                       color: ColorPallete.lightyellow,
                       fontSize: 10.sp,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],

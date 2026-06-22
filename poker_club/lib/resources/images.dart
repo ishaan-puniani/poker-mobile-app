@@ -55,4 +55,16 @@ class AppImages {
   static const String footerUpdatesIcon = "assets/ui/footer_updates_icon.svg";
   static const String footerMissionIcon = "assets/ui/footer_mission_icon.svg";
   static const String footerRankingIcon = "assets/ui/footer_ranking_icon.svg";
+
+  // Player Name Input Dialog
+  static const String namePopupBg = "assets/ui/namepopup_bg.svg";
+  static const String mainCharacterPopup = "assets/ui/main_character_popup.svg";
+  static const String namePopupArrowDesignIcon =
+      "assets/ui/namepopup_arrow_design_icon.svg";
+  static const String namePopupDivider = "assets/ui/namepopup_divider.svg";
+  static const String namePopupIcon = "assets/ui/namepopup_icon.svg";
+  static const String namePopupNameInputFrame =
+      "assets/ui/namepopup_name_input_frame.svg";
+  static const String namePopupTopIconFrame =
+      "assets/ui/namepopup_top_icon_frame.svg";
 }

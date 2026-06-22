@@ -6,19 +6,18 @@ class LightTheme {
   static ThemeData get theme {
     final base = ThemeData.light();
 
-    final textTheme = GoogleFonts.interTextTheme(base.textTheme);
+    final textTheme = GoogleFonts.montserratTextTheme(base.textTheme);
 
     return base.copyWith(
       brightness: Brightness.light,
       scaffoldBackgroundColor: ColorPallete.darkRed,
-
       textTheme: textTheme.copyWith(
-        bodyMedium: GoogleFonts.inter(
+        bodyMedium: GoogleFonts.montserrat(
           fontSize: 14,
           fontWeight: FontWeight.w500,
         ),
-        bodyLarge: GoogleFonts.inter(fontWeight: FontWeight.w600),
-        titleMedium: GoogleFonts.inter(fontWeight: FontWeight.w700),
+        bodyLarge: GoogleFonts.montserrat(fontWeight: FontWeight.w600),
+        titleMedium: GoogleFonts.montserrat(fontWeight: FontWeight.w700),
       ),
 
       primaryTextTheme: textTheme,

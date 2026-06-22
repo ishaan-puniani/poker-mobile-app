@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 
@@ -37,13 +38,16 @@ class BottomNavBar extends StatelessWidget {
           bottom: 0,
           child: SvgPicture.asset(AppImages.footerBackFrame),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          spacing: 48.w,
-          children: List.generate(navigationItems.length, (index) {
-            return _buildNavItem(index, navigationItems[index]);
-          }),
+        Padding(
+          padding: EdgeInsets.only(bottom: 2.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            spacing: 52.w,
+            children: List.generate(navigationItems.length, (index) {
+              return _buildNavItem(index, navigationItems[index]);
+            }),
+          ),
         ),
       ],
     );
@@ -68,10 +72,10 @@ class BottomNavBar extends StatelessWidget {
           ),
           Text(
             item.label,
-            style: TextStyle(
+            style: GoogleFonts.cinzel(
               color: color,
-              fontSize: 14.sp,
-              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+              fontSize: isSelected ? 14.sp : 12.sp,
+              fontWeight: FontWeight.w800,
             ),
           ),
           Gap(4.h),
