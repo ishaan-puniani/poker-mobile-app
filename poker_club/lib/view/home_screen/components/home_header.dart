@@ -42,59 +42,55 @@ class _HomeHeaderState extends State<HomeHeader> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => SizedBox(
-        // height: 38.h,
-        width: double.infinity,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            // Ornate golden header frame background
-            Positioned.fill(
-              left: 12.w,
-              right: 12.w,
-              top: -5.h,
-              child: SvgPicture.asset(AppImages.headerFrame, fit: BoxFit.fill),
-            ),
-            // Foreground content
-            Padding(
-              padding: EdgeInsets.fromLTRB(40.w, 2.h, 40.w, 6.h),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Left: profile info
-                  if (widget.showProfileInfo) _buildProfileInfoSection(),
-                  // Center: chips balance + BUY
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      _buildChipsBalanceSection(),
-                      if (widget.showBuyButton) ...[
-                        SizedBox(width: 10.w),
-                        _buildBuyButton(),
-                      ],
+      () => Stack(
+        alignment: Alignment.center,
+        children: [
+          // Ornate golden header frame background
+          Positioned.fill(
+            left: 12.w,
+            right: 12.w,
+            top: -5.h,
+            child: SvgPicture.asset(AppImages.headerFrame, fit: BoxFit.fill),
+          ),
+          // Foreground content
+          Padding(
+            padding: EdgeInsets.fromLTRB(48.w, 2.h, 48.w, 6.h),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Left: profile info
+                if (widget.showProfileInfo) _buildProfileInfoSection(),
+                // Center: chips balance + BUY
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    _buildChipsBalanceSection(),
+                    if (widget.showBuyButton) ...[
+                      SizedBox(width: 10.w),
+                      _buildBuyButton(),
                     ],
+                  ],
+                ),
+
+                if (widget.title != null)
+                  Text(
+                    widget.title!,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
 
-                  if (widget.title != null)
-                    Text(
-                      widget.title!,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w700,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-
-                  // Right: help / settings / close
-                  _buildActionsSection(),
-                ],
-              ),
+                // Right: help / settings / close
+                _buildActionsSection(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -141,30 +137,31 @@ class _HomeHeaderState extends State<HomeHeader> {
   }
 
   Widget _buildChipsBalanceSection() {
-    return SizedBox(
-      height: 24.h,
+    return Material(
+      color: Colors.red,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 3.h),
+          Material(
             child: SvgPicture.asset(
               AppImages.scoreButton,
-              // height: 24.h,
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.fitHeight,
+              height: 20.h,
             ),
           ),
-          Padding(
-            // leave room for the coin medallion on the left of the asset
-            padding: EdgeInsets.only(left: 44.w, right: 18.w),
-            child: Text(
-              walletController.isLoading.value
-                  ? '...'
-                  : '\$${formatCoins(walletController.balance.value)}',
-              style: TextStyle(
-                color: ColorPallete.lightyellow,
-                fontSize: 15.sp,
-                fontWeight: FontWeight.bold,
+          Positioned(
+            left: 36.w,
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 1.5.h),
+              child: Text(
+                walletController.isLoading.value
+                    ? '...'
+                    : '\$${formatCoins(walletController.balance.value)}',
+                style: TextStyle(
+                  color: ColorPallete.lightyellow,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

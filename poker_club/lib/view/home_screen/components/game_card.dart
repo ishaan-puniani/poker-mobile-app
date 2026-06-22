@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:poker_club/components/app_button.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import '../../../model/poker_game.dart';
@@ -71,12 +72,13 @@ class GameCard extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: [
-          Transform.scale(
-            scaleY: 0.75,
-            child: SvgPicture.asset(AppImages.timerFrame, fit: BoxFit.fill),
+          SvgPicture.asset(
+            AppImages.timerFrame,
+            fit: BoxFit.fitHeight,
+            height: 16.h,
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(22.w, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(14.w, 0, 0, 0),
             child: Text(
               game.badgeText ?? '',
               maxLines: 1,
@@ -98,30 +100,32 @@ class GameCard extends StatelessWidget {
   Widget _buildButton() {
     return Padding(
       padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
-      child: GestureDetector(
+      child: AppButton(
         onTap: onTap,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Material(
-              child: SvgPicture.asset(
-                AppImages.gameCardButton,
-                fit: BoxFit.fitWidth,
-              ),
-            ),
-            Text(
-              game.buttonText,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: ColorPallete.richRed,
-                fontSize: 10.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
+        label: game.buttonText,
+        width: double.infinity,
+        // child: Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     Material(
+        //       child: SvgPicture.asset(
+        //         AppImages.gameCardButton,
+        //         fit: BoxFit.fitWidth,
+        //       ),
+        //     ),
+        //     Text(
+        //       game.buttonText,
+        //       maxLines: 1,
+        //       overflow: TextOverflow.ellipsis,
+        //       textAlign: TextAlign.center,
+        //       style: TextStyle(
+        //         color: ColorPallete.richRed,
+        //         fontSize: 10.sp,
+        //         fontWeight: FontWeight.bold,
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }

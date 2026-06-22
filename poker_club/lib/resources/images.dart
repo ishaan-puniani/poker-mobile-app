@@ -3,6 +3,7 @@ class AppImages {
   static const String splashbackground =
       "assets/images/img_loading_screen_background.png";
   static const String homebackground = "assets/ui/main_background.svg";
+  static const String mainButtonFrame = "assets/ui/main_button.svg";
 
   // Game Cards Thumbnails
   static const String gameCardOmaha5Thumbnail =
@@ -52,4 +53,6 @@ class AppImages {
   static const String footerSpinIcon = "assets/ui/footer_spin_icon.svg";
   static const String footerRewardsIcon = "assets/ui/footer_rewards_icon.svg";
   static const String footerUpdatesIcon = "assets/ui/footer_updates_icon.svg";
+  static const String footerMissionIcon = "assets/ui/footer_mission_icon.svg";
+  static const String footerRankingIcon = "assets/ui/footer_ranking_icon.svg";
 }
