@@ -38,6 +38,22 @@ class UserProfile {
   });
 
   String get fullName => '$firstName $lastName'.trim();
+  String get currencySymbol {
+    switch (currency) {
+      case 'USD':
+        return '\$';
+      case 'EUR':
+        return '€';
+      case 'GBP':
+        return '£';
+      case 'INR':
+        return '₹';
+      case 'PC':
+        return '🪙';
+      default:
+        return currency;
+    }
+  }
 
   factory UserProfile.fromJson(Map<String, dynamic> json) {
     return UserProfile(

@@ -9,6 +9,8 @@ import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/home_screen/components/game_tables.dart';
+import 'package:poker_club/viewmodel/auth_controller.dart';
+import 'package:poker_club/viewmodel/table_controller.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';
 
@@ -20,12 +22,24 @@ class TableScreen extends StatefulWidget {
 }
 
 class _TableScreenState extends State<TableScreen> {
+  final AuthController authController = Get.put(AuthController());
   final HomeController homeController = Get.put(HomeController());
+  final TableController tableController = Get.put(TableController());
   final String selectedGameId = Get.arguments as String;
   GameModeCard? get selectedGame {
     final games = homeController.games;
     final gameId = selectedGameId;
     return games.firstWhereOrNull((game) => game.id == gameId);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (selectedGame?.apiUrl != null && selectedGame!.apiUrl!.isNotEmpty) {
+        tableController.fetchTables(selectedGame!.apiUrl!);
+      }
+    });
   }
 
   @override
@@ -80,13 +94,33 @@ class _TableScreenState extends State<TableScreen> {
                         ),
                       ),
                     Expanded(
-                      child: Obx(
-                        () => GameTables(
-                          tables: homeController.tables,
-                          selectedIndex: controller.selectedTableIndex.value,
-                          onTableSelected: controller.selectTable,
-                        ),
-                      ),
+                      child: Obx(() {
+                        if (tableController.isLoading.value) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: ColorPallete.borderyellow,
+                            ),
+                          );
+                        }
+                        if (tableController.tables.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'No tables available',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                          );
+                        }
+                        return GameTables(
+                          tables: tableController.tables,
+                          selectedIndex:
+                              tableController.selectedTableIndex.value,
+                          onTableSelected: tableController.selectTable,
+                          userProfile: authController.user.value!,
+                        );
+                      }),
                     ),
                     _buildBottomWidget(controller),
                   ],

@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:poker_club/model/game_table.dart';
+import 'package:poker_club/model/user_profile.dart';
 import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/utils/custom_functions.dart';
 
 class GameTables extends StatelessWidget {
   final List<GameTable> tables;
   final int selectedIndex;
   final Function(int index)? onTableSelected;
+  final UserProfile userProfile;
 
   const GameTables({
     super.key,
     required this.tables,
     required this.selectedIndex,
     this.onTableSelected,
+    required this.userProfile,
   });
 
   @override
@@ -40,6 +44,11 @@ class GameTables extends StatelessWidget {
 
   Widget _buildTableCard(int index) {
     final isSelected = index == selectedIndex;
+    final currencySymbol = userProfile.currencySymbol;
+    final stakes =
+        "$currencySymbol${formatCoins(tables[index].smallBlind, true)}/${formatCoins(tables[index].bigBlind, true)}";
+    final buyIn =
+        "BUY IN: ${formatCoins(tables[index].minBuyIn, true)}-${formatCoins(tables[index].maxBuyIn, true)}";
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSelected ? 8.w : 0),
       child: Transform.scale(
@@ -83,7 +92,7 @@ class GameTables extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  tables[index].stakes,
+                  stakes,
                   style: TextStyle(
                     color: Colors.yellow.shade700,
                     fontSize: 20.sp,
@@ -92,7 +101,7 @@ class GameTables extends StatelessWidget {
                 ),
                 SizedBox(height: 2.h),
                 Text(
-                  "BUY IN: ${tables[index].buyIn}",
+                  buyIn,
                   style: TextStyle(
                     color: Colors.yellow.shade700,
                     fontSize: 12.sp,
@@ -129,7 +138,7 @@ class GameTables extends StatelessWidget {
                       margin: EdgeInsets.symmetric(horizontal: 8.w),
                     ),
                     Text(
-                      "+${tables[index].maxCharge}LV",
+                      "+${tables[index].serviceCharge}LV",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 11.sp,
