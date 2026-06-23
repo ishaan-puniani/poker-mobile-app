@@ -52,7 +52,7 @@ class SplashController extends GetxController {
 
     if (Get.isRegistered<AuthController>()) {
       final authController = Get.find<AuthController>();
-      if (authController.isAuthenticated.value) {
+      if (authController.isAuthenticated) {
         Get.offAllNamed('/home');
         return;
       }

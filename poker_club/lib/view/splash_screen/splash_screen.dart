@@ -16,7 +16,6 @@ class SplashScreen extends StatelessWidget {
     return GetBuilder<SplashController>(
       builder: (splashController) {
         return Scaffold(
-          // extendBody: true,
           body: Container(
             decoration: BoxDecoration(
               gradient: ColorPallete.primarybgcolor,

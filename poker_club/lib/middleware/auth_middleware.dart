@@ -8,7 +8,7 @@ class AuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     if (Get.isRegistered<AuthController>()) {
       final authController = Get.find<AuthController>();
-      if (authController.hasToken || authController.isAuthenticated.value) {
+      if (authController.isAuthenticated) {
         return null;
       }
     }

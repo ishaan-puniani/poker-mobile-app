@@ -12,11 +12,24 @@ class GameModeCardTag {
   }
 }
 
+enum GameModeActionButtonText {
+  selectTable('SELECT_TABLE', 'Select Table'),
+  registerNow('REGISTER_NOW', 'Register Now'),
+  requestTable('REQUEST_TABLE', 'Request Table'),
+  joinTable('JOIN_TABLE', 'Join Table'),
+  joinNow('JOIN_NOW', 'Join Now'),
+  noAction('NO_ACTION', 'No Action');
+
+  final String value;
+  final String displayText;
+  const GameModeActionButtonText(this.value, [this.displayText = '']);
+}
+
 class GameModeCard {
   final String id;
   final String? backgroundUrl;
   final String cardTitle;
-  final String actionButtonText;
+  final GameModeActionButtonText actionButtonText;
   final String? subtitleText;
   final String? apiUrl;
   final GameModeCardTag? topOverlayTag;
@@ -37,22 +50,25 @@ class GameModeCard {
 
   factory GameModeCard.fromJson(Map<String, dynamic> json) {
     // Use draft fields for testing
-    final draftData = json['draft'] as Map<String, dynamic>? ?? json;
+    final data = json['draft'] as Map<String, dynamic>? ?? json;
 
     return GameModeCard(
       id: json['id'] ?? '',
-      backgroundUrl: draftData['backgroundUrl'],
-      cardTitle: draftData['cardTitle'] ?? '',
-      actionButtonText: draftData['actionButtonText'] ?? '',
-      subtitleText: draftData['subtitleText'],
-      apiUrl: draftData['apiUrl'],
-      topOverlayTag: draftData['topOverlayTag'] != null
+      backgroundUrl: data['backgroundUrl'],
+      cardTitle: data['cardTitle'] ?? '',
+      actionButtonText: GameModeActionButtonText.values.firstWhere(
+        (e) => e.value == data['actionButtonText'],
+        orElse: () => GameModeActionButtonText.noAction,
+      ),
+      subtitleText: data['subtitleText'],
+      apiUrl: data['apiUrl'],
+      topOverlayTag: data['topOverlayTag'] != null
           ? GameModeCardTag.fromJson(
-              draftData['topOverlayTag'] as Map<String, dynamic>,
+              data['topOverlayTag'] as Map<String, dynamic>,
             )
           : null,
-      active: draftData['active'] ?? true,
-      tenantId: draftData['tenantId'] ?? '',
+      active: data['active'] ?? true,
+      tenantId: data['tenantId'] ?? '',
     );
   }
 }

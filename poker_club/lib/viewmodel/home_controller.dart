@@ -44,15 +44,10 @@ class HomeController extends GetxController {
   ].obs;
 
   final selectedTabIndex = 2.obs;
-  final selectedGameIndex = 0.obs;
   final selectedTableIndex = 0.obs;
 
   void setGames(List<GameModeCard> gameCards) {
     games.value = gameCards;
-  }
-
-  void selectGame(int index) {
-    selectedGameIndex.value = index;
   }
 
   void selectTable(int index) {

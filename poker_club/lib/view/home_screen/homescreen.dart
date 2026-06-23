@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
+import 'package:poker_club/view/custom_components/custom_snackbar.dart';
 import 'package:poker_club/view/custom_components/player_name_input_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import '../../viewmodel/home_controller.dart';
@@ -63,8 +65,25 @@ class _HomescreenState extends State<Homescreen> {
                 child: GameCarousel(
                   games: controller.games,
                   onGameSelected: (index) {
-                    controller.selectGame(index);
-                    Get.toNamed(AppRoutes.tableScreen);
+                    final selectedGame = controller.games[index];
+
+                    // Select Table Action
+                    if (selectedGame.actionButtonText ==
+                        GameModeActionButtonText.selectTable) {
+                      if (selectedGame.apiUrl != null &&
+                          selectedGame.apiUrl!.isNotEmpty) {
+                        Get.toNamed(
+                          AppRoutes.tableScreen,
+                          arguments: selectedGame.id,
+                        );
+                      } else {
+                        CustomSnackbar.show(
+                          'API URL is not available for this game.',
+                          context,
+                          type: SnackbarType.error,
+                        );
+                      }
+                    }
                   },
                 ),
               ),

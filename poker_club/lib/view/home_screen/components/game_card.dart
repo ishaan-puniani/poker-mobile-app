@@ -121,7 +121,7 @@ class GameCard extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
       child: AppButton(
         onTap: onTap,
-        label: game.actionButtonText.replaceAll("_", " "),
+        label: game.actionButtonText.displayText.toUpperCase(),
         width: double.infinity,
       ),
     );

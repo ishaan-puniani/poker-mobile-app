@@ -21,13 +21,11 @@ class TableScreen extends StatefulWidget {
 
 class _TableScreenState extends State<TableScreen> {
   final HomeController homeController = Get.put(HomeController());
+  final String selectedGameId = Get.arguments as String;
   GameModeCard? get selectedGame {
     final games = homeController.games;
-    final index = homeController.selectedGameIndex.value;
-    if (index >= 0 && index < games.length) {
-      return games[index];
-    }
-    return null;
+    final gameId = selectedGameId;
+    return games.firstWhereOrNull((game) => game.id == gameId);
   }
 
   @override
