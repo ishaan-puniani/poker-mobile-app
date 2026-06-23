@@ -59,14 +59,15 @@ class _HomescreenState extends State<Homescreen> {
                   showSettingsButton: true,
                 ),
               ),
-              body: GameCarousel(
-                games: controller.pokerGames,
-                onGameSelected: (index) {
-                  controller.selectGame(index);
-                  Get.toNamed(AppRoutes.tableScreen);
-                },
+              body: Center(
+                child: GameCarousel(
+                  games: controller.pokerGames,
+                  onGameSelected: (index) {
+                    controller.selectGame(index);
+                    Get.toNamed(AppRoutes.tableScreen);
+                  },
+                ),
               ),
-              // extendBody: true,
               bottomNavigationBar: Obx(
                 () => BottomNavBar(
                   selectedIndex: controller.selectedTabIndex.value,

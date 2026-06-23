@@ -119,7 +119,7 @@ class _HomeHeaderState extends State<HomeHeader> {
       children.add(
         GestureDetector(
           onTap: widget.onClose,
-          child: SvgPicture.asset(AppImages.headerSettingIcon, height: 36.r),
+          child: SvgPicture.asset(AppImages.blackCrossIcon, height: 34.r),
         ),
       );
     }

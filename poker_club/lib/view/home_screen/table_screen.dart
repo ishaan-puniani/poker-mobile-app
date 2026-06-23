@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:poker_club/components/app_button.dart';
 import 'package:poker_club/model/poker_game.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
-import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/home_screen/components/game_tables.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';
@@ -25,123 +28,111 @@ class _TableScreenState extends State<TableScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       builder: (controller) {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: ColorPallete.primarybgcolor,
-            image: DecorationImage(
-              image: AssetImage(AppImages.tableScreenBackground),
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
-              colorFilter: ColorFilter.mode(
-                ColorPallete.darkRed.withValues(alpha: 0.7),
-                BlendMode.color,
+        return Stack(
+          fit: StackFit.expand,
+          children: [
+            SvgPicture.asset(AppImages.homebackground),
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(50.h),
+                child: HomeHeader(
+                  showBuyButton: true,
+                  showHelpButton: true,
+                  showCloseButton: true,
+                  onClose: () => Get.back(),
+                ),
               ),
-            ),
-          ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SafeArea(
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: HomeHeader(
-                      showHelpButton: true,
-                      showCloseButton: true,
-                      onClose: () => Get.back(),
-                    ),
-                  ),
-                  Positioned(
-                    top: 48.h,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Column(
-                      children: [
-                        Text(
-                          selectedGame.title,
-                          style: TextStyle(
-                            fontSize: 20.sp,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
-                            fontStyle: FontStyle.italic,
+              body: Center(
+                child: Column(
+                  children: [
+                    Gap(8.h),
+                    SizedBox(
+                      height: 20.h,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            AppImages.cardTitleRibbon,
+                            fit: BoxFit.fitWidth,
                           ),
-                        ),
-                        Obx(
-                          () => GameTables(
-                            tables: homeController.tables,
-                            selectedIndex: controller.selectedTableIndex.value,
-                            onTableSelected: controller.selectTable,
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
+                            child: Text(
+                              selectedGame.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.cinzel(
+                                color: ColorPallete.borderyellow,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 16.r),
-                      child: CustomButton(
-                        onPressed: () {
-                          // Implement play now action
-                        },
-                        text: "PLAY NOW",
-                        width: 135.w,
-                        height: 20.h,
-                        radius: 100,
-                        textStyle: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.sp,
-                        ),
-                        backgroundGradient: ColorPallete.rightbuttongradient,
+                        ],
                       ),
                     ),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(bottom: 16.r, left: 16.r),
-                      child: CustomButton(
-                        onPressed: () {},
-                        text: "TABLE SETTINGS",
-                        width: 155.w,
-                        height: 20.h,
-                        radius: 100,
-                        textStyle: TextStyle(
-                          color: Colors.yellow.shade700,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14.sp,
+                    Expanded(
+                      child: Obx(
+                        () => GameTables(
+                          tables: homeController.tables,
+                          selectedIndex: controller.selectedTableIndex.value,
+                          onTableSelected: controller.selectTable,
                         ),
-                        borderWidth: 1,
-                        borderColor: Colors.yellow.shade700,
-                        backgroundColor: Colors.transparent,
                       ),
                     ),
-                  ),
-                ],
+                    _buildBottomWidget(controller),
+                  ],
+                ),
               ),
             ),
-            extendBody: true,
-          ),
+          ],
         );
       },
     );
   }
 
-  Widget buildBottomNavBar(HomeController controller) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.5),
-        borderRadius: BorderRadius.circular(30.r),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+  Widget _buildBottomWidget(HomeController controller) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(32.w, 0, 32.w, 8.h),
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-          CustomButton(onPressed: () {}, text: 'TABLE SETTINGS'),
-          CustomButton(onPressed: () {}, text: 'PLAY NOW'),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                SvgPicture.asset(
+                  AppImages.tableSettingsButtonFrame,
+                  width: 135.w,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 36.w),
+                  child: Text(
+                    "TABLE SETTINGS",
+                    style: TextStyle(
+                      color: Colors.yellow.shade700,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10.sp,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Center(
+            child: AppButton(
+              onTap: () {},
+              label: "PLAY NOW",
+              width: 145.w,
+              height: 12.h,
+              labelFontSize: 13.sp,
+            ),
+          ),
+          SizedBox(width: 10.w),
         ],
       ),
     );

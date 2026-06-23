@@ -4,6 +4,7 @@ class AppImages {
       "assets/images/img_loading_screen_background.png";
   static const String homebackground = "assets/ui/main_background.svg";
   static const String mainButtonFrame = "assets/ui/main_button.svg";
+  static const String blackCrossIcon = "assets/ui/black_cross_icon.svg";
 
   // Game Cards Thumbnails
   static const String gameCardOmaha5Thumbnail =
@@ -67,4 +68,13 @@ class AppImages {
       "assets/ui/namepopup_name_input_frame.svg";
   static const String namePopupTopIconFrame =
       "assets/ui/namepopup_top_icon_frame.svg";
+
+  // Select Table screen
+  static const String tableCardBg = "assets/ui/tablecard_bg.png";
+  static const String tableCardChargeIcon =
+      "assets/ui/tablecard_charge_icon.svg";
+  static const String tableCardCrownIcon = "assets/ui/tablecard_crown_icon.svg";
+  static const String tableCardSpadeIcon = "assets/ui/tablecard_spade_icon.svg";
+  static const String tableSettingsButtonFrame =
+      "assets/ui/tablesettings_button_frame.svg";
 }
