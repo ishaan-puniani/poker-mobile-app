@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../model/poker_game.dart';
+import '../../../model/game_mode_card.dart';
 import 'game_card.dart';
 
 class GameCarousel extends StatelessWidget {
-  final List<PokerGame> games;
+  final List<GameModeCard> games;
   final void Function(int)? onGameSelected;
 
   const GameCarousel({super.key, required this.games, this.onGameSelected});

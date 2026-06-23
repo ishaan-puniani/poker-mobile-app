@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/components/app_button.dart';
-import 'package:poker_club/model/poker_game.dart';
+import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/home_screen/components/game_tables.dart';
@@ -21,8 +21,14 @@ class TableScreen extends StatefulWidget {
 
 class _TableScreenState extends State<TableScreen> {
   final HomeController homeController = Get.put(HomeController());
-  PokerGame get selectedGame =>
-      homeController.pokerGames[homeController.selectedGameIndex.value];
+  GameModeCard? get selectedGame {
+    final games = homeController.games;
+    final index = homeController.selectedGameIndex.value;
+    if (index >= 0 && index < games.length) {
+      return games[index];
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,33 +53,34 @@ class _TableScreenState extends State<TableScreen> {
                 child: Column(
                   children: [
                     Gap(8.h),
-                    SizedBox(
-                      height: 20.h,
-                      child: Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            AppImages.cardTitleRibbon,
-                            fit: BoxFit.fitWidth,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
-                            child: Text(
-                              selectedGame.title,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.cinzel(
-                                color: ColorPallete.borderyellow,
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0.5,
+                    if (selectedGame != null)
+                      SizedBox(
+                        height: 20.h,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SvgPicture.asset(
+                              AppImages.cardTitleRibbon,
+                              fit: BoxFit.fitWidth,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
+                              child: Text(
+                                selectedGame!.cardTitle.replaceAll('_', ' '),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.cinzel(
+                                  color: ColorPallete.borderyellow,
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 0.5,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
                     Expanded(
                       child: Obx(
                         () => GameTables(

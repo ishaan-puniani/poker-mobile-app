@@ -31,8 +31,9 @@ class AuthController extends GetxController {
 
   Future<void> fetchUserProfile() async {
     final userJson = await AuthService.me();
+    final authController = Get.find<AuthController>();
     if (userJson['success'] == false) {
-      await AuthService.signOut();
+      await authController.logout();
       return;
     }
     user.value = UserProfile.fromJson(userJson);
@@ -53,7 +54,7 @@ class AuthController extends GetxController {
   Future<void> logout() async {
     token.value = '';
     isAuthenticated.value = false;
-    await Pref.remove(_tokenKey);
+    await AuthService.signOut();
   }
 
   bool get hasToken => token.value.isNotEmpty;

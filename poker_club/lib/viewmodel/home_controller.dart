@@ -1,43 +1,9 @@
 import 'package:get/get.dart';
+import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/model/game_table.dart';
-import 'package:poker_club/resources/images.dart';
-import '../model/poker_game.dart';
 
 class HomeController extends GetxController {
-  final pokerGames = <PokerGame>[
-    PokerGame(
-      title: 'TEXAS HOLD\'EM',
-      stakesText: 'Stakes: 50K / 100K',
-      imagePath: AppImages.gameCardTexasHoldemThumbnail,
-      cardArt: AppImages.cardTexasHoldem,
-      buttonText: 'SELECT TABLE',
-    ),
-    PokerGame(
-      title: 'TOURNAMENT',
-      stakesText: 'Buy-in: 10K',
-      imagePath: AppImages.gameCardTournamentThumbnail,
-      cardArt: AppImages.cardTournament,
-      buttonText: 'REGISTER NOW',
-      badgeType: BadgeType.timer,
-      badgeText: 'STARTS IN: 30M',
-    ),
-    PokerGame(
-      title: 'PRIVATE TABLE',
-      stakesText: 'Prize Pool: 5B Chips',
-      imagePath: AppImages.gameCardPrivateTableThumbnail,
-      cardArt: AppImages.cardPrivateTable,
-      buttonText: 'JOIN TABLE',
-    ),
-    PokerGame(
-      title: 'HIGH STAKES',
-      stakesText: 'Min Buy-in: 10M',
-      imagePath: AppImages.gameCardHighStakesThumbnail,
-      cardArt: AppImages.cardHighStakes,
-      buttonText: 'GO NOW',
-      badgeType: BadgeType.vipOnly,
-      // badgeText: 'VIP ONLY',
-    ),
-  ].obs;
+  final games = <GameModeCard>[].obs;
 
   final List<GameTable> tables = [
     GameTable(
@@ -80,6 +46,10 @@ class HomeController extends GetxController {
   final selectedTabIndex = 2.obs;
   final selectedGameIndex = 0.obs;
   final selectedTableIndex = 0.obs;
+
+  void setGames(List<GameModeCard> gameCards) {
+    games.value = gameCards;
+  }
 
   void selectGame(int index) {
     selectedGameIndex.value = index;

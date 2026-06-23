@@ -110,11 +110,6 @@ class AuthService {
 
   static Future<void> signOut() async {
     await Pref.remove('token');
-
-    if (Get.isRegistered<AuthController>()) {
-      await Get.find<AuthController>().logout();
-    }
-
     Get.offAllNamed(AppRoutes.splash);
   }
 

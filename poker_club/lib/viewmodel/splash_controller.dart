@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:get/get.dart';
+import 'package:poker_club/services/game_service.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
+import 'package:poker_club/viewmodel/home_controller.dart';
 
 class SplashController extends GetxController {
   int progress = 0; // 👈 now 0 to 100
@@ -28,10 +30,19 @@ class SplashController extends GetxController {
       }
     });
 
+    // Fetch game cards
+    final gameCards = await GameService.fetchGameCards();
+
     // Wait for the persisted session and user profile to actually load.
     if (Get.isRegistered<AuthController>()) {
       final authController = Get.find<AuthController>();
       await authController.ready;
+    }
+
+    // Set game cards in HomeController
+    if (Get.isRegistered<HomeController>()) {
+      final homeController = Get.find<HomeController>();
+      homeController.setGames(gameCards);
     }
 
     timer?.cancel();

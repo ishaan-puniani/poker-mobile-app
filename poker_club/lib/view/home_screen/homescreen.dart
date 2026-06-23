@@ -61,7 +61,7 @@ class _HomescreenState extends State<Homescreen> {
               ),
               body: Center(
                 child: GameCarousel(
-                  games: controller.pokerGames,
+                  games: controller.games,
                   onGameSelected: (index) {
                     controller.selectGame(index);
                     Get.toNamed(AppRoutes.tableScreen);

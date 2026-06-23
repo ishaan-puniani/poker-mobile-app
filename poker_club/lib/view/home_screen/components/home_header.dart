@@ -110,7 +110,7 @@ class _HomeHeaderState extends State<HomeHeader> {
     if (widget.showSettingsButton) {
       children.add(
         GestureDetector(
-          onTap: () => AuthService.signOut(),
+          onTap: () => authController.logout(),
           child: SvgPicture.asset(AppImages.headerSettingIcon, height: 36.r),
         ),
       );

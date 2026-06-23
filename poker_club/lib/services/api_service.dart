@@ -13,6 +13,8 @@ class ApiService {
   static const tenantId = '64b0bc14-6e24-4d10-9bf3-6afb7cac3ff9';
   static const String pmsApiUrl =
       'https://pms-lukkywin-api-twkwng2veq-em.a.run.app/api';
+  static const String gmsApiUrl =
+      'https://poker-api-twkwng2veq-em.a.run.app/api';
 
   // Auth
   static const String registerEndpoint =
@@ -44,6 +46,9 @@ class ApiService {
   // Wallet
   static const String walletBalanceEndpoint =
       '$pmsApiUrl/tenant/$tenantId/wapas/balance/get-detailed-transaction-profile';
+
+  // Game
+  static const String gameModeCardsEndpoint = '$gmsApiUrl/game-mode-cards';
 
   static Future<T> sendPmsRequest<T>(
     String endpoint, {
@@ -80,6 +85,40 @@ class ApiService {
       }
       // ignore: avoid_print
       print('[$endpoint] API request error: $e');
+      rethrow;
+    }
+  }
+
+  static Future<T> sendGmsRequest<T>(
+    String endpoint, {
+    String method = 'GET',
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+    bool useAuthToken = true,
+  }) async {
+    try {
+      final Map<String, dynamic> headers = {};
+      if (useAuthToken) {
+        final token = await Pref.read('token');
+        if (token.isNotEmpty) {
+          headers['Authorization'] = 'Bearer $token';
+        }
+      }
+      final response = await Dio().request(
+        endpoint,
+        data: body,
+        queryParameters: queryParameters,
+        options: Options(method: method, headers: headers),
+      );
+
+      if (response.statusCode == 200) {
+        return response.data as T;
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print('[$endpoint] GMS API request error: $e');
       rethrow;
     }
   }
