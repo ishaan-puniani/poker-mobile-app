@@ -9,6 +9,7 @@ import 'package:poker_club/view/auth_screens/sign_up_screen.dart';
 import 'package:poker_club/view/home_screen/homescreen.dart';
 import 'package:poker_club/view/home_screen/leaderboard_screen.dart';
 import 'package:poker_club/view/home_screen/mission_screen.dart';
+import 'package:poker_club/view/home_screen/play_screen.dart';
 import 'package:poker_club/view/home_screen/table_screen.dart';
 import 'package:poker_club/view/splash_screen/splash_screen.dart';
 
@@ -80,6 +81,13 @@ class AppPages {
     GetPage(
       name: AppRoutes.missionScreen,
       page: () => MissionScreen(),
+      transitionDuration: const Duration(milliseconds: 200),
+      transition: Transition.rightToLeftWithFade,
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: AppRoutes.playScreen,
+      page: () => PlayScreen(),
       transitionDuration: const Duration(milliseconds: 200),
       transition: Transition.rightToLeftWithFade,
       middlewares: [AuthMiddleware()],

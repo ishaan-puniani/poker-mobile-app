@@ -83,7 +83,7 @@ class GameTables extends StatelessWidget {
               children: [
                 SizedBox(height: 12.h),
                 Text(
-                  'STAKES',
+                  tables[index].name.toUpperCase(),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14.sp,

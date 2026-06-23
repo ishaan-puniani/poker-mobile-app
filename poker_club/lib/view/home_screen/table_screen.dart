@@ -44,96 +44,93 @@ class _TableScreenState extends State<TableScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      builder: (controller) {
-        return Stack(
-          fit: StackFit.expand,
-          children: [
-            SvgPicture.asset(AppImages.homebackground),
-            Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: PreferredSize(
-                preferredSize: Size.fromHeight(50.h),
-                child: HomeHeader(
-                  showBuyButton: true,
-                  showHelpButton: true,
-                  showCloseButton: true,
-                  onClose: () => Get.back(),
-                ),
-              ),
-              body: Center(
-                child: Column(
-                  children: [
-                    Gap(8.h),
-                    if (selectedGame != null)
-                      SizedBox(
-                        height: 20.h,
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              AppImages.cardTitleRibbon,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
-                              child: Text(
-                                selectedGame!.cardTitle.replaceAll('_', ' '),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.cinzel(
-                                  color: ColorPallete.borderyellow,
-                                  fontSize: 12.sp,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    Expanded(
-                      child: Obx(() {
-                        if (tableController.isLoading.value) {
-                          return Center(
-                            child: CircularProgressIndicator(
-                              color: ColorPallete.borderyellow,
-                            ),
-                          );
-                        }
-                        if (tableController.tables.isEmpty) {
-                          return Center(
-                            child: Text(
-                              'No tables available',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16.sp,
-                              ),
-                            ),
-                          );
-                        }
-                        return GameTables(
-                          tables: tableController.tables,
-                          selectedIndex:
-                              tableController.selectedTableIndex.value,
-                          onTableSelected: tableController.selectTable,
-                          userProfile: authController.user.value!,
-                        );
-                      }),
-                    ),
-                    _buildBottomWidget(controller),
-                  ],
-                ),
+    return Obx(
+      () => Stack(
+        fit: StackFit.expand,
+        children: [
+          SvgPicture.asset(AppImages.homebackground),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50.h),
+              child: HomeHeader(
+                showBuyButton: true,
+                showHelpButton: true,
+                showCloseButton: true,
+                onClose: () => Get.back(),
               ),
             ),
-          ],
-        );
-      },
+            body: Center(
+              child: Column(
+                children: [
+                  Gap(8.h),
+                  if (selectedGame != null)
+                    SizedBox(
+                      height: 20.h,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            AppImages.cardTitleRibbon,
+                            fit: BoxFit.fitWidth,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
+                            child: Text(
+                              selectedGame!.cardTitle.replaceAll('_', ' '),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.cinzel(
+                                color: ColorPallete.borderyellow,
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  Expanded(
+                    child: Obx(() {
+                      if (tableController.isLoading.value) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: ColorPallete.borderyellow,
+                          ),
+                        );
+                      }
+                      if (tableController.tables.isEmpty) {
+                        return Center(
+                          child: Text(
+                            'No tables available',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.sp,
+                            ),
+                          ),
+                        );
+                      }
+                      return GameTables(
+                        tables: tableController.tables,
+                        selectedIndex: tableController.selectedTableIndex.value,
+                        onTableSelected: tableController.selectTable,
+                        userProfile: authController.user.value!,
+                      );
+                    }),
+                  ),
+                  _buildBottomWidget(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildBottomWidget(HomeController controller) {
+  Widget _buildBottomWidget() {
     return Padding(
       padding: EdgeInsets.fromLTRB(32.w, 0, 32.w, 8.h),
       child: Stack(
@@ -164,7 +161,7 @@ class _TableScreenState extends State<TableScreen> {
           ),
           Center(
             child: AppButton(
-              onTap: () {},
+              onTap: () => tableController.playSelectedTable(),
               label: "PLAY NOW",
               width: 145.w,
               height: 12.h,

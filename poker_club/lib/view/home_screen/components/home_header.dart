@@ -152,8 +152,8 @@ class _HomeHeaderState extends State<HomeHeader> {
             padding: EdgeInsets.only(bottom: 1.5.h),
             child: Text(
               walletController.isLoading.value
-                  ? '...'
-                  : '\$${formatCoins(walletController.balance.value)}',
+                  ? 'Loading...'
+                  : '${user?.currencySymbol}${formatCoins(walletController.balance.value)}',
               style: GoogleFonts.montserrat(
                 color: ColorPallete.lightyellow,
                 fontSize: 14.sp,

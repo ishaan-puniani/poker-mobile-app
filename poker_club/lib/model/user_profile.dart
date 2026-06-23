@@ -49,7 +49,7 @@ class UserProfile {
       case 'INR':
         return '₹';
       case 'PC':
-        return '🪙';
+        return '\$';
       default:
         return currency;
     }
