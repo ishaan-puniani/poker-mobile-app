@@ -10,7 +10,7 @@ class ApiService {
   static bool _handlingExpiredToken = false;
 
   // Basic
-  static const tenantId = '64b0bc14-6e24-4d10-9bf3-6afb7cac3ff9';
+  static const tenantId = 'f8ff9f87-d315-4323-86d2-14bcae0b8109';
   static const String pmsApiUrl =
       'https://pms-lukkywin-api-twkwng2veq-em.a.run.app/api';
   static const String gmsApiUrl =
