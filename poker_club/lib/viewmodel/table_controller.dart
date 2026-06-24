@@ -7,14 +7,16 @@ import 'package:poker_club/viewmodel/auth_controller.dart';
 import 'package:poker_club/viewmodel/wallet_controller.dart';
 
 class TableController extends GetxController {
-  final tables = <GameTable>[].obs;
+  final _tables = <GameTable>[].obs;
+  List<GameTable> get tables =>
+      _tables.where((table) => table.isActive).toList();
   final isLoading = false.obs;
   final selectedTableIndex = 0.obs;
 
   Future<void> fetchTables(String apiUrl) async {
     isLoading.value = true;
     try {
-      tables.value = await GameService.fetchTables(apiUrl);
+      _tables.value = await GameService.fetchTables(apiUrl);
       selectedTableIndex.value = 0;
     } catch (_) {
       // tables stays empty

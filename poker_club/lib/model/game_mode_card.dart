@@ -33,7 +33,7 @@ class GameModeCard {
   final String? subtitleText;
   final String? apiUrl;
   final GameModeCardTag? topOverlayTag;
-  final bool active;
+  final bool isActive;
   final String tenantId;
 
   GameModeCard({
@@ -44,31 +44,28 @@ class GameModeCard {
     this.subtitleText,
     this.apiUrl,
     this.topOverlayTag,
-    required this.active,
+    this.isActive = true,
     required this.tenantId,
   });
 
   factory GameModeCard.fromJson(Map<String, dynamic> json) {
-    // Use draft fields for testing
-    final data = json['draft'] as Map<String, dynamic>? ?? json;
-
     return GameModeCard(
       id: json['id'] ?? '',
-      backgroundUrl: data['backgroundUrl'],
-      cardTitle: data['cardTitle'] ?? '',
+      backgroundUrl: json['backgroundUrl'],
+      cardTitle: json['cardTitle'] ?? '',
       actionButtonText: GameModeActionButtonText.values.firstWhere(
-        (e) => e.value == data['actionButtonText'],
+        (e) => e.value == json['actionButtonText'],
         orElse: () => GameModeActionButtonText.noAction,
       ),
-      subtitleText: data['subtitleText'],
-      apiUrl: data['apiUrl'],
-      topOverlayTag: data['topOverlayTag'] != null
+      subtitleText: json['subtitleText'],
+      apiUrl: json['apiUrl'],
+      topOverlayTag: json['topOverlayTag'] != null
           ? GameModeCardTag.fromJson(
-              data['topOverlayTag'] as Map<String, dynamic>,
+              json['topOverlayTag'] as Map<String, dynamic>,
             )
           : null,
-      active: data['active'] ?? true,
-      tenantId: data['tenantId'] ?? '',
+      isActive: json['active'] ?? true,
+      tenantId: json['tenantId'] ?? '',
     );
   }
 }

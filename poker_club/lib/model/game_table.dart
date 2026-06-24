@@ -31,7 +31,7 @@ class GameTable {
       maxBuyIn: (json['maxBuyIn'] as num?)?.toDouble() ?? 0.0,
       serviceCharge: (json['serviceCharge'] as num?)?.toInt() ?? 0,
       entryFee: (json['entryFee'] as num?)?.toDouble() ?? 0.0,
-      isActive: json['isActive'] ?? true,
+      isActive: json['active'] ?? true,
     );
   }
 }
