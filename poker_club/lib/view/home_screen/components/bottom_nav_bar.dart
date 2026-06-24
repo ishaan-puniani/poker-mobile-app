@@ -29,13 +29,13 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.center,
       children: [
-        // Curved footer back-frame spanning the full width.
         Positioned(
-          left: 12.w,
-          right: 12.w,
-          bottom: 0,
+          left: 80.w,
+          right: 80.w,
+          bottom: 14.h,
+          top: 0,
           child: SvgPicture.asset(AppImages.footerBackFrame),
         ),
         Padding(
