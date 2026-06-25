@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import 'package:poker_club/viewmodel/home_controller.dart';
+import 'package:poker_club/viewmodel/mission_controller.dart';
 import 'package:poker_club/viewmodel/splash_controller.dart';
 import 'package:poker_club/viewmodel/wallet_controller.dart';
 
@@ -11,5 +12,6 @@ class HomeBinding extends Bindings {
     Get.put(WalletController());
     Get.put(HomeController());
     Get.put(SplashController());
+    Get.put(MissionController());
   }
 }

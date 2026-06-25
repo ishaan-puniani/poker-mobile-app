@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:poker_club/resources/color_pallete.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:poker_club/components/app_button.dart';
+import 'package:poker_club/model/mission.dart';
 import 'package:poker_club/resources/images.dart';
-import 'package:poker_club/view/custom_components/custom_button.dart';
+import 'package:poker_club/utils/custom_functions.dart';
 import 'package:poker_club/view/home_screen/components/home_header.dart';
-import 'package:poker_club/viewmodel/home_controller.dart';
+import 'package:poker_club/viewmodel/mission_controller.dart';
 
 class MissionScreen extends StatefulWidget {
   const MissionScreen({super.key});
@@ -15,278 +18,180 @@ class MissionScreen extends StatefulWidget {
 }
 
 class _MissionScreenState extends State<MissionScreen> {
-  List<
-    (String name, String description, String? endsIn, String price, String icon)
-  >
-  missions = [
-    (
-      "Play 3 hands",
-      "Participate in 3 poker hands",
-      "5h 20m",
-      "5K",
-      AppImages.casinoCardsCoins,
-    ),
-    (
-      "Go All-In 2 times",
-      "Play a game and go All-In",
-      "5h 20m",
-      "10K",
-      AppImages.goldCoins,
-    ),
-    ("Win 1 game", "Play a game and win", null, "10K", AppImages.crownWinGame),
-    (
-      "Win 25,000 chips",
-      "Play and win 25,000 chips",
-      null,
-      "20K",
-      AppImages.goldCoins,
-    ),
-  ];
-
-  List<String> weeklyPoints = ["10K", "15K", "20K", "25K", "30K", "50K", "80K"];
+  final MissionController missionController = Get.find<MissionController>();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      builder: (controller) {
-        return Container(
-          decoration: BoxDecoration(
-            gradient: ColorPallete.primarybgcolor,
-            image: DecorationImage(
-              image: AssetImage(AppImages.missionbackground),
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
-              colorFilter: ColorFilter.mode(
-                Colors.black.withValues(alpha: 0.5),
-                BlendMode.darken,
-              ),
+    return Stack(
+      children: [
+        SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50.h),
+            child: HomeHeader(
+              showProfileInfo: false,
+              showCloseButton: true,
+              showHelpButton: true,
+              title: "MISSIONS CHALLENGES",
+              onClose: () => Get.back(),
             ),
           ),
-          child: Scaffold(
-            backgroundColor: Colors.transparent,
-            body: SafeArea(
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                if (missionController.missionsNodes.isNotEmpty)
+                  _buildNodeList(),
+                if (missionController.selectedNode != null &&
+                    missionController.selectedNode!.milestones.isNotEmpty)
+                  _buildMilestoneList(),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMilestoneList() {
+    return Obx(() {
+      final milestones = missionController.selectedNode?.milestones ?? [];
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 8.h),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 18.w,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(milestones.length, (index) {
+            final milestone = milestones[index];
+            final reward = formatCoins(milestone.reward, true);
+            final progressStatus = missionController.getMilestoneProgressStatus(
+              milestone.id,
+            );
+            final buttonText = switch (progressStatus) {
+              MissionStatus.locked => "Locked",
+              MissionStatus.unlocked => "Get $reward",
+              MissionStatus.rewardClaimed => "Claimed",
+              _ => "Locked",
+            };
+            return SizedBox(
+              width: 160.w,
               child: Stack(
-                fit: StackFit.expand,
+                clipBehavior: Clip.none,
                 children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: HomeHeader(
-                      showProfileInfo: false,
-                      showCloseButton: true,
-                      showHelpButton: true,
-                      title: "MISSIONS",
-                      onClose: () => Get.back(),
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        height: 130.h,
-                        margin: EdgeInsets.only(top: 35.h),
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 24.w,
-                            vertical: 4.h,
-                          ),
-                          itemCount: missions.length,
-                          separatorBuilder: (context, index) =>
-                              SizedBox(width: 32.w),
-                          itemBuilder: (context, index) {
-                            final (name, description, endsIn, price, icon) =
-                                missions[index];
-                            return Stack(
-                              alignment: Alignment.topCenter,
-                              children: [
-                                Container(
-                                  width: 210.w,
-                                  margin: EdgeInsets.only(top: 20.h),
-                                  decoration: BoxDecoration(
-                                    gradient: ColorPallete.redCardGradient,
-                                    borderRadius: BorderRadius.circular(16.r),
-                                    border: Border.all(
-                                      color: ColorPallete.borderyellow
-                                          .withValues(alpha: 0.2),
-                                      width: 1.w,
-                                    ),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: ColorPallete.borderyellow,
-                                        blurRadius: 8.r,
-                                        offset: Offset.zero,
-                                      ),
-                                    ],
-                                  ),
-                                  padding: EdgeInsets.fromLTRB(
-                                    18,
-                                    40,
-                                    18,
-                                    18,
-                                  ).r,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Text(
-                                        name,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: 1.h),
-                                      Text(
-                                        description,
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 10.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      SizedBox(height: 2.h),
-                                      Container(
-                                        // color: ColorPallete.yellow,
-                                        width: 143.w,
-                                        height: 1.h,
-                                        margin: EdgeInsets.symmetric(
-                                          vertical: 4.h,
-                                        ),
-                                        decoration: BoxDecoration(
-                                          gradient:
-                                              ColorPallete.dividergradient,
-                                        ),
-                                      ),
-                                      if (endsIn != null)
-                                        Text(
-                                          "Ends in $endsIn",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                      Spacer(),
-                                      CustomButton(
-                                        onPressed: () {},
-                                        text:
-                                            '${"get".tr.toUpperCase()} $price',
-                                        height: 18.h,
-                                        radius: 100.r,
-                                        backgroundColor: ColorPallete.yellow,
-                                        textStyle: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Image.asset(
-                                    icon,
-                                    height: 45.h,
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          gradient: ColorPallete.primarybgcolorVertical2,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          vertical: 12.h,
-                          horizontal: 24.w,
-                        ),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              height: 1.h,
-                              margin: EdgeInsets.symmetric(horizontal: 48.w),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(1.h),
-                                gradient: ColorPallete.yellowgradient2,
-                              ),
+                  SvgPicture.asset(AppImages.missionCardBg, fit: BoxFit.fill),
+                  Positioned.fill(
+                    top: -4.h,
+                    child: Padding(
+                      padding: EdgeInsets.all(10).r,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          if (milestone.backgroundUrl != null &&
+                              milestone.backgroundUrl!.isNotEmpty)
+                            SvgPicture.network(
+                              milestone.backgroundUrl!,
+                              height: 40.h,
+                              fit: BoxFit.contain,
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  AppImages.weeklyCalender,
-                                  fit: BoxFit.contain,
-                                  height: 40.h,
-                                ),
-                                ...List.generate(weeklyPoints.length, (index) {
-                                  final weekPoint = weeklyPoints[index];
-                                  return Column(
-                                    spacing: 6.h,
-                                    children: [
-                                      Text(
-                                        "Day ${index + 1}",
-                                        style: TextStyle(
-                                          color: ColorPallete.yellow,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                      Material(
-                                        color: ColorPallete.richRed,
-                                        shape: CircleBorder(
-                                          side: BorderSide(
-                                            color: ColorPallete.borderyellow,
-                                            width: 1.w,
-                                          ),
-                                        ),
-                                        child: SizedBox.fromSize(
-                                          size: Size.fromRadius(18.r),
-                                          child: Icon(
-                                            Icons.check,
-                                            color: ColorPallete.goldLight,
-                                          ),
-                                        ),
-                                      ),
-                                      Text(
-                                        weekPoint,
-                                        style: TextStyle(
-                                          color: ColorPallete.yellow,
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                }),
-                                Image.asset(
-                                  AppImages.jackpotGalore,
-                                  fit: BoxFit.contain,
-                                  height: 40.h,
-                                ),
-                              ],
+                          SizedBox(height: 2.h),
+                          Spacer(),
+                          Text(
+                            milestone.name,
+                            style: GoogleFonts.cinzel(
+                              color: Colors.yellow.shade600,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          if (milestone.description != null &&
+                                  milestone.description!.isNotEmpty ||
+                              true) ...[
+                            SizedBox(height: 2.h),
+                            Text(
+                              milestone.description ??
+                                  "Participate in 3 poker hands",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 8.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
                             ),
                           ],
-                        ),
+                          Spacer(),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(10.w, 2.h, 10.w, 2.h),
+                            child: SvgPicture.asset(AppImages.namePopupDivider),
+                          ),
+                          Spacer(),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(6.w, 0, 6.w, 0),
+                            child: AppButton(
+                              label: buttonText,
+                              labelFontSize: 12,
+                              onTap: () {
+                                // Handle button tap based on progressStatus
+                              },
+                            ),
+                          ),
+                          Spacer(),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),
-            ),
-          ),
-        );
-      },
+            );
+          }),
+        ),
+      );
+    });
+  }
+
+  Widget _buildNodeList() {
+    return Obx(
+      () => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.fromLTRB(24.w, 8.h, 24.w, 8.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 48.w,
+          children: List.generate(missionController.missionsNodes.length, (
+            index,
+          ) {
+            final mission = missionController.missionsNodes[index];
+            final isSelected =
+                missionController.selectedNodeIndex.value == index;
+            return GestureDetector(
+              onTap: () => missionController.selectNode(index),
+              child: Column(
+                children: [
+                  if (mission.nodeIconUrl != null &&
+                      mission.nodeIconUrl!.isNotEmpty)
+                    SvgPicture.network(
+                      mission.nodeIconUrl!,
+                      // width: 100.r,
+                      height: isSelected ? 90.r : 70.r,
+                    ),
+                  Text(
+                    mission.name,
+                    style: GoogleFonts.cinzel(
+                      color: Colors.white,
+                      fontSize: isSelected ? 15.sp : 14.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
+        ),
+      ),
     );
   }
 }

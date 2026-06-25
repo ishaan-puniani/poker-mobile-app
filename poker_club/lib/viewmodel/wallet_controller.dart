@@ -17,7 +17,7 @@ class WalletController extends GetxController {
     super.onInit();
     refreshBalance();
     _timer = Timer.periodic(
-      const Duration(seconds: 3),
+      const Duration(seconds: 5),
       (_) => refreshBalance(silent: true),
     );
   }

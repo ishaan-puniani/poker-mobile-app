@@ -52,8 +52,10 @@ class _CountdownTextState extends State<CountdownText> {
     final minutes = duration.inMinutes.remainder(60);
     final seconds = duration.inSeconds.remainder(60);
 
-    // if in hrs show #h if in mins show #m if in sec show #s
-    if (hours > 0) {
+    // if in days show #d if in hrs show #h if in mins show #m if in sec show #s
+    if (duration.inDays > 0) {
+      return '${duration.inDays}D';
+    } else if (hours > 0) {
       return '${hours}H';
     } else if (minutes > 0) {
       return '${minutes}M';

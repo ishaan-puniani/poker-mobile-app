@@ -9,6 +9,7 @@ class AppImages {
       "assets/images/img_character_casino_dealer.png";
 
   // Mission screen
+  static const String missionCardBg = "assets/ui/missioncard_bg.svg";
   static const String missionbackground =
       "assets/images/img_mission_screen_background.png";
   static const String casinoCardsCoins =

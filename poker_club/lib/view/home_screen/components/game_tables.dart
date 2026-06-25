@@ -5,12 +5,14 @@ import 'package:poker_club/model/game_table.dart';
 import 'package:poker_club/model/user_profile.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/utils/custom_functions.dart';
+import 'package:poker_club/viewmodel/mission_controller.dart';
 
 class GameTables extends StatelessWidget {
   final List<GameTable> tables;
   final int selectedIndex;
   final Function(int index)? onTableSelected;
   final UserProfile userProfile;
+  final MissionController missionController;
 
   const GameTables({
     super.key,
@@ -18,6 +20,7 @@ class GameTables extends StatelessWidget {
     required this.selectedIndex,
     this.onTableSelected,
     required this.userProfile,
+    required this.missionController,
   });
 
   @override
@@ -48,7 +51,10 @@ class GameTables extends StatelessWidget {
     final stakes =
         "$currencySymbol${formatCoins(tables[index].smallBlind, true)}/${formatCoins(tables[index].bigBlind, true)}";
     final buyIn =
-        "BUY IN: ${formatCoins(tables[index].minBuyIn, true)}-${formatCoins(tables[index].maxBuyIn, true)}";
+        "${formatCoins(tables[index].minBuyIn, true)}-${formatCoins(tables[index].maxBuyIn, true)}";
+    final backgroundUrl = missionController.getTableBackgroundUrl(
+      tables[index].id,
+    );
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSelected ? 8.w : 0),
       child: Transform.scale(
@@ -58,7 +64,16 @@ class GameTables extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned.fill(
-              child: Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
+              child: backgroundUrl != null
+                  ? SvgPicture.network(
+                      backgroundUrl,
+                      fit: BoxFit.fill,
+                      placeholderBuilder: (context) =>
+                          Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
+                      errorBuilder: (context, error, stackTrace) =>
+                          Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
+                    )
+                  : Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
             ),
             Positioned.fill(
               top: 0.h,
@@ -81,7 +96,7 @@ class GameTables extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 12.h),
+                SizedBox(height: 24.h),
                 Text(
                   tables[index].name.toUpperCase(),
                   style: TextStyle(
@@ -95,57 +110,42 @@ class GameTables extends StatelessWidget {
                   stakes,
                   style: TextStyle(
                     color: Colors.yellow.shade700,
-                    fontSize: 20.sp,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w800,
-                  ),
-                ),
-                SizedBox(height: 2.h),
-                Text(
-                  buyIn,
-                  style: TextStyle(
-                    color: Colors.yellow.shade700,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 4.h),
                   child: SvgPicture.asset(
                     AppImages.namePopupDivider,
-                    height: 9.w,
+                    height: 6.w,
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      AppImages.tableCardChargeIcon,
-                      width: 18.w,
-                    ),
-                    SizedBox(width: 4.w),
-                    Text(
-                      "Max Charge",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Container(
-                      color: Colors.yellow.shade700.withValues(alpha: 0.4),
-                      width: 1.w,
-                      height: 14.h,
-                      margin: EdgeInsets.symmetric(horizontal: 8.w),
-                    ),
-                    Text(
-                      "+${tables[index].serviceCharge}LV",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
+                Text(
+                  "BUY IN:",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  buyIn,
+                  style: TextStyle(
+                    color: Colors.yellow.shade700,
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 4.h,
+                    horizontal: 18.w,
+                  ),
+                  child: SvgPicture.asset(
+                    AppImages.namePopupDivider,
+                    height: 7.w,
+                  ),
                 ),
               ],
             ),

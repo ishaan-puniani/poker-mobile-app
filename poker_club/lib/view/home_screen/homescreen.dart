@@ -50,7 +50,7 @@ class _HomescreenState extends State<Homescreen> {
         return Stack(
           fit: StackFit.expand,
           children: [
-            SvgPicture.asset(AppImages.homebackground),
+            SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
             Scaffold(
               backgroundColor: Colors.transparent,
               appBar: PreferredSize(

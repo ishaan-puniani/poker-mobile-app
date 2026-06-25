@@ -12,6 +12,9 @@ class TableController extends GetxController {
       _tables.where((table) => table.isActive).toList();
   final isLoading = false.obs;
   final selectedTableIndex = 0.obs;
+  GameTable? get selectedTable => tables.length > selectedTableIndex.value
+      ? tables[selectedTableIndex.value]
+      : null;
 
   Future<void> fetchTables(String apiUrl) async {
     isLoading.value = true;

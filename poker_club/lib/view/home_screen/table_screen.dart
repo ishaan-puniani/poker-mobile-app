@@ -8,8 +8,10 @@ import 'package:poker_club/components/app_button.dart';
 import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
+import 'package:poker_club/view/custom_components/custom_snackbar.dart';
 import 'package:poker_club/view/home_screen/components/game_tables.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
+import 'package:poker_club/viewmodel/mission_controller.dart';
 import 'package:poker_club/viewmodel/table_controller.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';
@@ -22,13 +24,14 @@ class TableScreen extends StatefulWidget {
 }
 
 class _TableScreenState extends State<TableScreen> {
-  final AuthController authController = Get.put(AuthController());
-  final HomeController homeController = Get.put(HomeController());
+  final AuthController authController = Get.find<AuthController>();
+  final HomeController homeController = Get.find<HomeController>();
   final TableController tableController = Get.put(TableController());
-  final String selectedGameId = Get.arguments as String;
-  GameModeCard? get selectedGame {
+  final MissionController missionController = Get.find<MissionController>();
+  final String selectedCardId = Get.arguments as String;
+  GameModeCard? get selectedCard {
     final games = homeController.games;
-    final gameId = selectedGameId;
+    final gameId = selectedCardId;
     return games.firstWhereOrNull((game) => game.id == gameId);
   }
 
@@ -36,8 +39,8 @@ class _TableScreenState extends State<TableScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (selectedGame?.apiUrl != null && selectedGame!.apiUrl!.isNotEmpty) {
-        tableController.fetchTables(selectedGame!.apiUrl!);
+      if (selectedCard?.apiUrl != null && selectedCard!.apiUrl!.isNotEmpty) {
+        tableController.fetchTables(selectedCard!.apiUrl!);
       }
     });
   }
@@ -48,7 +51,7 @@ class _TableScreenState extends State<TableScreen> {
       () => Stack(
         fit: StackFit.expand,
         children: [
-          SvgPicture.asset(AppImages.homebackground),
+          SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
           Scaffold(
             backgroundColor: Colors.transparent,
             appBar: PreferredSize(
@@ -64,7 +67,7 @@ class _TableScreenState extends State<TableScreen> {
               child: Column(
                 children: [
                   Gap(8.h),
-                  if (selectedGame != null)
+                  if (selectedCard != null)
                     SizedBox(
                       height: 20.h,
                       child: Stack(
@@ -77,7 +80,7 @@ class _TableScreenState extends State<TableScreen> {
                           Padding(
                             padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 2.h),
                             child: Text(
-                              selectedGame!.cardTitle.replaceAll('_', ' '),
+                              selectedCard!.cardTitle.replaceAll('_', ' '),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
@@ -117,6 +120,7 @@ class _TableScreenState extends State<TableScreen> {
                         selectedIndex: tableController.selectedTableIndex.value,
                         onTableSelected: tableController.selectTable,
                         userProfile: authController.user.value!,
+                        missionController: missionController,
                       );
                     }),
                   ),
@@ -131,6 +135,10 @@ class _TableScreenState extends State<TableScreen> {
   }
 
   Widget _buildBottomWidget() {
+    final selectedTable = tableController.selectedTable;
+    final isGameUnlocked = selectedTable != null
+        ? missionController.isGameUnlocked(selectedTable.id)
+        : false;
     return Padding(
       padding: EdgeInsets.fromLTRB(32.w, 0, 32.w, 8.h),
       child: Stack(
@@ -161,8 +169,18 @@ class _TableScreenState extends State<TableScreen> {
           ),
           Center(
             child: AppButton(
-              onTap: () => tableController.playSelectedTable(),
-              label: "PLAY NOW",
+              onTap: () {
+                if (isGameUnlocked) {
+                  tableController.playSelectedTable();
+                } else {
+                  CustomSnackbar.show(
+                    "Game Locked",
+                    context,
+                    type: SnackbarType.error,
+                  );
+                }
+              },
+              label: isGameUnlocked ? "PLAY NOW" : "LOCKED",
               width: 145.w,
               height: 12.h,
               labelFontSize: 13.sp,

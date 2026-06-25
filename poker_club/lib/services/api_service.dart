@@ -16,6 +16,8 @@ class ApiService {
       'https://pms-lukkywin-api-twkwng2veq-em.a.run.app/api/tenant/$tenantId';
   static const String gmsApiUrl =
       'https://poker-api-twkwng2veq-em.a.run.app/api';
+  static const String missionsApiUrl =
+      'https://missions-api-twkwng2veq-em.a.run.app/api/v1';
 
   // Auth
   static const String registerEndpoint = '$pmsApiUrl/players/rummy-signup';
@@ -45,6 +47,10 @@ class ApiService {
 
   // Game
   static const String gameModeCardsEndpoint = '$gmsApiUrl/game-mode-cards';
+  static const String missionsEndpoint =
+      '$missionsApiUrl/admin/missions/tree/tenant/$tenantId';
+  static const String missionsProgressEndpoint =
+      '$missionsApiUrl/missions/progress/';
 
   static Future<T> sendPmsRequest<T>(
     String endpoint, {

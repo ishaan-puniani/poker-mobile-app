@@ -78,11 +78,10 @@ class _HomeHeaderState extends State<HomeHeader> {
                 if (widget.title != null)
                   Text(
                     widget.title!,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
+                    style: GoogleFonts.cinzel(
+                      fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.italic,
+                      color: Colors.yellow.shade700,
                     ),
                   ),
 

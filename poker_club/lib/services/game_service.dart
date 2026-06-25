@@ -1,5 +1,6 @@
 import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/model/game_table.dart';
+import 'package:poker_club/model/mission.dart';
 import 'package:poker_club/services/api_service.dart';
 
 class GameService {
@@ -36,6 +37,34 @@ class GameService {
       // ignore: avoid_print
       print('[GameService] Error fetching tables: $e');
       return [];
+    }
+  }
+
+  static Future<List<MissionNode>> fetchMissions() async {
+    try {
+      final response = await ApiService.sendGmsRequest<List<dynamic>>(
+        ApiService.missionsEndpoint,
+      );
+      return response
+          .map((item) => MissionNode.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } catch (e) {
+      // ignore: avoid_print
+      print('[GameService] Error fetching missions: $e');
+      return [];
+    }
+  }
+
+  static Future<MissionProgress> fetchMissionsProgress(String playerId) async {
+    try {
+      final response = await ApiService.sendGmsRequest<Map<String, dynamic>>(
+        '${ApiService.missionsProgressEndpoint}$playerId',
+      );
+      return MissionProgress.fromJson(response);
+    } catch (e) {
+      // ignore: avoid_print
+      print('[GameService] Error fetching missions: $e');
+      return MissionProgress.empty();
     }
   }
 }
