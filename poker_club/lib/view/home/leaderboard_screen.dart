@@ -5,7 +5,7 @@ import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
-import 'package:poker_club/view/home_screen/components/home_header.dart';
+import 'package:poker_club/view/home/components/home_header.dart';
 import 'package:poker_club/viewmodel/home_controller.dart';
 
 class LeaderboardScreen extends StatefulWidget {

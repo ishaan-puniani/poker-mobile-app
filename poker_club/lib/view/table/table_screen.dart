@@ -9,12 +9,12 @@ import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/view/custom_components/custom_snackbar.dart';
-import 'package:poker_club/view/home_screen/components/game_tables.dart';
+import 'package:poker_club/view/table/components/game_tables.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import 'package:poker_club/viewmodel/mission_controller.dart';
 import 'package:poker_club/viewmodel/table_controller.dart';
 import '../../viewmodel/home_controller.dart';
-import 'components/home_header.dart';
+import '../home/components/home_header.dart';
 
 class TableScreen extends StatefulWidget {
   const TableScreen({super.key});
@@ -51,7 +51,12 @@ class _TableScreenState extends State<TableScreen> {
       () => Stack(
         fit: StackFit.expand,
         children: [
-          SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
+          Positioned.fill(
+            child: SvgPicture.asset(
+              AppImages.homebackground,
+              fit: BoxFit.cover,
+            ),
+          ),
           Scaffold(
             backgroundColor: Colors.transparent,
             appBar: PreferredSize(

@@ -8,35 +8,27 @@ import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/services/api_service.dart';
 import 'package:poker_club/services/auth_service.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_buttons_section.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_container.dart';
+import 'package:poker_club/view/auth/components/create_account.dart';
+import 'package:poker_club/view/auth/components/form_buttons_section.dart';
+import 'package:poker_club/view/auth/components/form_container.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
+import 'package:poker_club/view/custom_components/custom_passwordfield.dart';
 import 'package:poker_club/view/custom_components/custom_snackbar.dart';
-import 'package:poker_club/view/custom_components/custom_textfield.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  const ForgotPasswordScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
+  final String token = Get.arguments['token'] ?? '';
   final _formKey = GlobalKey<FormState>();
-  final _mobileController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
   bool _isLoading = false;
-
-  @override
-  initState() {
-    super.initState();
-    // Check if mobile number is passed as an argument
-    final args = Get.arguments;
-    if (args != null && args['mobile'] != null) {
-      _mobileController.text = args['mobile'];
-    }
-  }
 
   Future<void> onSubmit() async {
     if (_formKey.currentState?.validate() ?? false) {
@@ -44,11 +36,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         setState(() {
           _isLoading = true;
         });
-        await AuthService.forgotPassword(_mobileController.text.trim());
+        await AuthService.resetPassword(token, _passwordController.text.trim());
       } catch (e) {
         final errorMsg = ApiService.getErrorMessage(e);
         CustomSnackbar.show(
-          errorMsg ?? "Failed to send OTP",
+          errorMsg ?? "Failed to reset password",
           // ignore: use_build_context_synchronously
           context,
           type: SnackbarType.error,
@@ -84,50 +76,76 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   children: [
                     //create account
                     CreateAccount(
-                      title: "reset_password".tr.toUpperCase(),
-                      subtitle: "no_worries_we_will_get_you_back".tr,
+                      title: "change_password".tr.toUpperCase(),
+                      subtitle: "create_a_new_password_for_your_account".tr,
                       islogInPage: false,
                     ),
-                    Gap(48.w),
+                    SizedBox(width: 48.w),
+
                     FormContainer(
                       child: Form(
                         key: _formKey,
                         child: Column(
                           children: [
-                            CustomTextField(
-                              controller: _mobileController,
-                              textInputAction: TextInputAction.done,
+                            CustomPasswordField(
+                              controller: _passwordController,
+                              textInputAction: TextInputAction.next,
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.all(10.w),
+                                child: AppIcon(AppIcons.lock),
+                              ),
+                              backgroundColor: ColorPallete.brown,
+                              hint: "enter_the_password".tr,
                               hintStyle: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(
                                     fontWeight: FontWeight.w700,
                                     fontSize: 13.sp,
                                     color: ColorPallete.textcolor,
                                   ),
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.all(10.w),
-                                child: AppIcon(AppIcons.mobile),
-                              ),
-                              backgroundColor: ColorPallete.brown,
-                              hint: "enter_mobile_number".tr,
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
-                                  return 'mobile_number_required'.tr;
+                                  return 'password_required'.tr;
                                 }
-                                if (!RegExp(r'^\d{10}$').hasMatch(value)) {
-                                  return 'enter_valid_mobile_number'.tr;
+                                if (value.length < 6) {
+                                  return 'password_too_short'.tr;
                                 }
                                 return null;
                               },
-                              keyboardType: TextInputType.phone,
+                            ),
+                            Gap(8.h),
+                            CustomPasswordField(
+                              controller: _confirmPasswordController,
+                              textInputAction: TextInputAction.next,
+                              prefixIcon: Padding(
+                                padding: EdgeInsets.all(10.w),
+                                child: AppIcon(AppIcons.lock),
+                              ),
+                              backgroundColor: ColorPallete.brown,
+                              hint: "confirm_password".tr,
+                              hintStyle: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13.sp,
+                                    color: ColorPallete.textcolor,
+                                  ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'confirm_password_required'.tr;
+                                }
+                                if (value != _passwordController.text) {
+                                  return 'passwords_do_not_match'.tr;
+                                }
+                                return null;
+                              },
                               onFieldSubmitted: (value) {
                                 onSubmit();
                               },
                             ),
                             Gap(8.h),
                             FormButtonsSection(
-                              submitButtonText: 'get_otp'.tr,
-                              isGoogleLogin: false,
+                              submitButtonText: 'save'.tr,
                               submitLoading: _isLoading,
+                              isGoogleLogin: false,
                               onSubmit: onSubmit,
                             ),
                           ],

@@ -7,7 +7,7 @@ import 'package:poker_club/components/app_button.dart';
 import 'package:poker_club/model/mission.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/utils/custom_functions.dart';
-import 'package:poker_club/view/home_screen/components/home_header.dart';
+import 'package:poker_club/view/home/components/home_header.dart';
 import 'package:poker_club/viewmodel/mission_controller.dart';
 
 class MissionScreen extends StatefulWidget {
@@ -24,7 +24,9 @@ class _MissionScreenState extends State<MissionScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
+        Positioned.fill(
+          child: SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
+        ),
         Scaffold(
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(

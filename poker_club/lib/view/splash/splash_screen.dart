@@ -5,7 +5,7 @@ import 'package:get/state_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/resources/strings.dart';
-import 'package:poker_club/view/splash_screen/splashscreen_widgets/auth_options.dart';
+import 'package:poker_club/view/splash/components/auth_options.dart';
 import 'package:poker_club/viewmodel/splash_controller.dart';
 
 class SplashScreen extends StatelessWidget {

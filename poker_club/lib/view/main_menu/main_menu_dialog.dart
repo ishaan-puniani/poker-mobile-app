@@ -8,11 +8,11 @@ import 'package:poker_club/services/api_service.dart';
 import 'package:poker_club/services/player_service.dart';
 import 'package:poker_club/view/custom_components/custom_icon_button.dart';
 import 'package:poker_club/view/custom_components/custom_snackbar.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_data.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/widgets/customizations_section_view.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/widgets/game_stats_section_view.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/widgets/main_menu_sidebar.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/widgets/profile_section_view.dart';
+import 'package:poker_club/view/main_menu/main_menu_data.dart';
+import 'package:poker_club/view/main_menu/components/customizations_section_view.dart';
+import 'package:poker_club/view/main_menu/components/game_stats_section_view.dart';
+import 'package:poker_club/view/main_menu/components/main_menu_sidebar.dart';
+import 'package:poker_club/view/main_menu/components/profile_section_view.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 
 void showMainMenuDialog() {

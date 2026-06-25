@@ -6,7 +6,7 @@ import 'package:poker_club/model/game_mode_card.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/view/custom_components/custom_snackbar.dart';
-import 'package:poker_club/view/custom_components/player_name_input_dialog.dart';
+import 'package:poker_club/view/home/player_name_input_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import '../../viewmodel/home_controller.dart';
 import 'components/home_header.dart';
@@ -50,7 +50,12 @@ class _HomescreenState extends State<Homescreen> {
         return Stack(
           fit: StackFit.expand,
           children: [
-            SvgPicture.asset(AppImages.homebackground, fit: BoxFit.cover),
+            Positioned.fill(
+              child: SvgPicture.asset(
+                AppImages.homebackground,
+                fit: BoxFit.cover,
+              ),
+            ),
             Scaffold(
               backgroundColor: Colors.transparent,
               appBar: PreferredSize(

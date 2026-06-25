@@ -8,7 +8,7 @@ import 'package:poker_club/resources/icons.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/services/api_service.dart';
 import 'package:poker_club/services/auth_service.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_buttons_section.dart';
+import 'package:poker_club/view/auth/components/form_buttons_section.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
 import 'package:poker_club/view/custom_components/custom_passwordfield.dart';

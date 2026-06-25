@@ -6,10 +6,10 @@ import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/services/auth_service.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
+import 'package:poker_club/view/auth/components/create_account.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 import 'package:poker_club/view/custom_components/custom_snackbar.dart';
-import 'package:poker_club/view/custom_components/verify_with_otp_auth_component.dart';
+import 'package:poker_club/view/auth/components/verify_with_otp_auth_component.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});

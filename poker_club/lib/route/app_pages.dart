@@ -1,17 +1,17 @@
 import 'package:get/get.dart';
 import 'package:poker_club/route/app_route.dart';
 import 'package:poker_club/middleware/auth_middleware.dart';
-import 'package:poker_club/view/auth_screens/forgot_password_screen.dart';
-import 'package:poker_club/view/auth_screens/log_in_screen.dart';
-import 'package:poker_club/view/auth_screens/otp_verification_screen.dart';
-import 'package:poker_club/view/auth_screens/reset_password_screen.dart';
-import 'package:poker_club/view/auth_screens/sign_up_screen.dart';
-import 'package:poker_club/view/home_screen/homescreen.dart';
-import 'package:poker_club/view/home_screen/leaderboard_screen.dart';
-import 'package:poker_club/view/home_screen/mission_screen.dart';
-import 'package:poker_club/view/home_screen/play_screen.dart';
-import 'package:poker_club/view/home_screen/table_screen.dart';
-import 'package:poker_club/view/splash_screen/splash_screen.dart';
+import 'package:poker_club/view/auth/forgot_password_screen.dart';
+import 'package:poker_club/view/auth/log_in_screen.dart';
+import 'package:poker_club/view/auth/otp_verification_screen.dart';
+import 'package:poker_club/view/auth/reset_password_screen.dart';
+import 'package:poker_club/view/auth/sign_up_screen.dart';
+import 'package:poker_club/view/home/homescreen.dart';
+import 'package:poker_club/view/home/leaderboard_screen.dart';
+import 'package:poker_club/view/mission/mission_screen.dart';
+import 'package:poker_club/view/table/play_screen.dart';
+import 'package:poker_club/view/table/table_screen.dart';
+import 'package:poker_club/view/splash/splash_screen.dart';
 
 class AppPages {
   static final pages = [

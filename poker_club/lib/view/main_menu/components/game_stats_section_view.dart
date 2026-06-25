@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:poker_club/resources/color_pallete.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_data.dart';
+import 'package:poker_club/view/main_menu/main_menu_data.dart';
 
 class GameStatsSectionView extends StatelessWidget {
   const GameStatsSectionView({super.key});

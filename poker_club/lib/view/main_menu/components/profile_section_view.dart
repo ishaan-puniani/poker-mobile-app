@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/icons.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_buttons_section.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_container.dart';
+import 'package:poker_club/view/auth/components/form_buttons_section.dart';
+import 'package:poker_club/view/auth/components/form_container.dart';
 import 'package:poker_club/view/custom_components/app_icon.dart';
 import 'package:poker_club/view/custom_components/custom_textfield.dart';
 

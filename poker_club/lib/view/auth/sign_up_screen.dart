@@ -5,9 +5,9 @@ import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:get/route_manager.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/create_account.dart';
-import 'package:poker_club/view/auth_screens/auth_screen_components/form_container.dart';
-import 'package:poker_club/view/auth_screens/form/register_form.dart';
+import 'package:poker_club/view/auth/components/create_account.dart';
+import 'package:poker_club/view/auth/components/form_container.dart';
+import 'package:poker_club/view/auth/form/register_form.dart';
 import 'package:poker_club/view/custom_components/custom_back_button.dart';
 
 class SignUpScreen extends StatelessWidget {

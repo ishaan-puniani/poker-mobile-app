@@ -7,7 +7,7 @@ import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/utils/custom_extensions.dart' show StringExtension;
 import 'package:poker_club/utils/custom_functions.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_dialog.dart';
+import 'package:poker_club/view/main_menu/main_menu_dialog.dart';
 import 'package:poker_club/viewmodel/auth_controller.dart';
 import 'package:poker_club/viewmodel/wallet_controller.dart';
 import '../../../model/user_profile.dart';

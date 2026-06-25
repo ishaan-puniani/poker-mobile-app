@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:poker_club/model/user_profile.dart';
 import 'package:poker_club/resources/color_pallete.dart';
 import 'package:poker_club/view/custom_components/custom_button.dart';
-import 'package:poker_club/view/home_screen/main_menu_dialog/main_menu_data.dart';
+import 'package:poker_club/view/main_menu/main_menu_data.dart';
 
 class CustomizationsSectionView extends StatelessWidget {
   const CustomizationsSectionView({
