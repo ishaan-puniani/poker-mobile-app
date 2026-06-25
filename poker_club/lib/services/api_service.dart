@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:poker_club/services/auth_service.dart';
 import 'package:poker_club/services/pref.dart';
+import 'package:poker_club/utils/config.dart';
 
 class ApiService {
   const ApiService._();
@@ -10,42 +11,37 @@ class ApiService {
   static bool _handlingExpiredToken = false;
 
   // Basic
-  static const tenantId = 'f8ff9f87-d315-4323-86d2-14bcae0b8109';
+  static const tenantId = AppConfig.pmsTenantId;
   static const String pmsApiUrl =
-      'https://pms-lukkywin-api-twkwng2veq-em.a.run.app/api';
+      'https://pms-lukkywin-api-twkwng2veq-em.a.run.app/api/tenant/$tenantId';
   static const String gmsApiUrl =
       'https://poker-api-twkwng2veq-em.a.run.app/api';
 
   // Auth
-  static const String registerEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/rummy-signup';
+  static const String registerEndpoint = '$pmsApiUrl/players/rummy-signup';
   static const String registerOtpVerifyEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/signup-verify';
-  static const String loginEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/signin';
-  static const String otpLoginEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/rummy-signin';
-  static const String otpVerifyEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/verify-otp';
-  static const String meEndpoint = '$pmsApiUrl/tenant/$tenantId/players/me';
+      '$pmsApiUrl/players/signup-verify';
+  static const String loginEndpoint = '$pmsApiUrl/players/signin';
+  static const String otpLoginEndpoint = '$pmsApiUrl/players/rummy-signin';
+  static const String otpVerifyEndpoint = '$pmsApiUrl/players/verify-otp';
+  static const String meEndpoint = '$pmsApiUrl/players/me';
   static const String forgotPasswordEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/forgot-password';
+      '$pmsApiUrl/players/forgot-password';
   static const String verifyResetPasswordOtpEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/verify-resetPassword-otp';
+      '$pmsApiUrl/players/verify-resetPassword-otp';
   static const String resetPasswordEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/reset-password';
+      '$pmsApiUrl/players/reset-password';
 
   // Player
   static const String playerUpdateNameEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/update-name';
+      '$pmsApiUrl/players/update-name';
   static const String playerUpdateUsernameEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/update-userName';
-  static const String playerAddAvatarEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/players/add-avatar';
+      '$pmsApiUrl/players/update-userName';
+  static const String playerAddAvatarEndpoint = '$pmsApiUrl/players/add-avatar';
 
   // Wallet
   static const String walletBalanceEndpoint =
-      '$pmsApiUrl/tenant/$tenantId/wapas/balance/get-detailed-transaction-profile';
+      '$pmsApiUrl/wapas/balance/get-detailed-transaction-profile';
 
   // Game
   static const String gameModeCardsEndpoint = '$gmsApiUrl/game-mode-cards';
