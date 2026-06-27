@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:poker_club/components/network_asset.dart';
 import 'package:poker_club/model/game_table.dart';
 import 'package:poker_club/model/user_profile.dart';
 import 'package:poker_club/resources/images.dart';
@@ -59,97 +61,130 @@ class GameTables extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: isSelected ? 8.w : 0),
       child: Transform.scale(
         scale: isSelected ? 1 : 0.85,
-        child: Stack(
-          alignment: Alignment.center,
-          clipBehavior: Clip.none,
-          children: [
-            Positioned.fill(
-              child: backgroundUrl != null
-                  ? SvgPicture.network(
-                      backgroundUrl,
-                      fit: BoxFit.fill,
-                      placeholderBuilder: (context) =>
-                          Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
-                      errorBuilder: (context, error, stackTrace) =>
-                          Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
-                    )
-                  : Image.asset(AppImages.tableCardBg, fit: BoxFit.fill),
-            ),
-            Positioned.fill(
-              top: 0.h,
-              child: Column(
-                children: [
-                  Container(
-                    clipBehavior: Clip.none,
-                    width: double.infinity,
-                    height: 48.r,
-                    child: SvgPicture.asset(
-                      isSelected
-                          ? AppImages.tableCardCrownIcon
-                          : AppImages.tableCardSpadeIcon,
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
-                ],
+        child: ColorFiltered(
+          colorFilter: isSelected
+              ? const ColorFilter.mode(Colors.transparent, BlendMode.multiply)
+              : ColorFilter.mode(
+                  Colors.black.withValues(alpha: 0.4),
+                  BlendMode.srcATop,
+                ),
+          child: Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            children: [
+              Positioned.fill(
+                child: NetworkAsset(
+                  assetUrl: backgroundUrl ?? '',
+                  defaultAsset: AppImages.tableCardBg,
+                ),
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(height: 24.h),
-                Text(
-                  tables[index].name.toUpperCase(),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
+              Positioned.fill(
+                top: 0.h,
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.none,
+                      width: double.infinity,
+                      height: 48.r,
+                      child: SvgPicture.asset(
+                        isSelected
+                            ? AppImages.tableCardCrownIcon
+                            : AppImages.tableCardSpadeIcon,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 4.h),
-                Text(
-                  stakes,
-                  style: TextStyle(
-                    color: Colors.yellow.shade700,
-                    fontSize: 22.sp,
-                    fontWeight: FontWeight.w800,
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(18.w, 0, 18.w, 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 24.h),
+                    Text(
+                      tables[index].name.toUpperCase(),
+                      style: GoogleFonts.cinzel(
+                        color: Colors.white,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black.withValues(alpha: 0.7),
+                            offset: Offset(1, 1),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 4.h),
+                    Text(
+                      stakes,
+                      style: GoogleFonts.notoSerif(
+                        color: Colors.yellow.shade600,
+                        fontSize: 22.sp,
+                        fontWeight: FontWeight.w800,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black.withValues(alpha: 0.7),
+                            offset: Offset(1, 1),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 4.h),
+                      child: SvgPicture.asset(
+                        AppImages.namePopupDivider,
+                        height: 6.w,
+                      ),
+                    ),
+                    Text(
+                      "BUY IN:",
+                      style: GoogleFonts.notoSerif(
+                        color: Colors.white,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black.withValues(alpha: 0.7),
+                            offset: Offset(1, 1),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Text(
+                      buyIn,
+                      style: GoogleFonts.notoSerif(
+                        color: Colors.yellow.shade600,
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w600,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black.withValues(alpha: 0.7),
+                            offset: Offset(1, 1),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 4.h,
+                        horizontal: 6.w,
+                      ),
+                      child: SvgPicture.asset(
+                        AppImages.namePopupDivider,
+                        height: 7.w,
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 4.h),
-                  child: SvgPicture.asset(
-                    AppImages.namePopupDivider,
-                    height: 6.w,
-                  ),
-                ),
-                Text(
-                  "BUY IN:",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Text(
-                  buyIn,
-                  style: TextStyle(
-                    color: Colors.yellow.shade700,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 4.h,
-                    horizontal: 18.w,
-                  ),
-                  child: SvgPicture.asset(
-                    AppImages.namePopupDivider,
-                    height: 7.w,
-                  ),
-                ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );

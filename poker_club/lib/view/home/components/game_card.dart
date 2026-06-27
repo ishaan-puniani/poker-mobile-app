@@ -1,10 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/components/app_button.dart';
 import 'package:poker_club/components/countdown_text.dart';
+import 'package:poker_club/components/network_asset.dart';
 import 'package:poker_club/resources/images.dart';
 import '../../../model/game_mode_card.dart';
 
@@ -26,7 +26,13 @@ class GameCard extends StatelessWidget {
         alignment: Alignment.topCenter,
         clipBehavior: Clip.none,
         children: [
-          Positioned.fill(child: _buildCardBackground()),
+          Positioned.fill(
+            child: NetworkAsset(
+              assetUrl: game.backgroundUrl ?? '',
+              defaultAsset: AppImages.gameCardDefaultBg,
+              fit: BoxFit.fill,
+            ),
+          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,22 +51,6 @@ class GameCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCardBackground() {
-    if (game.backgroundUrl != null && game.backgroundUrl!.isNotEmpty) {
-      return CachedNetworkImage(
-        imageUrl: game.backgroundUrl!,
-        fit: BoxFit.fill,
-        errorWidget: (context, error, stackTrace) {
-          return Image.asset(AppImages.gameCardDefaultBg, fit: BoxFit.fill);
-        },
-        placeholder: (context, url) {
-          return Image.asset(AppImages.gameCardDefaultBg, fit: BoxFit.fill);
-        },
-      );
-    }
-    return Image.asset(AppImages.gameCardDefaultBg, fit: BoxFit.fill);
-  }
-
   Widget _buildTitleRibbon() {
     return Padding(
       padding: EdgeInsets.fromLTRB(3.w, 2.h, 3.w, 0),
@@ -69,17 +59,24 @@ class GameCard extends StatelessWidget {
         children: [
           SvgPicture.asset(AppImages.cardTitleRibbon, fit: BoxFit.fitWidth),
           Padding(
-            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 3.h),
+            padding: EdgeInsets.fromLTRB(10.w, 0, 10.w, 1.h),
             child: Text(
               _formatTitle(game.cardTitle),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
               style: GoogleFonts.cinzel(
-                color: Colors.yellow.shade600,
+                color: Colors.yellow.shade500,
                 fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
                 letterSpacing: 0.5,
+                shadows: [
+                  Shadow(
+                    color: Colors.black.withValues(alpha: 0.7),
+                    offset: Offset(1, 1),
+                    blurRadius: 2,
+                  ),
+                ],
               ),
             ),
           ),

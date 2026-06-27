@@ -60,10 +60,23 @@ class MissionController extends GetxController {
   }
 
   bool isGameUnlocked(String gameId) {
-    return _missionsProgress.value.unlockedGames[gameType]?.any(
+    var isUnlocked =
+        _missionsProgress.value.unlockedGames[gameType]?.any(
           (game) => game.gameId == gameId,
         ) ==
         true;
+    if (!isUnlocked) {
+      isUnlocked =
+          _missionsProgress.value.milestones.any(
+            (milestone) =>
+                milestone.unlockedGames[gameType]?.any(
+                  (game) => game.gameId == gameId,
+                ) ==
+                true,
+          ) ==
+          true;
+    }
+    return isUnlocked;
   }
 
   MissionStatus getMilestoneProgressStatus(String milestoneId) {
