@@ -85,6 +85,8 @@ enum MissionStatus {
   locked('LOCKED', 'Locked'),
   unlocked('UNLOCKED', 'Unlocked'),
   rewardClaimed('REWARD_CLAIMED', 'Reward Claimed'),
+  inProgress('IN_PROGRESS', 'In Progress'),
+  completed('COMPLETED', 'Completed'),
   none('NONE', 'None');
 
   final String value;

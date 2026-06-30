@@ -90,10 +90,17 @@ class _TableScreenState extends State<TableScreen> {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                               style: GoogleFonts.cinzel(
-                                color: ColorPallete.borderyellow,
+                                color: Colors.yellow.shade500,
                                 fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
                                 letterSpacing: 0.5,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.black.withValues(alpha: 0.7),
+                                    offset: Offset(1, 1),
+                                    blurRadius: 2,
+                                  ),
+                                ],
                               ),
                             ),
                           ),

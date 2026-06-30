@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:poker_club/components/app_button.dart';
+import 'package:poker_club/components/network_asset.dart';
 import 'package:poker_club/model/mission.dart';
 import 'package:poker_club/resources/images.dart';
 import 'package:poker_club/utils/custom_functions.dart';
@@ -91,13 +92,11 @@ class _MissionScreenState extends State<MissionScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          if (milestone.backgroundUrl != null &&
-                              milestone.backgroundUrl!.isNotEmpty)
-                            SvgPicture.network(
-                              milestone.backgroundUrl!,
-                              height: 40.h,
-                              fit: BoxFit.contain,
-                            ),
+                          NetworkAsset(
+                            assetUrl: milestone.backgroundUrl ?? '',
+                            defaultAsset: AppImages.casinoCardsCoins,
+                            height: 40.h,
+                          ),
                           SizedBox(height: 2.h),
                           Spacer(),
                           Text(
@@ -113,8 +112,7 @@ class _MissionScreenState extends State<MissionScreen> {
                               true) ...[
                             SizedBox(height: 2.h),
                             Text(
-                              milestone.description ??
-                                  "Participate in 3 poker hands",
+                              milestone.description ?? "",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 8.sp,
